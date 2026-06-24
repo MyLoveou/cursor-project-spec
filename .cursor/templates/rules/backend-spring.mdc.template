@@ -1,0 +1,32 @@
+---
+description: {PROJECT} 后端 Spring Boot/JPA/Flyway 约定
+globs: backend/**/*
+alwaysApply: false
+---
+
+# 后端约定
+
+> 通用基线：`{SPEC_ROOT}/backend/Spring-Boot-REST.md` · 导航：`{SPEC_ROOT}/backend/README.md`
+
+## 栈与结构
+
+- Java 21 · Spring Boot 3.x · JPA · Flyway
+- 包：`{BASE_PACKAGE}.{controller,service,repository,entity,dto,security,exception}`
+
+## API
+
+- 统一信封：见 `{SPEC_ROOT}/api/REST-API-契约.md`
+- 权限：{AUTH_PATTERN}
+
+## 数据
+
+- 新表/改表：仅 Flyway `V{n}__*.sql`
+- 写操作：Service `@Transactional`；Controller 薄层
+
+## 改后必须重启
+
+修改 `backend/**` 后重启并冒烟改动接口。
+
+## 验收
+
+`{BACKEND_BUILD_CMD}` → 重启 → 冒烟

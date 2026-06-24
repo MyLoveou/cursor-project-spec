@@ -1,0 +1,45 @@
+﻿---
+description: AI Agent 执行规范、子代理、Skill 触发与后端重启义务
+alwaysApply: true
+---
+
+# AI 执行规范
+
+> 复制为 `.cursor/rules/ai-execution.mdc` 并替换 `{占位符}`  
+> 详文：`{SPEC_ROOT}/ai/Agent执行规范.md` · 模式：`{SPEC_ROOT}/ai/智能体模式.md`
+
+## 必读索引
+
+| 类型 | 路径 |
+|------|------|
+| 总览 | `AGENTS.md` |
+| Cursor 目录 | `.cursor/README.md` |
+| 硬约束 | `.cursor/constraints.md` |
+| 工作流详表 | `.cursor/skills/workflow-triggers/SKILL.md` |
+| 通用规范库 | `{SPEC_ROOT}/` |
+
+## 子代理（Task / `@`）
+
+| 场景 | 使用 |
+|------|------|
+| 探索代码 | `explore` / `@code-explorer` |
+| Java 构建失败 | `@java-build-resolver` |
+| 前端构建失败 | `@react-build-resolver` |
+| 改 Java 后 | `@java-reviewer`（建议） |
+| 改 TSX 后 | `@react-reviewer`（建议） |
+| 安全/JWT | `@security-reviewer` |
+| 数据库迁移 | `@database-reviewer` |
+| 需求沉淀 | `@product-manager` |
+
+完整 Skill 列表见 `workflow-triggers` Skill；命中信号**必须先读**对应 Skill。
+
+## 硬义务：后端改动后重启
+
+修改 `{BACKEND_DIR}/**` 后交付前：停旧进程 → `{BACKEND_RUN_CMD}` → migration 检查 → HTTP 冒烟。
+
+## DoD 摘要
+
+- `verification-gate` Skill · `{SPEC_ROOT}/ai/验证门禁-DoD.md`
+- `{FRONTEND_BUILD_CMD}`、`{BACKEND_BUILD_CMD}`
+- 新能力：`docs/requirements/features/<id>.md` 已定稿
+- 用户未要求时不 commit/push
