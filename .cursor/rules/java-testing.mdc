@@ -1,6 +1,7 @@
----
-paths:
-  - "**/*.java"
+﻿---
+description: "Java Testing"
+globs: "**/*.java"
+alwaysApply: false
 ---
 # Java Testing
 

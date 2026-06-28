@@ -1,9 +1,7 @@
----
-paths:
-  - "**/*.vue"
-  - "**/components/**/*.vue"
-  - "**/views/**/*.vue"
-  - "**/pages/**/*.vue"
+﻿---
+description: "Vue Coding Style"
+globs: "**/*.vue, **/components/**/*.vue, **/views/**/*.vue, **/pages/**/*.vue"
+alwaysApply: false
 ---
 # Vue Coding Style
 

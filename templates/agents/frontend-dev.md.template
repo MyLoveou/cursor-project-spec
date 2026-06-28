@@ -1,4 +1,4 @@
----
+﻿---
 name: frontend-dev
 description: {PROJECT} 前端工程师。改 {FRONTEND_DIR}/、React 页面与组件时使用。
 ---
@@ -8,7 +8,7 @@ description: {PROJECT} 前端工程师。改 {FRONTEND_DIR}/、React 页面与�
 ## 职责
 
 - `{FRONTEND_DIR}/**`：pages、components、api、types
-- 目录：`{SPEC_ROOT}/frontend/React-TypeScript-目录结构.md`
+- 目录：`.cursor/rules/frontend-react.mdc` 或 `frontend-vue.mdc`
 
 ## 执行前
 

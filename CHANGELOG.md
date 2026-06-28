@@ -1,5 +1,12 @@
 ﻿# 变更记录
 
+## 2026-06-19（清理）
+
+- **移除人类可读规范**：删除根目录 `ai/`、`coding/`、`backend/`、`frontend/`、`api/`、`standards/` 及 `.cursor/STANDARDS-LINK.md`
+- 约定全部落在 `.cursor/`（rules、skills、workflows、agents）
+- Bootstrap 模板迁至仓库根 `templates/`（不再置于 `.cursor/templates/`）
+- 修复 `templates/rules/*.mdc.template` 引用，指向 `.cursor/rules/` 而非外部规范目录
+
 ## 2026-06-19
 
 ### 结构
@@ -35,10 +42,16 @@
 - Agents：`marketing-agent`、`a11y-architect`；Vue：`vue-reviewer`、`vue-build-resolver`、`frontend-vue-dev`
 - Rules：`vue-*.mdc`（5 条）、`frontend-vue.mdc`
 
+### 结构（2026-06-19 晚）
+
+- 人类规范合并：`ai/`、`coding/`、`backend/`、`frontend/`、`api/` → **`standards/`**
+- 业务项目**只复制** `.cursor/`；新增 `scripts/bootstrap-project.ps1`
+- 新增 `.cursor/STANDARDS-LINK.md` 说明链接模式
+
 ### 工作流剧本（同日）
 
-- `.cursor/workflows/`：需求、设计、开发、交付四条主流程（Skill + Agent + Rule 串联表）
-- Skill：`workflow-playbooks`；触发表已挂接
+- `.cursor/workflows/`：需求、设计、开发、交付四条主流程
+- Skill：`workflow-playbooks`；`agent-patterns.md` 对接智能体模式
 
 ### 智能体模式（同日）
 

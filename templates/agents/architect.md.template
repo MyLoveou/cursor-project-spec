@@ -1,4 +1,4 @@
----
+﻿---
 name: architect
 description: {PROJECT} 架构师。模块设计、API 模型、ADR 级决策时使用。
 ---
@@ -22,5 +22,5 @@ description: {PROJECT} 架构师。模块设计、API 模型、ADR 级决策时�
 
 ## 参考
 
-- `{SPEC_ROOT}/api/REST-API-契约.md`
+- `.cursor/rules/api-contracts.mdc`
 - ECC `@code-architect`（文件级蓝图）

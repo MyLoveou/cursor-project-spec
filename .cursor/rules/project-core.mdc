@@ -5,8 +5,8 @@ alwaysApply: true
 
 # 项目核心
 
-> 通用编码/安全/Git：见 `docs/standards/README.md` 链到规范库  
-> 硬约束速查：`.cursor/constraints.md`
+> 硬约束：`.cursor/constraints.md`  
+> 编码/安全/Git 基线：`.cursor/rules/common-*.mdc`
 
 ## 仓库
 
@@ -14,7 +14,7 @@ alwaysApply: true
 |------|------|
 | `backend/` | API、持久化 |
 | `frontend/` | 页面、客户端 |
-| `docs/` | 需求、设计、规范 |
+| `docs/` | 需求、设计、产品 |
 
 ## 不变量（按项目填写）
 

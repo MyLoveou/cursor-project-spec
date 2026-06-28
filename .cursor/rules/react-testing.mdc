@@ -1,11 +1,7 @@
----
-paths:
-  - "**/*.test.tsx"
-  - "**/*.test.jsx"
-  - "**/*.spec.tsx"
-  - "**/*.spec.jsx"
-  - "**/__tests__/**/*.ts"
-  - "**/__tests__/**/*.tsx"
+﻿---
+description: "React Testing"
+globs: "**/*.test.tsx, **/*.test.jsx, **/*.spec.tsx, **/*.spec.jsx, **/__tests__/**/*.ts, **/__tests__/**/*.tsx"
+alwaysApply: false
 ---
 # React Testing
 

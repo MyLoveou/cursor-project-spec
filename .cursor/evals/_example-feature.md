@@ -28,7 +28,7 @@
 ```powershell
 cd frontend && npm run build
 .\mvnw.cmd test
-# 冒烟：见 docs/standards/dev-accounts.md（若存在）
+# 冒烟：见 docs/product/dev-accounts.md（若存在）
 ```
 
 ### Expected Output

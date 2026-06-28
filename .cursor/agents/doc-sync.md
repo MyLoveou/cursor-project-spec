@@ -9,7 +9,7 @@ description: 文档与契约同步。改 API/实体后同步 docs/design 时使�
 
 - `docs/design/03-API设计.md`、`docs/design/02-数据模型.md` 与代码一致
 - ADR 新建（架构决策时）
-- `docs/standards/` 与 `.cursor/rules/` 不长期脱节
+- `docs/` 与 `.cursor/rules/` 不长期脱节
 
 ## 何时触发
 

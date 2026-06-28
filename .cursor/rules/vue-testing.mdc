@@ -1,9 +1,7 @@
----
-paths:
-  - "**/*.spec.ts"
-  - "**/*.test.ts"
-  - "**/__tests__/**/*.ts"
-  - "**/*.vue"
+﻿---
+description: "Vue Testing"
+globs: "**/*.spec.ts, **/*.test.ts, **/__tests__/**/*.ts, **/*.vue"
+alwaysApply: false
 ---
 # Vue Testing
 

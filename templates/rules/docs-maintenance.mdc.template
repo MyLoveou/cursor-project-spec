@@ -1,4 +1,4 @@
----
+﻿---
 description: docs 文档编写与契约同步约定
 globs: docs/**/*
 alwaysApply: false
@@ -6,14 +6,13 @@ alwaysApply: false
 
 # 文档约定
 
-> 人类可读副本：`docs/standards/` · 通用库：`{SPEC_ROOT}/coding/文档维护.md`
+> 契约与 API 信封：`.cursor/rules/api-contracts.mdc`
 
 ## 结构
 
 - `requirements/features/` 单功能需求包（多轮沉淀，已定稿后可实现）
 - `design/` 架构、API、数据模型、`adr/`
-- `product/` 能力边界
-- `standards/` 编码与 AI 规范
+- `product/` 能力边界、路线图
 
 ## 何时必须更新
 

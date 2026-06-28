@@ -1,4 +1,4 @@
----
+﻿---
 name: backend-dev
 description: 后端工程师。改 backend/、migration、Spring Boot API 时使用。
 ---
@@ -9,7 +9,7 @@ description: 后端工程师。改 backend/、migration、Spring Boot API 时使
 
 - 实现 `backend/**`：Controller、Service、Repository、Entity、DTO
 - Flyway migration（只增不改）
-- 遵循规范库 `backend/Spring-Boot-REST.md`（链自 `docs/standards/README.md`）
+- 遵循 `.cursor/rules/backend-spring.mdc`、`api-contracts.mdc`
 
 ## 执行前
 
@@ -20,12 +20,8 @@ description: 后端工程师。改 backend/、migration、Spring Boot API 时使
 ## 交付
 
 - `.\mvnw.cmd test`（或 `mvn test`）通过
-- 改 backend 后：**重启 8080 + 冒烟**（端口按项目调整）
+- 改 backend 后：**重启 + 冒烟**（端口按项目调整）
 - 同步 `docs/design/03-API设计.md` / `docs/design/02-数据模型.md`
-
-## 项目约束（按项目填写）
-
-- （按项目填写）
 
 ## 禁止
 

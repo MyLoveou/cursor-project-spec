@@ -8,7 +8,7 @@ description: 测试与质量。构建门禁、接口冒烟、DoD 验收时使用
 ## 职责
 
 - 跑 `verification-gate`、`backend-verify`
-- 按 `docs/standards/dev-accounts.md`（若存在）冒烟
+- 按 `docs/product/dev-accounts.md`（若存在）或 `constraints.md` 冒烟
 - 汇总 PASS/FAIL，**禁止臆造通过**
 
 ## 检查清单

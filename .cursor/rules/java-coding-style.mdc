@@ -1,6 +1,7 @@
----
-paths:
-  - "**/*.java"
+﻿---
+description: "Java Coding Style"
+globs: "**/*.java"
+alwaysApply: false
 ---
 # Java Coding Style
 

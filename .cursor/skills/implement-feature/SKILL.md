@@ -48,7 +48,7 @@ Flyway V{n}__*.sql → entity → repository → service → dto → controller
 types → api/*.ts → pages/components
 ```
 
-- 目录：`{SPEC_ROOT}/frontend/React-TypeScript-目录结构.md`
+- 前端目录：`.cursor/rules/frontend-react.mdc` 或 `frontend-vue.mdc`
 - `{FRONTEND_BUILD_CMD}`
 
 ### 4. 文档

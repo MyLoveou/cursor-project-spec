@@ -1,4 +1,4 @@
----
+﻿---
 name: verification-gate
 description: >-
   交付前验证门禁。触发：验收、DoD、交付、提 PR、完成、build 通过后声称结束、stop hook。
@@ -7,7 +7,7 @@ origin: ECC verification-loop（通用版）
 
 # 验证门禁（Verification Gate）
 
-> 权威 DoD：`.cursor/constraints.md` · `{SPEC_ROOT}/ai/验证门禁-DoD.md`
+> 权威 DoD：`.cursor/constraints.md` · 本 Skill 正文
 
 ## 何时使用
 

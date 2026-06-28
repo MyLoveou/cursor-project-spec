@@ -1,10 +1,7 @@
----
-paths:
-  - "**/*.tsx"
-  - "**/*.jsx"
-  - "**/components/**/*.ts"
-  - "**/app/**/*.ts"
-  - "**/pages/**/*.ts"
+﻿---
+description: "React Security"
+globs: "**/*.tsx, **/*.jsx, **/components/**/*.ts, **/app/**/*.ts, **/pages/**/*.ts"
+alwaysApply: false
 ---
 # React Security
 

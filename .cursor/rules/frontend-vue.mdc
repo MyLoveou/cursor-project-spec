@@ -1,4 +1,4 @@
----
+﻿---
 description: 前端 Vue 3/TS 约定
 globs: frontend/**/*
 alwaysApply: false
@@ -6,7 +6,7 @@ alwaysApply: false
 
 # 前端约定（Vue）
 
-> 通用基线：规范库 `frontend/README.md`（链自 `docs/standards/README.md`）
+> 栈规则：`.cursor/rules/vue-*.mdc`、`typescript-*.mdc`
 
 ## 栈
 
@@ -19,10 +19,6 @@ Vue 3 · TypeScript · Vite · Vue Router · Pinia（或项目选定状态库）
 - 组合式函数：`composables/use*.ts`
 - 状态：`stores/*.ts`（Pinia）
 
-## UI 库
-
-Element Plus / Ant Design Vue / Vant — 按项目选型；见 `ui-to-vue` Skill（设计稿转代码）
-
 ## API
 
 - 基座：`api/client.ts` 或 `utils/request.ts`
@@ -30,7 +26,7 @@ Element Plus / Ant Design Vue / Vant — 按项目选型；见 `ui-to-vue` Skill
 
 ## 验收
 
-`cd frontend && npm run build`（及 `npm run typecheck` 若配置）
+`cd frontend && npm run build`
 
 ## 审查
 

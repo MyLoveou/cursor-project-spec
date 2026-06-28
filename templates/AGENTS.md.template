@@ -1,0 +1,24 @@
+﻿# {PROJECT} · Agent 开发指引
+
+> 运行时配置均在 `.cursor/`；完成定义见 `verification-gate` Skill。
+
+## 1. 仓库
+
+| 目录 | 技术栈 | 职责 |
+|------|--------|------|
+| `backend/` | {BACKEND_STACK} | |
+| `frontend/` | {FRONTEND_STACK} | |
+| `docs/` | Markdown | 需求、设计、产品 |
+
+## 2. Cursor 索引
+
+| 文档 | 用途 |
+|------|------|
+| `.cursor/constraints.md` | 硬约束 |
+| `.cursor/skills/workflow-triggers/SKILL.md` | 工作流触发表 |
+| `.cursor/workflows/` | 需求/设计/开发/交付剧本 |
+| `docs/requirements/features/` | 单功能需求（定稿后实现） |
+
+## 3. 完成定义
+
+见 `verification-gate` Skill + 本项目 `constraints.md`。

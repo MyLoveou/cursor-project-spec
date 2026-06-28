@@ -1,9 +1,7 @@
----
-paths:
-  - "**/*.java"
-  - "**/pom.xml"
-  - "**/build.gradle"
-  - "**/build.gradle.kts"
+﻿---
+description: "Java Hooks"
+globs: "**/*.java, **/pom.xml, **/build.gradle, **/build.gradle.kts"
+alwaysApply: false
 ---
 # Java Hooks
 

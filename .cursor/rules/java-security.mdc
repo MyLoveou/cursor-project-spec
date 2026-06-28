@@ -1,6 +1,7 @@
----
-paths:
-  - "**/*.java"
+﻿---
+description: "Java Security"
+globs: "**/*.java"
+alwaysApply: false
 ---
 # Java Security
 

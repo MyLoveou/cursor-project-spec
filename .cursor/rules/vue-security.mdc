@@ -1,8 +1,7 @@
----
-paths:
-  - "**/*.vue"
-  - "**/components/**/*.ts"
-  - "**/views/**/*.ts"
+﻿---
+description: "Vue Security"
+globs: "**/*.vue, **/components/**/*.ts, **/views/**/*.ts"
+alwaysApply: false
 ---
 # Vue Security
 

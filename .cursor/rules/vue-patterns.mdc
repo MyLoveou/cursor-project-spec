@@ -1,8 +1,7 @@
----
-paths:
-  - "**/*.vue"
-  - "**/composables/**/*.ts"
-  - "**/stores/**/*.ts"
+﻿---
+description: "Vue Patterns"
+globs: "**/*.vue, **/composables/**/*.ts, **/stores/**/*.ts"
+alwaysApply: false
 ---
 # Vue Patterns
 

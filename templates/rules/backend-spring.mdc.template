@@ -1,4 +1,4 @@
----
+﻿---
 description: {PROJECT} 后端 Spring Boot/JPA/Flyway 约定
 globs: backend/**/*
 alwaysApply: false
@@ -6,7 +6,7 @@ alwaysApply: false
 
 # 后端约定
 
-> 通用基线：`{SPEC_ROOT}/backend/Spring-Boot-REST.md` · 导航：`{SPEC_ROOT}/backend/README.md`
+> API 信封与 REST 约定：`.cursor/rules/api-contracts.mdc`
 
 ## 栈与结构
 
@@ -15,7 +15,7 @@ alwaysApply: false
 
 ## API
 
-- 统一信封：见 `{SPEC_ROOT}/api/REST-API-契约.md`
+- 统一信封：见 `api-contracts.mdc`
 - 权限：{AUTH_PATTERN}
 
 ## 数据

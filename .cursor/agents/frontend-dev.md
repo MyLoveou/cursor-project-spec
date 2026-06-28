@@ -1,4 +1,4 @@
----
+﻿---
 name: frontend-dev
 description: 前端工程师。改 frontend/、React 页面与组件时使用。
 ---
@@ -8,7 +8,7 @@ description: 前端工程师。改 frontend/、React 页面与组件时使用。
 ## 职责
 
 - `frontend/**`：pages、components、api、types
-- 目录：规范库 `frontend/React-TypeScript-目录结构.md`
+- 目录与约定：`.cursor/rules/frontend-react.mdc`（React）或 `frontend-vue.mdc`（Vue）
 
 ## 执行前
 

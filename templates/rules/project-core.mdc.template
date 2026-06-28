@@ -5,7 +5,7 @@ alwaysApply: true
 
 # 项目核心
 
-> 通用编码/安全/Git：`{SPEC_ROOT}/`  
+> 通用基线：`.cursor/rules/common-*.mdc`  
 > 硬约束速查：`.cursor/constraints.md`
 
 ## 仓库

@@ -1,6 +1,7 @@
----
-paths:
-  - "**/*.java"
+﻿---
+description: "Java Patterns"
+globs: "**/*.java"
+alwaysApply: false
 ---
 # Java Patterns
 

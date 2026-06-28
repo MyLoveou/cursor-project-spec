@@ -5,6 +5,7 @@ alwaysApply: true
 
 # AI 执行规范
 
+> 复制为 `.cursor/rules/ai-execution.mdc` 并按项目调整  
 > 智能体模式：`.cursor/workflows/agent-patterns.md` · 工作流：`.cursor/workflows/README.md`
 
 ## 必读索引
@@ -44,11 +45,11 @@ alwaysApply: true
 
 ## 硬义务：后端改动后重启
 
-修改 `backend/**` 后交付前：停旧进程 → `.\mvnw.cmd spring-boot:run`（或项目启动命令）→ migration 检查 → HTTP 冒烟。
+修改 `backend/**` 后交付前：停旧进程 → `{BACKEND_RUN_CMD}` → migration 检查 → HTTP 冒烟。
 
 ## DoD 摘要
 
 - `verification-gate` Skill（详表见 Skill 正文）
-- `cd frontend && npm run build`、`.\mvnw.cmd test`（或 `mvn test`）
+- `{FRONTEND_BUILD_CMD}`、`{BACKEND_BUILD_CMD}`
 - 新能力：`docs/requirements/features/<id>.md` 已定稿
 - 用户未要求时不 commit/push

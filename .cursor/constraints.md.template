@@ -1,8 +1,8 @@
-# {PROJECT} · 硬约束（模板）
+﻿# {PROJECT} · 硬约束（模板）
 
 > 复制为 `<项目>/.cursor/constraints.md` 并填写 `{占位符}`  
-> 通用 DoD：`{SPEC_ROOT}/ai/验证门禁-DoD.md`  
-> 接入：`{SPEC_ROOT}/BOOTSTRAP.md`
+> 通用 DoD：`verification-gate` Skill · `.cursor/constraints.md`  
+> 由规范库 `scripts/bootstrap-project.ps1` 从本模板生成
 
 ---
 

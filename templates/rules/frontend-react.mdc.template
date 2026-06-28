@@ -1,12 +1,12 @@
----
+﻿---
 description: {PROJECT} 前端 React/TS 约定
 globs: frontend/**/*
 alwaysApply: false
 ---
 
-# 前端约定
+# 前端约定（React）
 
-> 通用基线：`{SPEC_ROOT}/frontend/README.md`
+> 栈规则：`.cursor/rules/react-*.mdc`、`typescript-*.mdc`
 
 ## 栈
 
@@ -21,7 +21,7 @@ React · TypeScript · Vite · React Router
 ## API
 
 - 基座：`api/client.ts`
-- 按域拆分 `api/*.ts`
+- 按域拆分 `api/*.ts`（契约见 `api-contracts.mdc`）
 
 ## 验收
 

@@ -1,8 +1,7 @@
----
-paths:
-  - "**/composables/**/*.ts"
-  - "**/use-*.ts"
-  - "**/*.vue"
+﻿---
+description: "Vue Composables & Lifecycle"
+globs: "**/composables/**/*.ts, **/use-*.ts, **/*.vue"
+alwaysApply: false
 ---
 # Vue Composables & Lifecycle
 

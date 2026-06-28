@@ -1,4 +1,4 @@
----
+﻿---
 description: API 契约与响应信封（改接口时必读）
 globs: "{backend/**/controller/**,backend/**/dto/**,frontend/**/api/**,docs/design/*API*}"
 alwaysApply: false
@@ -6,7 +6,6 @@ alwaysApply: false
 
 # API 契约
 
-> 通用基线：规范库 `api/REST-API-契约.md`  
 > 项目权威：`docs/design/03-API设计.md`（路径按项目调整）
 
 ## 信封

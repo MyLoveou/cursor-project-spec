@@ -37,7 +37,7 @@ docs/design/06-总数据模型.md                 # 定稿后同步实体/表
 docs/design/adr/                           # 架构抉择时新建
 ```
 
-模板：`{SPEC_ROOT}/.cursor/templates/docs-requirements-feature.md.template`（或项目内 `.cursor` 旁链到规范库）
+模板（规范库维护者参考）：`templates/docs-requirements-feature.md.template`；业务项目按上文「文档落点」结构编写
 
 文首 **状态**：`草案` → `评审中` → `已定稿`（仅 `已定稿` 可进入 `plan-workflow` / `implement-feature`）。
 

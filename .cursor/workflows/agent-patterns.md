@@ -1,7 +1,6 @@
-# 智能体模式 × 工作流
+﻿# 智能体模式 × 工作流
 
-> **理论详文**：规范库 `ai/智能体模式.md`（链自 `docs/standards/README.md`）  
-> **本文**：把模式**落到四条工作流**的可执行对照表。执行剧本时须识别当前阶段适用的模式。
+> 可执行对照表：将路由、委派、并行、Eval、Handoff 等模式落到四条工作流。
 
 ---
 
@@ -154,6 +153,5 @@
 
 ## 相关文档
 
-- [智能体模式.md](../../ai/智能体模式.md)（完整理论）
 - [workflows/README.md](./README.md)
 - [workflow-playbooks/SKILL.md](../skills/workflow-playbooks/SKILL.md)

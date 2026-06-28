@@ -9,7 +9,7 @@ description: {PROJECT} 文档与契约同步。改 API/实体后同步 docs/desi
 
 - `{API_DESIGN_DOC}`、`{DATA_MODEL_DOC}` 与代码一致
 - ADR 新建（架构决策时）
-- `docs/standards/` 与 `.cursor/rules/` 不长期脱节
+- `docs/` 与 `.cursor/rules/` 不长期脱节
 
 ## 何时触发
 
