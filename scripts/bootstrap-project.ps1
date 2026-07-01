@@ -1,4 +1,4 @@
-# Bootstrap target project (copy .cursor only)
+# Bootstrap: copy flat runtime dirs from spec repo -> target .cursor/
 
 param(
     [Parameter(Mandatory = $true)]
@@ -11,20 +11,30 @@ $ErrorActionPreference = "Stop"
 
 $SpecRoot = (Resolve-Path $SpecRoot).Path
 $ProjectRoot = (Resolve-Path $ProjectRoot).Path
-$CursorSrc = Join-Path $SpecRoot ".cursor"
 $CursorDest = Join-Path $ProjectRoot ".cursor"
 
-if (-not (Test-Path $CursorSrc)) {
-    throw "Missing .cursor in spec repo: $CursorSrc"
-}
+$RuntimeDirs = @("rules", "skills", "agents", "hooks", "workflows", "evals")
 
 if (Test-Path $CursorDest) {
     throw "Target already has .cursor: $CursorDest (remove or backup first)"
 }
 
-Copy-Item -Recurse -Force $CursorSrc $CursorDest
+New-Item -ItemType Directory -Force -Path $CursorDest | Out-Null
 
-Copy-Item (Join-Path $SpecRoot ".cursor\constraints.md.template") (Join-Path $CursorDest "constraints.md")
+foreach ($d in $RuntimeDirs) {
+    $src = Join-Path $SpecRoot $d
+    if (-not (Test-Path $src)) {
+        throw "Missing runtime dir in spec repo: $src"
+    }
+    Copy-Item -Recurse -Force $src (Join-Path $CursorDest $d)
+}
+
+$template = Join-Path $SpecRoot "constraints.md.template"
+if (-not (Test-Path $template)) {
+    throw "Missing constraints.md.template: $template"
+}
+Copy-Item $template (Join-Path $CursorDest "constraints.md")
+
 Copy-Item (Join-Path $SpecRoot "templates\AGENTS.md.template") (Join-Path $ProjectRoot "AGENTS.md")
 
 $docsDirs = @(
@@ -36,5 +46,5 @@ foreach ($d in $docsDirs) {
     New-Item -ItemType Directory -Force -Path (Join-Path $ProjectRoot $d) | Out-Null
 }
 
-Write-Host "Done: .cursor + AGENTS.md + docs skeleton -> $ProjectRoot"
+Write-Host "Done: runtime dirs -> $CursorDest + AGENTS.md + docs skeleton"
 Write-Host "Edit .cursor/constraints.md and AGENTS.md placeholders."

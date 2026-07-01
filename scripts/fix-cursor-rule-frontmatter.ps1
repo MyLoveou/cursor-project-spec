@@ -1,5 +1,5 @@
 # Fix ECC stack rules: paths -> globs (Cursor .mdc frontmatter)
-$rulesDir = Join-Path (Split-Path $PSScriptRoot -Parent) ".cursor\rules"
+$rulesDir = Join-Path (Split-Path $PSScriptRoot -Parent) "rules"
 Get-ChildItem $rulesDir -Filter "*.mdc" | ForEach-Object {
     $content = Get-Content $_.FullName -Raw -Encoding UTF8
     if ($content -notmatch '(?ms)^---\r?\npaths:\r?\n((?:  - .+\r?\n)+)---') {

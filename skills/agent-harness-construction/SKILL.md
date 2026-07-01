@@ -65,5 +65,5 @@ origin: ECC agent-harness-construction（通用版）
 
 ## 维护
 
-- 通用改进同步到规范库 `.cursor/`（本仓库根目录）
+- 通用改进同步到规范库根目录（`rules/`、`skills/`、`agents/` 等）
 - 新增 DAILY → 更新 `ecc-manifest.md`、**仅** `skills/workflow-triggers/SKILL.md`

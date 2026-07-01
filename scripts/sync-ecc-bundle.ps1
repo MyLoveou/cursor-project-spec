@@ -1,9 +1,9 @@
-# Sync ECC agents/rules/skills from ~/.cursor into bundle .cursor/
+# Sync ECC agents/rules/skills from ~/.cursor into spec repo root (flat layout)
 # Usage: powershell -File scripts/sync-ecc-bundle.ps1
 
 param(
     [string]$EccRoot = (Join-Path $env:USERPROFILE ".cursor"),
-    [string]$BundleRoot = (Join-Path (Split-Path $PSScriptRoot -Parent) ".cursor")
+    [string]$BundleRoot = (Split-Path $PSScriptRoot -Parent)
 )
 
 $ErrorActionPreference = "Stop"
@@ -22,7 +22,6 @@ $AgentNames = @(
     "code-explorer", "code-architect", "architect", "planner", "doc-updater",
     "code-reviewer", "build-error-resolver", "code-simplifier", "tdd-guide",
     "e2e-runner", "pr-test-analyzer", "refactor-cleaner",
-  # product / design / research lane
     "marketing-agent", "a11y-architect"
 )
 

@@ -13,7 +13,7 @@ alwaysApply: true
 | 类型 | 路径 |
 |------|------|
 | 总览 | `AGENTS.md` |
-| Cursor 目录 | `.cursor/README.md` · `.cursor/STRUCTURE.md` |
+| 工作流 | `.cursor/workflows/README.md` |
 | 硬约束 | `.cursor/constraints.md` |
 | 工作流详表 | `.cursor/skills/workflow-triggers/SKILL.md` |
 | 工作流剧本 | `.cursor/workflows/` · Skill：`workflow-playbooks` |

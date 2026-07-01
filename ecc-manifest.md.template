@@ -1,18 +1,20 @@
 ﻿# 项目 · ECC 能力选型
 
 > 来源：[affaan-m/ECC](https://github.com/affaan-m/ECC)  
-> **DAILY** = 已 vendoring 到本 `.cursor/`；**LIBRARY** = `~/.cursor/skills/` 按需
+> **DAILY** = 已 vendoring 到规范库根目录；部署到业务项目时放入 `.cursor/`。**LIBRARY** = `~/.cursor/skills/` 按需
 
 ---
 
-## DAILY（已落地到 `.cursor/`）
+## DAILY（已落地到规范库根目录）
+
+部署到业务项目：复制到 `.cursor/` 下同名路径。
 
 ### Skills（本库 + vendored）
 
 | 类别 | 代表 |
 |------|------|
 | 工作流 | `scope-check`、`requirements-refinement`、`implement-feature`…（见 README 矩阵） |
-| 工作流剧本 | `workflow-playbooks` + `.cursor/workflows/`（需求/设计/开发/交付） |
+| 工作流剧本 | `workflow-playbooks` + `workflows/`（需求/设计/开发/交付） |
 | 产品/调研/设计 | `market-research`、`deep-research`、`product-capability`、`blueprint`、`frontend-design-direction`、`ui-to-vue`、`make-interfaces-feel-better` |
 
 ### Rules

@@ -1,5 +1,11 @@
 ﻿# 变更记录
 
+## 2026-06-19（扁平化）
+
+- **移除 `.cursor/` 包装层**：`rules/`、`skills/`、`agents/` 等提升至规范库根目录
+- 业务项目复用时移入 `<项目>/.cursor/`；Bootstrap 脚本已适配
+- 删除 `.cursor/README.md`（内容并入 `STRUCTURE.md`）
+
 ## 2026-06-19（清理）
 
 - **移除人类可读规范**：删除根目录 `ai/`、`coding/`、`backend/`、`frontend/`、`api/`、`standards/` 及 `.cursor/STANDARDS-LINK.md`

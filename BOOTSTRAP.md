@@ -1,6 +1,6 @@
 ﻿# Bootstrap
 
-> 业务项目**只复制** `.cursor/` + 从 `templates/` 生成 `AGENTS.md`、`constraints.md`。
+> 从规范库**复制运行时目录**到业务项目的 `.cursor/`，并生成 `AGENTS.md`、`constraints.md`。
 
 ```powershell
 powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
@@ -8,23 +8,25 @@ powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
   -ProjectRoot "E:\项目\YourApp"
 ```
 
-## 生成内容
+## 规范库 → 业务项目
 
-| 路径 | 说明 |
-|------|------|
-| `YourApp/.cursor/` | 从规范库复制（rules/skills/agents/hooks/workflows） |
-| `YourApp/.cursor/constraints.md` | 从 `constraints.md.template` |
-| `YourApp/AGENTS.md` | 从 `templates/AGENTS.md.template` |
-| `YourApp/docs/requirements/` 等 | 项目文档骨架（需求/设计/产品） |
+| 规范库（根目录） | 业务项目 |
+|------------------|----------|
+| `rules/` `skills/` `agents/` `hooks/` `workflows/` `evals/` | `YourApp/.cursor/` 下同名目录 |
+| `constraints.md.template` | `YourApp/.cursor/constraints.md` |
+| `templates/AGENTS.md.template` | `YourApp/AGENTS.md` |
+| — | `YourApp/docs/requirements/` 等骨架 |
 
-## 不要复制
+也可**手动**将规范库根目录的运行时文件夹移入目标项目的 `.cursor/`。
 
-- 规范库根 `templates/`、`scripts/`、`README.md`（留在规范库）
+## 不要复制到业务项目
+
+- 规范库根 `templates/`、`scripts/`、`README.md`、`STRUCTURE.md`、`ecc-manifest.md.template`
 
 ## 校验
 
 - [ ] Cursor Settings → Rules 可见 Project Rules
-- [ ] `constraints.md`、`AGENTS.md` 占位符已替换
-- [ ] 业务项目根**仅新增** `.cursor/`（无额外规范目录）
+- [ ] `.cursor/constraints.md`、`AGENTS.md` 占位符已替换
+- [ ] 业务项目运行时均在 `.cursor/` 内
 
 维护 ECC：`scripts/sync-ecc-bundle.ps1`

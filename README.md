@@ -1,6 +1,7 @@
 ﻿# 项目规范 · Cursor 运行时库
 
-> **本仓库 = `.cursor/` 整包** + Bootstrap 脚本。复制到业务项目时**只复制 `.cursor/`**。
+> **本仓库 = 扁平运行时目录**（`rules/`、`skills/`、`agents/` 等）+ Bootstrap 脚本。  
+> 复用到业务项目时，将运行时目录**整体移入** `<项目>/.cursor/`（或手动复制对应子目录）。
 
 ```powershell
 powershell -File scripts/bootstrap-project.ps1 `
@@ -16,23 +17,25 @@ powershell -File scripts/bootstrap-project.ps1 `
 
 ```
 项目规范/
-├── .cursor/       # Rules、Skills、Agents、Hooks、Workflows（全部运行时）
-├── templates/     # Bootstrap 占位符（AGENTS.md、constraints 等）
+├── rules/ skills/ agents/ hooks/ workflows/ evals/   # 运行时（复制到目标 .cursor/）
+├── constraints.md.template
+├── templates/     # Bootstrap 占位符
 ├── scripts/       # bootstrap、sync-ecc-bundle、fix-cursor-rule-frontmatter
+├── STRUCTURE.md
 ├── BOOTSTRAP.md
 └── AGENTS.md
 ```
 
-## `.cursor/` 入口
+## 入口
 
 | 文档 | 说明 |
 |------|------|
-| [.cursor/STRUCTURE.md](./.cursor/STRUCTURE.md) | Cursor 官方目录 vs 扩展 |
-| [.cursor/README.md](./.cursor/README.md) | Skills、维护 |
-| [.cursor/workflows/README.md](./.cursor/workflows/README.md) | 四条主工作流 |
+| [STRUCTURE.md](./STRUCTURE.md) | 规范库布局 vs 业务项目 `.cursor/` 布局 |
+| [workflows/README.md](./workflows/README.md) | 四条主工作流 |
+| [skills/workflow-triggers/SKILL.md](./skills/workflow-triggers/SKILL.md) | 工作流触发表 |
 
 ## 维护
 
-- 新增 Skill → `.cursor/skills/workflow-triggers/SKILL.md`
+- 新增 Skill → `skills/workflow-triggers/SKILL.md`
 - 同步 ECC → `scripts/sync-ecc-bundle.ps1`
 - 修复 Rule frontmatter → `scripts/fix-cursor-rule-frontmatter.ps1`
