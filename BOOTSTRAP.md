@@ -15,7 +15,7 @@ powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
 | `rules/` `skills/` `agents/` `hooks/` `workflows/` `evals/` | `YourApp/.cursor/` 下同名目录 |
 | `constraints.md.template` | `YourApp/.cursor/constraints.md` |
 | `templates/AGENTS.md.template` | `YourApp/AGENTS.md` |
-| — | `YourApp/docs/requirements/` 等骨架 |
+| — | `YourApp/docs/requirements/`、`docs/standards/` 等骨架 |
 
 也可**手动**将规范库根目录的运行时文件夹移入目标项目的 `.cursor/`。
 

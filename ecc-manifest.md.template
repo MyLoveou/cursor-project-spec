@@ -16,6 +16,9 @@
 | 工作流 | `scope-check`、`requirements-refinement`、`implement-feature`…（见 README 矩阵） |
 | 工作流剧本 | `workflow-playbooks` + `workflows/`（需求/设计/开发/交付） |
 | 产品/调研/设计 | `market-research`、`deep-research`、`product-capability`、`blueprint`、`frontend-design-direction`、`ui-to-vue`、`make-interfaces-feel-better` |
+| 浏览器 / E2E | `agent-browser`（[vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser)） |
+| UI 设计（第三方） | `frontend-design`（anthropics）、`ui-ux-pro-max`、`web-design-guidelines`（vercel-labs/agent-skills） |
+| UI 设计（ECC  salvage） | `frontend-design-direction`、`make-interfaces-feel-better` |
 
 ### Rules
 

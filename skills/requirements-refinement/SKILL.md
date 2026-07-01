@@ -1,4 +1,4 @@
-﻿---
+---
 name: requirements-refinement
 description: >-
   新需求多轮迭代沉淀文档，定稿后再实现。触发：提需求、新需求、需求设计、先写文档、
@@ -8,7 +8,8 @@ origin: 项目规范（需求先行门禁）
 
 # 需求沉淀（Requirements Refinement）
 
-> **文档定稿 → 再规划 → 再编码**。禁止在需求/契约未沉淀时开始 `implement-feature`。
+> **需求定稿 → 技术方案定稿 → 再编码**。  
+> **需求已定稿 ≠ 可动工**；须 L3 实现方案已定稿且用户确认（见 `docs/standards/版本与动工门禁.md`）。
 
 ## 何时触发
 
@@ -31,15 +32,23 @@ origin: 项目规范（需求先行门禁）
 ## 文档落点
 
 ```
-docs/requirements/features/<feature-id>.md   # 主需求包（本 Skill 维护）
-docs/design/03-API设计.md                    # 定稿后同步 API 章节
-docs/design/06-总数据模型.md                 # 定稿后同步实体/表
-docs/design/adr/                           # 架构抉择时新建
+docs/requirements/features/<id>/
+  需求.md                    # L1 主需求（本 Skill 维护）
+  实现方案.md                # L3 技术方案（plan-workflow 维护，动工前须已定稿）
+docs/requirements/features/<id>-track.md   # Track 参考（可选，子模块拆分）
+docs/design/03-API设计.md         # 定稿后同步 IPC 章节
+docs/design/02-数据模型.md        # 定稿后同步实体/表
+docs/design/adr/          # ADR-NNN-<主题>.md
+docs/UI/                     # 跨功能 UI 规格（设计系统、界面规格、IA）
+docs/standards/版本与动工门禁.md  # 版本划分与 L1–L3 门禁
 ```
 
 模板（规范库维护者参考）：`templates/docs-requirements-feature.md.template`；业务项目按上文「文档落点」结构编写
 
-文首 **状态**：`草案` → `评审中` → `已定稿`（仅 `已定稿` 可进入 `plan-workflow` / `implement-feature`）。
+文首 **状态**：`草案` → `评审中` → `已定稿`。
+
+- 需求包 **已定稿** → 可进入 `plan-workflow`（出技术方案）
+- **不可**因需求已定稿直接进入 `implement-feature`（还须 L3 方案定稿，见 `版本与动工门禁.md`）
 
 ## 多轮迭代流程
 
@@ -54,7 +63,7 @@ docs/design/adr/                           # 架构抉择时新建
 - 与 `{CAPABILITY_DOC}` / 路线图对齐结论
 - **开放问题**（须用户回答的）
 
-产出：创建/更新 `docs/requirements/features/<id>.md`，状态 `草案`。
+产出：创建/更新 `docs/requirements/features/<id>.md`（或 Track 用 `docs/requirements/features/<id>.md`），状态 `草案`。
 
 ### 轮次 2 · 场景与验收
 
@@ -90,7 +99,9 @@ docs/design/adr/                           # 架构抉择时新建
 1. 需求文档状态 → `已定稿`
 2. 同步 `{API_DESIGN_DOC}`、`{DATA_MODEL_DOC}`（`@doc-sync`）
 3. 可选：`.cursor/evals/<feature>.md` 从验收标准生成 eval
-4. 进入 `plan-workflow`（大任务）或 `implement-feature`（小且清晰）
+4. 进入 `plan-workflow`（**必须**：产出 `docs/design/features/<id>-plan.md`）
+
+**需求定稿后禁止写业务代码**；须等 `plan-workflow` 完成且实现方案 **已定稿 + 用户确认**。
 
 ## 单轮输出模板
 
@@ -115,23 +126,25 @@ docs/design/adr/                           # 架构抉择时新建
 
 ```
 scope-check (IN SCOPE)
-  → requirements-refinement（多轮，仅文档）
-  → plan-workflow（已定稿后）
+  → requirements-refinement（需求定稿）
+  → plan-workflow（技术方案定稿 + 用户确认）
   → eval-harness（可选）
-  → implement-feature（硬门禁：需求已定稿）
+  → implement-feature
   → code-review-gate → verification-gate
 ```
 
 ## 跨会话
 
-多轮跨天 → `dynamic-workflow-mode` + `docs/requirements/features/<id>-handoff.md`（示例：`.cursor/evals/_example-requirements-handoff.md`）
+多轮跨天 → `dynamic-workflow-mode` + `docs/requirements/features/<id>-handoff.md`
 
 ## 反模式
 
 - 用户一句需求直接写 Controller / 页面
 - 开放问题未关闭却标已定稿
-- 只在聊天里讨论、不落 `docs/requirements/`
+- 只在聊天里讨论、不落 `docs/requirements/features/`
 - 定稿不同步 API/数据模型文档
+- 需求已定稿却跳过 `plan-workflow` 直接编码（缺 L3）
+- 宏观 UI/契约齐备但无 `docs/requirements/features/<能力>/实现方案.md` 与文件清单
 - 用「先实现再补文档」处理**新能力**（除非用户显式承担风险）
 
 ## 委派

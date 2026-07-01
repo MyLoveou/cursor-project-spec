@@ -29,6 +29,12 @@ You are an expert end-to-end testing specialist. Your mission is to ensure criti
 
 ## Primary Tool: Agent Browser
 
+**先读** `agent-browser` Skill（`.cursor/skills/agent-browser/SKILL.md`）。运行前加载 CLI 工作流：
+
+```bash
+agent-browser skills get core
+```
+
 **Prefer Agent Browser over raw Playwright** — Semantic selectors, AI-optimized, auto-waiting, built on Playwright.
 
 ```bash

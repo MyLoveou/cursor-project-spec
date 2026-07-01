@@ -1,4 +1,4 @@
-﻿---
+---
 name: implement-feature
 description: >-
   按纵向切片实现功能（后端+前端+迁移+文档）。
@@ -7,11 +7,11 @@ description: >-
 # 功能纵向切片（Implement Feature）
 
 > 标准顺序：**migration → 后端 → 前端 types/api → UI → docs**  
-> **硬门禁**：新能力须 `requirements-refinement` 已定稿（或用户显式承担文档滞后风险）。
+> **硬门禁**：L1 需求已定稿 + L2 契约已登记 + **L3 技术方案已定稿且用户确认**（见 `docs/standards/版本与动工门禁.md`）。
 
 ## 何时读
 
-- 需求文档 **已定稿** + `plan-workflow` 已确认（或用户「直接做」且已说明风险）
+- L3 `docs/design/features/<id>-plan.md` **已定稿** + 用户已确认（或用户「直接做」且已说明风险）
 - `scope-check` 为 IN SCOPE 后，且非可跳过沉淀的新能力
 - 修 bug / 小改 UI（可跳过 plan 与 requirements-refinement，仍建议 scope-check）
 
@@ -19,11 +19,13 @@ description: >-
 
 开始写业务代码前确认：
 
-- [ ] `docs/requirements/features/<id>.md` 状态 = **已定稿**
-- [ ] 验收标准已写入需求文档 §4
-- [ ] API/数据变更已在 design 文档登记（若适用）
+- [ ] `docs/requirements/features/<id>.md` 状态 = **已定稿**（L1）
+- [ ] 验收标准已写入需求文档
+- [ ] API/数据变更已在 `docs/design/` 登记（L2，若适用）
+- [ ] `docs/design/features/<id>-plan.md` 状态 = **已定稿**，且用户已确认（L3）
+- [ ] 实现步骤与方案内文件清单一致
 
-未满足 → **STOP**，执行 `requirements-refinement`，不得新建 Controller / 页面 / migration。
+未满足 → **STOP**；缺 L1/L2 → `requirements-refinement`；缺 L3 → `plan-workflow`。
 
 ## 流程
 

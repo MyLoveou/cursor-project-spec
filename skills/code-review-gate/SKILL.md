@@ -23,6 +23,7 @@ origin: ECC /code-review（通用版）
 |------|------|
 | `{BACKEND_DIR}/**` Java | `@java-reviewer` |
 | `{FRONTEND_DIR}/**` tsx | `@react-reviewer` |
+| `{FRONTEND_DIR}/**` vue | `@vue-reviewer` |
 | 安全/权限 | `@security-reviewer` |
 | migration / JPA | `@database-reviewer` |
 | 跨栈 | 组合 + 可选 `code-reviewer` |
@@ -30,6 +31,8 @@ origin: ECC /code-review（通用版）
 ### 2. 必查项（项目填写）
 
 - [ ] 符合 `{CAPABILITY_DOC}` / `scope-check`
+- [ ] 对照 `docs/standards/代码审查.md` 严重度与裁决
+- [ ] 改领域热路径时对照项目 `docs/standards/{DOMAIN_SPEC}.md`（若有）
 - [ ] 权限与鉴权正确
 - [ ] 无 `{DEPRECATED_API}` 新引用
 - [ ] 契约与 `{API_DESIGN_DOC}` 一致

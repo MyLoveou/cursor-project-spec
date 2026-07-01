@@ -25,8 +25,9 @@ flowchart TD
   C -->|否| R[→ 需求工作流]
   C -->|是| D[search-first 若加依赖]
   B -->|否| D
-  D --> E[implement-feature]
-  E --> F{多 lane?}
+  D --> E[TDD RED]
+  E --> E2[implement-feature GREEN]
+  E2 --> F{多 lane?}
   F -->|是| G[parallel-execution]
   F -->|否| H[按栈实现]
   G --> H
@@ -42,7 +43,8 @@ flowchart TD
   N --> O{构建失败?}
   O -->|是| P[build-fix + *-build-resolver]
   O -->|否| Q[栈 reviewers]
-  Q --> S[→ 交付工作流]
+  Q --> Q2[/review-bugbot]
+  Q2 --> S[→ 交付工作流]
 ```
 
 ---
@@ -56,11 +58,13 @@ flowchart TD
 | **0 门禁** | 顺序编排、路由 | `scope-check` | — | `project-core.mdc` | 范围确认 |
 | **1 依赖** | 委派、并行（只读） | `search-first` | `@code-explorer` | `common-security.mdc` | 依赖决策记录 |
 | **2 实现** | **顺序编排**、委派 | `implement-feature` | `@backend-dev` / `@frontend-dev` / `@frontend-vue-dev` | 见「栈 Rules」 | 代码 + migration |
+| **2b TDD** | RED→GREEN | `docs/standards/TDD与测试.md` | `@tdd-guide` | `common-testing.mdc` | 失败用例 + 最小实现 |
 | **3 并行** | **并行化** | `parallel-execution` | Task `explore` 等 | `common-agents.mdc` | 多 lane 结果合并 |
 | **4 构建修复** | **错误恢复**、委派 | `build-fix` | `*-build-resolver` | 栈 `*-patterns.mdc` | 构建 PASS |
 | **5 API/实体** | 委派、顺序编排 | — | `@doc-sync` | `api-contracts.mdc`、`docs-maintenance.mdc` | design 文档同步 |
 | **6 数据** | 委派 | — | `@database-reviewer` | `java-*.mdc` | migration 审查 |
-| **7 栈审查** | 委派、**并行化** | `code-review-gate` | 见「栈 Agents」 | `common-code-review.mdc` | 审查意见 |
+| **7 栈审查** | 委派、**并行化** | `code-review-gate` | 见「栈 Agents」 | `common-code-review.mdc` · `docs/standards/代码审查.md` | 审查意见 |
+| **7b Bugbot** | 委派 | `docs/standards/Bugbot审查.md` | `bugbot` | — | diff 回归表 |
 | **8 后端深验** | 顺序编排 | `backend-verify` | `@qa-engineer` | `backend-spring.mdc` | 重启 + 冒烟 |
 
 ### 栈 Rules
@@ -94,7 +98,9 @@ flowchart TD
 
 ## 与下游衔接
 
-实现与审查完成后 → [交付工作流](./delivery.md)
+实现、TDD、code-review、Bugbot 完成后 → [交付工作流](./delivery.md)
+
+规范总览：[docs/standards/工作流索引.md](../../docs/standards/工作流索引.md)
 
 ---
 

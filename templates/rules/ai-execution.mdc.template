@@ -40,6 +40,7 @@ alwaysApply: true
 | 无障碍 / 设计系统 | `@a11y-architect` |
 | 架构/ADR | `@architect` / `@code-architect` |
 | 文档同步 | `@doc-sync` |
+| E2E / 浏览器自动化 | `agent-browser` Skill · `@e2e-runner` |
 
 完整 Skill 列表见 `workflow-triggers` Skill；命中信号**必须先读**对应 Skill。
 

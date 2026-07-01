@@ -1,4 +1,4 @@
-﻿---
+---
 name: workflow-triggers
 description: >-
   工作流路由详表（唯一详表）。触发：规划、构建失败、403、验收、审查、拆 PR、eval、
@@ -41,7 +41,9 @@ description: >-
 | 深度调研、多源检索、带引用报告 | `deep-research` | P1 |
 | PRD→能力约束、跨服务能力边界 | `product-capability` | P1 |
 | 蓝图、多 PR、多会话施工计划 | `blueprint` | P1 |
-| UI 方向、更精致、少模板感 | `frontend-design-direction` | P1 |
+| UI 方向、更精致、少模板感 | `frontend-design-direction` 或 `frontend-design` | P1 |
+| UI/UX 设计系统、配色、组件审查 | `ui-ux-pro-max` | P1 |
+| 审查 UI、无障碍、Web 界面规范 | `web-design-guidelines` | P1 |
 | 设计稿转 Vue、批量截图转页面 | `ui-to-vue` | P1 |
 | 修 bug、改 UI、实现 | `implement-feature` | P0 |
 | 规划、计划、蓝图 | `plan-workflow` | P0 |
@@ -49,6 +51,9 @@ description: >-
 | 401、403、联调、端口 | `local-dev` | P0 |
 | 验收、DoD、交付、PR | `verification-gate` | P0 |
 | 审查、review | `code-review-gate` | P1 |
+| `/review-bugbot`、Bugbot | `code-review-gate` → `docs/standards/Bugbot审查.md` | P1 |
+| `/tdd-workflow`、先写测试、TDD | `docs/standards/TDD与测试.md` · `@tdd-guide` | P0 |
+| 浏览器自动化、E2E、截图、填表、爬取、打开网站 | `agent-browser` · `@e2e-runner` | P1 |
 | 拆 PR、分仓 | `split-prs` | P1 |
 | 加依赖 | `search-first` | P1 |
 | eval、pass/fail | `eval-harness` | P1 |
@@ -88,12 +93,14 @@ description: >-
 【端到端新功能】workflow-playbooks
   → 需求 → 设计（可选）→ 开发 → 交付
 
-【新需求】scope-check → requirements-refinement（多轮定稿）
-  → plan-workflow → eval-harness → implement-feature
-  → reviewers → verification-gate
+【新需求】scope-check → requirements-refinement（需求定稿）
+  → plan-workflow（L3 方案定稿 + 用户确认）→ eval-harness
+  → TDD（docs/standards/TDD与测试.md）→ implement-feature
+  → code-review-gate → /review-bugbot（docs/standards/Bugbot审查.md）→ verification-gate
 
-【新 API】scope-check → requirements-refinement → plan-workflow → eval-harness → implement-feature
-  → reviewers → verification-gate
+【新 API】scope-check → requirements-refinement → plan-workflow（方案定稿）
+  → eval-harness → TDD → implement-feature
+  → reviewers → code-review-gate → Bugbot → verification-gate
 
 【仅修构建】build-fix → verification-gate
 
@@ -111,6 +118,10 @@ description: >-
 | `/build-fix` | `build-fix` |
 | `/verify` | `verification-gate` + `backend-verify` |
 | `/code-review` | `code-review-gate` |
+| `/review-bugbot` | `docs/standards/Bugbot审查.md` |
+| `/tdd-workflow` | `docs/standards/TDD与测试.md` |
+| agent-browser | `agent-browser`（`npx skills` · [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser)） |
+| 流水线总览 | `docs/standards/工作流索引.md` |
 | split-to-prs | `split-prs` |
 | parallel lanes | `parallel-execution`（详版 → `parallel-execution-optimizer`） |
 

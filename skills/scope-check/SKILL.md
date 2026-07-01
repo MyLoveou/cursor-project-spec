@@ -40,4 +40,12 @@ PLACEHOLDER → UI/API 返回 501 或明确占位，禁止静默失败。
 
 ## 项目定制
 
-复制本 Skill 到目标项目 `.cursor/skills/scope-check/`，在 `{CAPABILITY_DOC}` 填写能力边界；若项目内改用其他 Skill 名，须同步 `workflow-triggers`。
+复制本 Skill 到目标项目 `.cursor/skills/scope-check/`，填写占位符；若项目内改用其他 Skill 名，须同步 `workflow-triggers`。
+
+| 占位符 | 示例路径 |
+|--------|----------|
+| `{CAPABILITY_DOC}` | `docs/product/capability.md` |
+| `{ROADMAP_DOC}` | `docs/product/roadmap.md` |
+| `{API_DESIGN_DOC}` | `docs/design/03-API设计.md` |
+| `{DATA_MODEL_DOC}` | `docs/design/02-数据模型.md` |
+| `{BLOCKERS_DOC}` | （可选）`docs/product/blockers.md` |

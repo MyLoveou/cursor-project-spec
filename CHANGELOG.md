@@ -1,5 +1,22 @@
 ﻿# 变更记录
 
+## 2026-06-19（第三方 UI Skills）
+
+- 从笔记软件 `.agents/skills/` vendoring：`frontend-design`、`ui-ux-pro-max`、`web-design-guidelines`
+- `skills-lock.json` 合并四项第三方 Skill；`sync-vendor-skills.ps1` 支持整目录复制
+
+## 2026-06-19（agent-browser）
+
+- vendoring `agent-browser` Skill（[vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser)）→ `skills/agent-browser/`
+- 新增 `skills-lock.json`、`scripts/sync-vendor-skills.ps1`；`.agents/` 为 CLI 暂存（gitignore）
+
+## 2026-06-19（同步笔记软件实践）
+
+- 从 `笔记软件/.cursor` 合并：L1+L3 动工门禁、TDD、Bugbot、code-review 流水线
+- 新增 `templates/docs-standards/`（工作流索引、代码审查、TDD、Bugbot、版本门禁）
+- 新增 `templates/docs-implementation-plan.md.template`（L3 方案）
+- `STRUCTURE.md` 补充 Cursor 对 `.cursor/` vs 扁平目录的发现说明
+
 ## 2026-06-19（扁平化）
 
 - **移除 `.cursor/` 包装层**：`rules/`、`skills/`、`agents/` 等提升至规范库根目录

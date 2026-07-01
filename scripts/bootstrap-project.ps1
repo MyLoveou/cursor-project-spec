@@ -39,11 +39,21 @@ Copy-Item (Join-Path $SpecRoot "templates\AGENTS.md.template") (Join-Path $Proje
 
 $docsDirs = @(
     "docs/requirements/features",
+    "docs/design/features",
     "docs/design/adr",
-    "docs/product"
+    "docs/product",
+    "docs/standards"
 )
 foreach ($d in $docsDirs) {
     New-Item -ItemType Directory -Force -Path (Join-Path $ProjectRoot $d) | Out-Null
+}
+
+$standardsTpl = Join-Path $SpecRoot "templates\docs-standards"
+if (Test-Path $standardsTpl) {
+    Get-ChildItem $standardsTpl -Filter "*.md.template" | ForEach-Object {
+        $destName = $_.BaseName + ".md"
+        Copy-Item $_.FullName (Join-Path $ProjectRoot "docs\standards\$destName")
+    }
 }
 
 Write-Host "Done: runtime dirs -> $CursorDest + AGENTS.md + docs skeleton"

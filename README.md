@@ -38,4 +38,5 @@ powershell -File scripts/bootstrap-project.ps1 `
 
 - 新增 Skill → `skills/workflow-triggers/SKILL.md`
 - 同步 ECC → `scripts/sync-ecc-bundle.ps1`
+- 同步第三方 Skill → `scripts/sync-vendor-skills.ps1`（如 `agent-browser`）
 - 修复 Rule frontmatter → `scripts/fix-cursor-rule-frontmatter.ps1`

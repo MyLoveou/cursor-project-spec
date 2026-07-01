@@ -22,7 +22,7 @@ description: >-
 
 收到上述信号时：**先读本 Skill 选定剧本，再打开对应 workflow 文件逐步执行。**
 
-**智能体模式**：执行各阶段时对照 `.cursor/workflows/agent-patterns.md` — 识别路由、委派、并行、Eval、Handoff、人类确认等模式，遵守全局反模式。
+**智能体模式**：执行各阶段时对照 `.cursor/workflows/agent-patterns.md`（理论见 `workflows/agent-patterns.md`）— 识别路由、委派、并行、Eval、Handoff、人类确认等模式，遵守全局反模式。
 
 ---
 

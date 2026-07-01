@@ -20,13 +20,13 @@ description: 工作流自动触发。详表唯一来源为 workflow-triggers Ski
 |------|------|
 | 不确定 | `workflow-triggers` |
 | **工作流剧本** | `workflow-playbooks` → `.cursor/workflows/*.md` |
-| 智能体模式 | `workflows/agent-patterns.md` · `ai/智能体模式.md` |
-| 新需求 / 新 API | `scope-check` → `requirements-refinement`（**已定稿**）→ `plan-workflow` |
+| 智能体模式 | `workflows/agent-patterns.md` |
+| 新需求 / 新 API | `scope-check` → `requirements-refinement`（需求定稿）→ `plan-workflow`（方案定稿） |
 | 提需求、先写文档 | `requirements-refinement` |
-| 实现（新能力） | `implement-feature`（须需求文档已定稿） |
+| 实现（新能力） | `implement-feature`（须 L1+L3 定稿且用户确认） |
 | 修 bug / 小改 | `implement-feature`（可跳过需求沉淀） |
 | 交付 / PR | `verification-gate` |
 
 ## 串联优先级
 
-`scope-check` → `requirements-refinement`（定稿）→ `plan-workflow` / `eval-harness` → `implement-feature` → `code-review-gate` → `verification-gate`
+`scope-check` → `requirements-refinement`（需求定稿）→ `plan-workflow`（方案定稿 + 用户确认）→ `implement-feature` → `code-review-gate` → Bugbot → `verification-gate`

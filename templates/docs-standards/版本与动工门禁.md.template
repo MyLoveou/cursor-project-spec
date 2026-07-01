@@ -1,0 +1,60 @@
+# 版本划分与动工门禁
+
+> 状态：**已定稿** · {DATE}  
+> 约束 Skill：`requirements-refinement`、`plan-workflow`、`implement-feature`
+
+## 1. 版本划分原则
+
+| 概念 | 定义 |
+|------|------|
+| **能力（Capability）** | 用户可感知、可独立验收的一项产品能力 |
+| **版本** | 一次里程碑交付：**恰好一项能力的完整实现** |
+| **L1 需求** | `docs/requirements/features/<id>.md` |
+| **L3 技术方案** | `docs/design/features/<id>-plan.md` |
+
+### 必须遵守
+
+1. **一版本一能力**：每项能力在本版本内打磨完备（含 UI、异常、验收、文档）。
+2. **禁止能力拆分**：同一能力主路径不得拆到多个版本。
+3. **禁止多能力捆版**：无强耦合的用户能力不得合并为一个版本。
+4. **允许纵向切片**：同一版本内按层施工（数据 → API → UI）不视为拆分能力。
+
+---
+
+## 2. 动工门禁（L1 + L2 + L3）
+
+```
+scope-check (IN SCOPE)
+  → requirements-refinement（L1 定稿）
+  → plan-workflow（L3 定稿 + 用户确认）
+  → implement-feature
+  → verification-gate
+```
+
+| 层级 | 文档 | 状态要求 |
+|------|------|----------|
+| **L1** | `docs/requirements/features/<id>.md` | **已定稿** |
+| **L2** | `{API_DESIGN_DOC}`、`{DATA_MODEL_DOC}`、ADR（若适用） | 与需求一致 |
+| **L3** | `docs/design/features/<id>-plan.md` | **已定稿** + **用户确认** |
+
+**仅当 L1 + L2 + L3 全部满足**，方可 `implement-feature` 写业务代码。
+
+### L3 最低内容
+
+- [ ] 目标模块与**文件路径清单**
+- [ ] 数据流（主路径 + 错误路径）
+- [ ] 契约落点（API / 持久化 / 前端边界）
+- [ ] UI 要点（组件、状态、空态/错误态）
+- [ ] 测试策略与 eval 映射
+- [ ] 风险与回滚
+- [ ] 与验收标准逐条映射
+
+模板：`templates/docs-implementation-plan.md.template`
+
+---
+
+## 3. 反模式
+
+- L1 已定稿即写 migration / 页面（缺 L3）
+- 只有宏观设计稿，无实现方案与文件清单
+- 一个版本混入两个可独立验收的用户能力
