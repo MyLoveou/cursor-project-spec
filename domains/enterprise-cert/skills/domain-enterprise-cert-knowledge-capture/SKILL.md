@@ -23,8 +23,14 @@ description: >-
 | `taboos.md` | 已确认**禁忌**与「必须先问」的稳定项 |
 | `business-rules.md` | 已确认**业务规则**（优先级、校验、状态、渠道条件等） |
 | `ui-interactions.md` | 已确认**UI/交互**（时机、展示、拦截文案、AB 下差异等） |
+| `coding-conventions.md` / `conventions-pending.md` | 工程惯例（由 `codebase-conventions` 维护；与业务表分列） |
 
 种子条目可以很少；随实践增长。实现时**只信任各表中标注「已确认」的行**。
+
+### 与 MCP Knowledge Graph（可选）
+
+跨会话短记忆见 `tooling/mcp-knowledge-graph.md`。  
+**人决断后的条目以本表 md 为真源**；可再镜像摘要到 MCP（observation 注明台账路径）。禁止只写 MCP 当已确认。
 
 ## 阶段 A · 开放发现
 

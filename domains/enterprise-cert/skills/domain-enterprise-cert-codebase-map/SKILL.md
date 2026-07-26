@@ -51,7 +51,8 @@ description: >-
 
 | 需要 | 使用 |
 |------|------|
-| 主路径追踪 | `@code-explorer` / Task `explore` |
+| 主路径追踪 | CodeGraph MCP（若有）→ `@code-explorer` / Task `explore` |
+| 工具层说明 | `domain-enterprise-cert-tooling` |
 | 不确定业务规则 | `domain-enterprise-cert-knowledge-capture` |
 | 搜复用 | 叠加 `search-first` 思路（先 Grep 再言新建） |
 | 工程隐性规范 | `codebase-conventions`（与业务 knowledge-capture 分台账） |

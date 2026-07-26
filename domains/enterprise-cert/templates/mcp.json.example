@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "codegraph": {
+      "command": "codegraph",
+      "args": ["serve", "--mcp"]
+    },
+    "mcp-knowledge-graph": {
+      "command": "npx",
+      "args": ["-y", "@itseasy21/mcp-knowledge-graph"],
+      "env": {
+        "MEMORY_FILE_PATH": "REPLACE_WITH_PROJECT_ROOT/.cursor/domain-packs/enterprise-cert/memory/enterprise-cert.jsonl"
+      }
+    }
+  }
+}

@@ -33,6 +33,16 @@ powershell -File scripts/install-domain-pack.ps1 `
 
 包内 **SDD / 知识捕获流程** 来自你的实践反思（流程层）；**业务事实**须另行摸底与决断。
 
+## 工具三层（台账 / CodeGraph / MCP KG）
+
+| 层 | 文档 | 用途 |
+|----|------|------|
+| 知识台账 | `tooling/ledgers.md` | 业务+工程+摸底 md（人决断，git 真源） |
+| CodeGraph | `tooling/codegraph.md` | 代码调用图 MCP，加强 inventory |
+| MCP Knowledge Graph | `tooling/mcp-knowledge-graph.md` | 跨会话记忆；确认项仍回写台账 |
+
+Skill：`domain-enterprise-cert-tooling` · MCP 示例：`templates/mcp.json.example`
+
 ## 何时启用
 
 - `-Domain enterprise-cert` / `install-domain-pack`

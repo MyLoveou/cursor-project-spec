@@ -80,6 +80,7 @@ description: >-
 | 企业认证、主体核验、资质审核、营业执照认证 | `domain-enterprise-cert-triggers`（须已 `-Domain enterprise-cert`） | P0 |
 | 企业认证 SDD、认证大需求规范先行、认证技术方案 HOW | `domain-enterprise-cert-sdd` | P0 |
 | 认证知识上报、决断入库、沉淀业务规则/交互 | `domain-enterprise-cert-knowledge-capture` | P0 |
+| 企业认证工具层、CodeGraph、MCP 知识图谱记忆 | `domain-enterprise-cert-tooling` | P1 |
 | 改 .cursor | `agent-harness-construction` | P1 |
 
 ## 路径触发

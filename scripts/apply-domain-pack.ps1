@@ -107,13 +107,31 @@ function Install-DomainPack {
     $packDocsDest = Join-Path $stampDir $DomainId
     New-Item -ItemType Directory -Force -Path $packDocsDest | Out-Null
 
-    $docNames = @("DOMAIN.md", "glossary.md", "taboos.md", "business-rules.md", "ui-interactions.md", "pending-decisions.md", "RETROSPECTIVE.md", "README.md", "bundle.manifest.json")
+    $docNames = @("DOMAIN.md", "glossary.md", "taboos.md", "business-rules.md", "ui-interactions.md", "pending-decisions.md", "coding-conventions.md", "conventions-pending.md", "RETROSPECTIVE.md", "README.md", "bundle.manifest.json")
     foreach ($name in $docNames) {
         $docSrc = Join-Path $pack $name
         if (Test-Path $docSrc) {
             Copy-Item -Force $docSrc (Join-Path $packDocsDest $name)
             Write-Host "[domain:$DomainId] docs $($name)"
         }
+    }
+
+    $toolingSrc = Join-Path $pack "tooling"
+    if (Test-Path $toolingSrc) {
+        $toolingDest = Join-Path $packDocsDest "tooling"
+        if (Test-Path $toolingDest) {
+            Remove-Item -Recurse -Force $toolingDest
+        }
+        Copy-Item -Recurse -Force $toolingSrc $toolingDest
+        Write-Host "[domain:$DomainId] merged tooling/"
+    }
+
+    # ensure memory dir placeholder for MCP KG (empty; jsonl created by server)
+    $memDir = Join-Path $packDocsDest "memory"
+    New-Item -ItemType Directory -Force -Path $memDir | Out-Null
+    $memKeep = Join-Path $memDir ".gitkeep"
+    if (-not (Test-Path $memKeep)) {
+        Set-Content -Path $memKeep -Value "" -Encoding utf8
     }
 
     $tplSrc = Join-Path $pack "templates"

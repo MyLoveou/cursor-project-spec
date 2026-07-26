@@ -1,5 +1,11 @@
 ﻿# 变更记录
 
+## 2026-07-27（enterprise-cert 工具三层）
+
+- 纳入：知识台账文档化、`tooling/codegraph.md`、`tooling/mcp-knowledge-graph.md`、`templates/mcp.json.example`
+- Skill `domain-enterprise-cert-tooling`；inventory 优先 CodeGraph；knowledge-capture 与 MCP KG 双写约定（md 为真源）
+- apply 复制 `tooling/` 与 conventions 台账；`memory/.gitkeep` 占位
+
 ## 2026-07-27（enterprise-cert 纳入能力四件套）
 
 - 域包明确挂载：`knowledge-capture` + `codebase-inventory` + `codebase-conventions` + `continuous-learning-v2`

@@ -60,7 +60,7 @@ domains/<domain-id>/
 
 | id | 显示名 | 说明 |
 |----|--------|------|
-| `enterprise-cert` | 企业认证 | SDD + 四件套（knowledge-capture / inventory / conventions / continuous-learning-v2）+ bundle |
+| `enterprise-cert` | 企业认证 | SDD + 四件套 + 工具三层（台账/CodeGraph/MCP KG）+ bundle |
 
 ## 新建域包
 

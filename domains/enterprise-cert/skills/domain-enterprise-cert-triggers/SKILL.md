@@ -14,10 +14,11 @@ description: >-
 
 | Skill | 提炼 / 用途 | 台账或产出 |
 |--------|-------------|------------|
+| `domain-enterprise-cert-tooling` | 台账 / CodeGraph / MCP Knowledge Graph 三层接入说明 | tooling/* |
 | `domain-enterprise-cert-knowledge-capture` | 业务规则、术语、UI 交互 | glossary / taboos / business-rules / ui-interactions / pending |
-| `codebase-inventory`（经 `domain-enterprise-cert-codebase-map`） | 功能与 API 现状（谁调用谁、地区差分） | `*-codebase-map.md` |
-| `codebase-conventions` | 代码里的工程惯例（命名、分层、错误处理、AB/配置…） | coding-conventions / conventions-pending |
-| `continuous-learning-v2` | 从会话学 instinct（非主动扫库） | homunculus / instincts（需按该 Skill 启用 hooks） |
+| `codebase-inventory`（经 `domain-enterprise-cert-codebase-map`） | 功能与 API 现状（可 + CodeGraph） | `*-codebase-map.md` |
+| `codebase-conventions` | 代码里的工程惯例 | coding-conventions / conventions-pending |
+| `continuous-learning-v2` | 从会话学 instinct（非主动扫库） | homunculus / instincts（需 hooks） |
 
 四者**分台账**，勿混写。
 
@@ -27,7 +28,8 @@ description: >-
 |----------|------|--------|
 | 企业认证 SDD、规范先行（认证）、认证大需求实践 | **`domain-enterprise-cert-sdd`**（按阶段，勿跳） | P0 |
 | 知识上报、决断入库、沉淀规则/术语/交互、认证不确定 | **`domain-enterprise-cert-knowledge-capture`** | P0 |
-| 认证现状摸底、梳理 setting-center 认证、大陆香港 API 差异 | `domain-enterprise-cert-codebase-map`（先 `codebase-inventory`） | P0 |
+| CodeGraph、代码图、mcp-knowledge-graph、跨会话记忆、知识台账工具 | **`domain-enterprise-cert-tooling`** | P1 |
+| 认证现状摸底、梳理 setting-center 认证、大陆香港 API 差异 | `domain-enterprise-cert-codebase-map`（先 `codebase-inventory`；有 CodeGraph 优先） | P0 |
 | 代码现状摸底、inventory、写方案前防漏梳 | `codebase-inventory` | P0 |
 | 提炼规范、从代码抽约定、项目惯例、coding conventions | `codebase-conventions` | P1 |
 | 持续学习、instinct、会话沉淀、evolve instinct | `continuous-learning-v2` | P2 |
