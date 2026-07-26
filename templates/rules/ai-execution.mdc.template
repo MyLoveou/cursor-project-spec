@@ -28,7 +28,8 @@ alwaysApply: true
 | Java 构建失败 | `@java-build-resolver` |
 | 前端构建失败 | `@react-build-resolver` 或 `@vue-build-resolver` |
 | 改 Java 后 | `@java-reviewer`（建议） |
-| 改 TSX 后 | `@react-reviewer`（建议） |
+| 改 TSX（Web）后 | `@react-reviewer`（建议）+ `react-performance`（热路径） |
+| 改 RN / Expo 后 | `@frontend-rn-dev` + `react-native-patterns` |
 | 改 `.vue` 后 | `@vue-reviewer`（建议） |
 | 安全/JWT | `@security-reviewer` |
 | 数据库迁移 | `@database-reviewer` |
@@ -36,9 +37,10 @@ alwaysApply: true
 | 市场调研 / 定位 | `market-research` Skill 或 `@marketing-agent` |
 | 深度调研（多源） | `deep-research` Skill |
 | 能力边界 / PRD | `product-capability` Skill |
-| UI 设计方向 | `frontend-design-direction` Skill |
-| 无障碍 / 设计系统 | `@a11y-architect` |
-| 架构/ADR | `@architect` / `@code-architect` |
+| UI 设计方向 | `frontend-design-direction` / `frontend-patterns` |
+| 无障碍 / 设计系统 | `@a11y-architect` · `frontend-a11y` |
+| 架构/ADR | `@architect` / `@code-architect` · `architecture-decision-records` |
+| 复杂编排 | `orch-pipeline` · `plan-orchestrate` |
 | 文档同步 | `@doc-sync` |
 | E2E / 浏览器自动化 | `agent-browser` Skill · `@e2e-runner` |
 

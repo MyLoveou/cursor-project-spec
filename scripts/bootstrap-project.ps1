@@ -1,10 +1,14 @@
 # Bootstrap: copy flat runtime dirs from spec repo -> target .cursor/
+# Optional: merge domain pack(s) via apply-domain-pack.ps1
 
 param(
     [Parameter(Mandatory = $true)]
     [string]$SpecRoot,
     [Parameter(Mandatory = $true)]
-    [string]$ProjectRoot
+    [string]$ProjectRoot,
+    [Parameter(Mandatory = $false)]
+    [Alias("Domains")]
+    [string[]]$Domain = @()
 )
 
 $ErrorActionPreference = "Stop"
@@ -56,5 +60,16 @@ if (Test-Path $standardsTpl) {
     }
 }
 
+$domainIds = @($Domain | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object { $_.Trim() })
+if ($domainIds.Count -gt 0) {
+    & (Join-Path $PSScriptRoot "apply-domain-pack.ps1") `
+        -SpecRoot $SpecRoot `
+        -ProjectRoot $ProjectRoot `
+        -Domain $domainIds
+}
+
 Write-Host "Done: runtime dirs -> $CursorDest + AGENTS.md + docs skeleton"
+if ($domainIds.Count -gt 0) {
+    Write-Host "Domain pack(s): $($domainIds -join ', ')"
+}
 Write-Host "Edit .cursor/constraints.md and AGENTS.md placeholders."

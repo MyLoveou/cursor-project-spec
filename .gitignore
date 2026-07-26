@@ -1,2 +1,6 @@
 # npx skills CLI staging (vendored copy lives in skills/)
 .agents/
+
+# Python cache (ui-ux-pro-max / continuous-learning scripts)
+**/__pycache__/
+*.pyc

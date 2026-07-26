@@ -8,6 +8,8 @@
 | Rules | `rules/*.mdc` | `.cursor/rules/*.mdc` |
 | Skills | `skills/*/SKILL.md` | `.cursor/skills/*/SKILL.md` |
 | 工作流 | `workflows/` | `.cursor/workflows/` |
+| 业务域包 | `domains/<id>/` | 合并进 `.cursor/`（`-Domain`） |
 | DoD | `skills/verification-gate/SKILL.md` | `.cursor/skills/verification-gate/SKILL.md` |
 
-业务项目接入：[BOOTSTRAP.md](./BOOTSTRAP.md)
+业务项目接入：[BOOTSTRAP.md](./BOOTSTRAP.md)  
+域包约定：[domains/README.md](./domains/README.md)

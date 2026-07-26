@@ -1,0 +1,42 @@
+{
+  "domainId": "enterprise-cert",
+  "description": "Vendored root runtime deps for solo domain-pack install (filled by sync-domain-bundle.ps1 into bundle/).",
+  "skills": [
+    "scope-check",
+    "requirements-refinement",
+    "plan-workflow",
+    "codebase-inventory",
+    "codebase-conventions",
+    "continuous-learning-v2",
+    "implement-feature",
+    "verification-gate",
+    "code-review-gate",
+    "workflow-triggers",
+    "dynamic-workflow-mode",
+    "eval-harness"
+  ],
+  "rules": [
+    "ai-execution.mdc",
+    "workflow-triggers.mdc",
+    "docs-maintenance.mdc"
+  ],
+  "agents": [
+    "product-manager.md",
+    "doc-sync.md",
+    "security-reviewer.md",
+    "code-explorer.md",
+    "architect.md"
+  ],
+  "workflows": [
+    "README.md",
+    "requirements.md",
+    "development.md",
+    "delivery.md"
+  ],
+  "rootTemplates": [
+    "docs-requirements-feature.md.template",
+    "docs-implementation-plan.md.template",
+    "docs-standards/coding-conventions.md.template",
+    "docs-standards/conventions-pending.md.template"
+  ]
+}

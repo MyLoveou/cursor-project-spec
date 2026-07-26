@@ -1,5 +1,72 @@
 ﻿# 变更记录
 
+## 2026-07-27（enterprise-cert 纳入能力四件套）
+
+- 域包明确挂载：`knowledge-capture` + `codebase-inventory` + `codebase-conventions` + `continuous-learning-v2`
+- `bundle.manifest` 增加 continuous-learning-v2 与 conventions 模板；triggers / DOMAIN / SDD 阶段 0 已索引
+
+## 2026-07-27（codebase-conventions：从代码提炼工程规范）
+
+- 新增 Skill `codebase-conventions`：采样证据 →【规范待决断】→ 写入 `coding-conventions` 台账（可再收成短 Rule）
+- 模板：`templates/docs-standards/coding-conventions.md.template`、`conventions-pending.md.template`
+- 与 inventory / knowledge-capture / continuous-learning-v2 分工写入 workflow-triggers；enterprise-cert bundle 已纳入
+
+## 2026-07-27（摸底防漏：codebase-inventory）
+
+- 新增根 Skill `codebase-inventory`：四轮检索、路径证据、对抗复核、【摸底自检】、人核实门禁
+- 加固 `domain-enterprise-cert-codebase-map` + 模板 + Rule `inventory-gate`；bundle 纳入该 Skill
+
+## 2026-07-27（域包自包含 bundle）
+
+- `bundle.manifest.json` + `scripts/sync-domain-bundle.ps1`：把依赖 Skill/Rule/Agent/Workflow 复制进 `domains/<id>/bundle/`
+- `scripts/install-domain-pack.ps1`：仅持有域包目录即可装入业务仓 `.cursor/`
+- `apply-domain-pack`：先合并 bundle 再合并域原生；enterprise-cert 已声明 SDD 依赖清单
+
+## 2026-07-27（清理 AI 臆造业务事实）
+
+- `core.mdc` 去掉未提供的状态机/审计/敏感字段/权限联动等「假不变量」
+- glossary / taboos / business-rules / ui-interactions：撤销无来源「已确认」；仅保留复盘可溯源项
+- DOMAIN / constraints / site-diff 标明占位 globs 与「流程≠现状」
+
+## 2026-07-27（企业认证知识捕获 · 开放发现入库）
+
+- 纠正：不以固定信号表穷尽业务；改为开放发现业务规则/领域知识/UI 交互
+- Skill `domain-enterprise-cert-knowledge-capture`：【知识待决断】→ 人决断 → 写入活文档
+- 活文档：`business-rules.md`、`ui-interactions.md`、`pending-decisions.md`；glossary/taboos 改为可追加台账
+- Rule `confirm` 改为「表是结果不是边界」协议
+
+## 2026-07-27（企业认证主动确认 Rule）
+
+- 新增 `domain-enterprise-cert-confirm.mdc`：对照 taboos/glossary 信号主动输出【待确认上报】并 STOP
+- `taboos.md` / `glossary.md` 标明详表 vs Rule 执行分工；triggers / sdd-gates / DOMAIN 已挂接
+
+## 2026-07-27（企业认证 SDD 实践包）
+
+- `domains/enterprise-cert`：glossary、taboos、site-diff/sdd-gates Rules
+- Skills：`domain-enterprise-cert-sdd`、`codebase-map`、`tech-design`；templates（疑问表/摸底/方案/变更/切片验收）
+- `apply-domain-pack`：域文档与 templates 复制到 `.cursor/domain-packs/<id>/`
+- 触发表挂载「企业认证 SDD」口令
+
+## 2026-07-27（业务域：企业认证）
+
+- 新增域包 `domains/enterprise-cert`（企业认证）：核心 Rule、触发表 Skill、constraints overlay
+- 根 `workflow-triggers` 登记企业认证口令 / 路径 → `domain-enterprise-cert-triggers`
+
+## 2026-07-27（业务域配置包）
+
+- 新增 `domains/`：按业务域隔离的 Cursor 配置包（源端组织，落地扁平合并）
+- 脚手架：`domains/_template/`（DOMAIN.md、示例 rule/skill、constraints.overlay）
+- Bootstrap 支持 `-Domain <id>[,id…]`；新增 `scripts/apply-domain-pack.ps1` 对已有 `.cursor/` 叠加
+- 文档：`domains/README.md`、`STRUCTURE.md`、`BOOTSTRAP.md`、`README.md`、`AGENTS.md`
+
+## 2026-06-19（ECC P0–P2）
+
+- **P0 React PC**：`frontend-patterns`、`react-performance`、`frontend-a11y`、`nextjs-turbopack`；`web-*.mdc`（7）
+- **P0 React App**：`react-native-patterns` + `react-native-*.mdc`（8）+ `frontend-react-native.mdc` + `@frontend-rn-dev`
+- **P1 大型项目**：`orch-*`、`plan-orchestrate`、`team-agent-orchestration`、`architecture-decision-records`、`agent-architecture-audit`、`hexagonal-architecture`、`parallel-execution-optimizer`、`autonomous-loops`、`continuous-agent-loop`、`production-audit`
+- **P2**：`cost-aware-llm-pipeline`、`cost-tracking`、`documentation-lookup`、`api-design`、`backend-patterns`、`strategic-compact`、`continuous-learning-v2`
+- 新增 `scripts/sync-ecc-github-rules.ps1`；扩展 `sync-ecc-bundle.ps1` / `workflow-triggers`
+
 ## 2026-06-19（第三方 UI Skills）
 
 - 从笔记软件 `.agents/skills/` vendoring：`frontend-design`、`ui-ux-pro-max`、`web-design-guidelines`
