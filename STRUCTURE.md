@@ -1,6 +1,6 @@
 # 目录结构（规范库 vs 业务项目）
 
-> 规范库**无** `.cursor/` 包装层；Bootstrap 或手动复制时，将运行时目录放入目标项目的 `.cursor/`。
+> 多平台规范库：**Cursor / OpenCode / Hermes** 各自独立目录，`shared/` 为跨平台共享层。
 
 ---
 
@@ -8,82 +8,84 @@
 
 ```
 项目规范/
-├── rules/ skills/ agents/ hooks/ workflows/ evals/   # 通用运行时
-├── domains/            # 业务域配置包（按需合并，见 domains/README.md）
-├── constraints.md.template
-├── templates/          # Bootstrap 占位符 + docs-standards/
-├── scripts/
-└── STRUCTURE.md · README.md · AGENTS.md
+├── cursor/            # Cursor 平台 — 自包含
+│   ├── rules/         .mdc 规则（globs + alwaysApply）
+│   ├── agents/        Agent .md 定义
+│   └── hooks/         hooks.json
+├── opencode/          # OpenCode 平台 — 自包含
+│   ├── opencode.json  主配置（agents + commands + instructions + skills.paths）
+│   ├── INSTRUCTIONS.md   合并规则（无 globs，始终加载）
+│   ├── agents/        Agent prompt .txt
+│   └── commands/      斜杠命令模板
+├── hermes/            # Hermes 平台 — 自包含
+│   ├── rules/         纯 Markdown 规则（按栈分目录）
+│   └── AGENTS.md      Agent 指令
+├── shared/            # 三平台共享
+│   ├── skills/        58 个 SKILL.md
+│   ├── workflows/     6 个剧本
+│   └── evals/         EDD eval 示例
+├── domains/           # 业务域配置包（按需合并到目标平台）
+├── scripts/           # Bootstrap / 域包安装 / ECC 同步
+├── templates/         # Bootstrap 占位符
+└── STRUCTURE.md · README.md · AGENTS.md · BOOTSTRAP.md
 ```
 
-**Cursor 不会自动扫描规范库根目录** — 根下的 `agents/`、`skills/`、`domains/` 等仅供维护与版本管理，不是运行时路径。
+### 各平台差异
 
-### 业务域配置包
-
-| 路径 | 说明 |
-|------|------|
-| `domains/<domain-id>/` | 仅该业务域需要的 rules/skills/agents/… |
-| `domains/_template/` | 新建域包脚手架（不可 `-Domain` 安装） |
-
-Bootstrap / `apply-domain-pack.ps1` 将域包**扁平合并**进目标 `.cursor/`（同名目录覆盖合并）。详见 [domains/README.md](./domains/README.md)。
-
----
-
-## Cursor 如何发现配置（业务项目）
-
-Cursor **只**在业务项目根目录的 **`.cursor/`** 下加载下列内容：
-
-| 路径 | Cursor 行为 | 斜杠命令 / `@` |
-|------|-------------|----------------|
-| `.cursor/rules/*.mdc` | Settings → Rules 自动注入 | 否（按 glob 自动） |
-| `.cursor/skills/*/SKILL.md` | Agent 按需读取 Skill | **是** — Skill 名即路由入口 |
-| `.cursor/agents/*.md` | 子代理定义 | **是** — 聊天 `@name` 或 Task `subagent_type` |
-| `.cursor/hooks/hooks.json` | Hook 执行 | 否 |
-| `AGENTS.md`（项目根） | 项目级 Agent 指引 | 否 |
-
-**不会被 Cursor 扫描的路径：**
-
-| 路径 | 说明 |
-|------|------|
-| 规范库根 `agents/`、`skills/`、`domains/` | 未在 `.cursor/` 下 → **不会**出现在 `@` 列表 |
-| 业务项目根 `agents/`（无点前缀） | 同上 |
-| `.agents/skills/`（`npx skills` CLI 暂存） | **不是** Cursor 官方布局；规范库复制到 `skills/` 后 Bootstrap 到 `.cursor/skills/` |
-| `docs/standards/` | 人类可读规范，由 Skill/Rule **引用**，非自动加载 |
-
-### 结论
-
-1. **扁平规范库**本身 Cursor 找不到 — 这是预期；复制到 `<项目>/.cursor/agents/` 后才可被 `@backend-dev` 等调用。
-2. **斜杠命令**（如 `/review-bugbot`、`/tdd-workflow`）来自 Cursor 内置或已安装 Skill，不是扫描 `agents/` 目录；本项目在 `workflow-triggers` 中映射到 `docs/standards/` 与 `@tdd-guide` / `bugbot` subagent。
-3. **`workflows/`、`evals/`** 不在 Cursor Settings 自动项中，由 Skill 正文链接引用。
+| 特性 | Cursor | OpenCode | Hermes |
+|------|--------|----------|--------|
+| 规则格式 | `.mdc` + `globs:`/`alwaysApply:` | 单文件 `INSTRUCTIONS.md` | `rules/**/*.md`（纯 Markdown） |
+| 条件加载 | `globs:` 按文件类型触发 | 不支持（全部 alwaysOn） | 不支持 |
+| Skill 加载 | 自动扫描 `.cursor/skills/` | `skills.paths` 发现 + `skill` 工具调用 | 复制到 `~/.hermes/skills/` |
+| Agent 定义 | `.md` 内嵌 YAML frontmatter | `opencode.json` JSON + `.txt` prompt | `AGENTS.md` 单文件 |
+| 斜杠命令 | Skill 名即路由 | `/command` 启动子 Agent | 不支持 |
+| Hook | `hooks.json`（3 阶段） | TypeScript 插件（20+ 事件） | 不支持 |
+| 配置入口 | `.cursor/` 自动扫描 | `opencode.json` 显式配置 | `config.yaml`（ECC 不修改） |
 
 ---
 
 ## 业务项目（复制后布局）
 
-| 路径 | 说明 |
-|------|------|
-| `.cursor/rules/*.mdc` | `description` + `globs` 或 `alwaysApply`（含 `react-*`、`react-native-*`、`web-*`） |
-| `.cursor/skills/*/SKILL.md` | Skills（工作流 + ECC P0–P2 + 第三方） |
-| `.cursor/agents/*.md` | 子代理（含 `frontend-rn-dev`） |
-| `.cursor/hooks/hooks.json` | Hooks |
-| `AGENTS.md` | 项目根（Bootstrap 生成） |
-| `docs/standards/` | 工作流索引、代码审查、TDD、Bugbot 等（Bootstrap 从模板生成） |
+### Cursor
 
-扩展（Skill 引用，非 Settings 自动项）：
+| 规范库 | 业务项目 |
+|--------|----------|
+| `cursor/rules/` | `.cursor/rules/*.mdc` |
+| `cursor/agents/` | `.cursor/agents/*.md` |
+| `cursor/hooks/` | `.cursor/hooks/hooks.json` |
+| `shared/skills/` | `.cursor/skills/*/SKILL.md` |
+| `shared/workflows/` | `.cursor/workflows/` |
+| `shared/evals/` | `.cursor/evals/` |
+| `domains/<id>/` | 合并进 `.cursor/`（`-Domain`） |
 
-| 路径 | 用途 |
-|------|------|
-| `.cursor/workflows/` | 需求/设计/开发/交付剧本 |
-| `.cursor/evals/` | EDD eval 示例 |
-| `.cursor/constraints.md` | 硬约束（由 template 生成；域包可追加 overlay） |
-| `.cursor/domain-packs/<id>.md` | 已应用域包的戳记（人类可读，非 Cursor 扫描项） |
+### OpenCode
 
-栈 Rule 须用 `globs:`，勿用 ECC 旧字段 `paths:`。修复：`scripts/fix-cursor-rule-frontmatter.ps1`。
+| 规范库 | 业务项目 |
+|--------|----------|
+| `opencode/opencode.json` | 合并进项目 `opencode.json` 的 `instructions`/`agent`/`command` |
+| `opencode/INSTRUCTIONS.md` | `instructions` 数组引用 |
+| `opencode/agents/` | `{file:opencode/agents/...}` 引用 |
+| `opencode/commands/` | `{file:opencode/commands/...}` 引用 |
+| `shared/skills/` | `skills.paths: ["shared/skills"]` |
+
+### Hermes
+
+| 规范库 | 业务项目 |
+|--------|----------|
+| `hermes/rules/` | `~/.hermes/rules/ecc/**/*.md` |
+| `hermes/AGENTS.md` | `~/.hermes/AGENTS.md` |
+| `shared/skills/` | `~/.hermes/skills/ecc-imports/*/SKILL.md` |
+| `shared/workflows/` | `~/.hermes/skills/ecc-imports/` |
 
 ---
 
 ## 复制方式
 
-1. **脚本**：`scripts/bootstrap-project.ps1`（推荐；可选 `-Domain <id>`）
-2. **叠加域包**：`scripts/apply-domain-pack.ps1 -Domain <id>`（已有 `.cursor/`）
-3. **手动**：将根 `rules/`、`skills/`、`agents/`、`hooks/`、`workflows/`、`evals/` 移入 `<项目>/.cursor/`；域内容从 `domains/<id>/` 合并进同名子目录（勿整夹复制 `domains/`）
+| 平台 | 脚本 |
+|------|------|
+| Cursor | `scripts/bootstrap-project.ps1 -Target cursor` |
+| Cursor + 域包 | `scripts/bootstrap-project.ps1 -Target cursor -Domain <id>` |
+| OpenCode | `scripts/bootstrap-project.ps1 -Target opencode` |
+| Hermes | `scripts/bootstrap-project.ps1 -Target hermes` |
+
+或**手动**：将对应平台目录 + `shared/` 内容复制到业务项目对应路径。

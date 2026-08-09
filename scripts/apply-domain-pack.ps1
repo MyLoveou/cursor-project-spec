@@ -7,7 +7,9 @@ param(
     [string]$ProjectRoot,
     [Parameter(Mandatory = $true)]
     [Alias("Domains")]
-    [string[]]$Domain
+    [string[]]$Domain,
+    [Parameter(Mandatory = $false)]
+    [string]$Target = "cursor"
 )
 
 $ErrorActionPreference = "Stop"
@@ -16,8 +18,17 @@ $SpecRoot = (Resolve-Path $SpecRoot).Path
 $ProjectRoot = (Resolve-Path $ProjectRoot).Path
 $CursorDest = Join-Path $ProjectRoot ".cursor"
 
+switch ($Target) {
+    "opencode" {
+        $CursorDest = $ProjectRoot
+    }
+    "hermes" {
+        $CursorDest = Join-Path $env:USERPROFILE ".hermes"
+    }
+}
+
 if (-not (Test-Path $CursorDest)) {
-    throw "Missing .cursor at $CursorDest — run bootstrap-project.ps1 first, or pass -Domain to bootstrap."
+    throw "Missing dest dir at $CursorDest — run bootstrap-project.ps1 first, or pass -Domain to bootstrap."
 }
 
 $MergeDirs = @("rules", "skills", "agents", "workflows", "evals")
@@ -158,21 +169,23 @@ function Install-DomainPack {
         Copy-Item -Force (Join-Path $bundle "SYNC-STAMP.md") (Join-Path $packDocsDest "BUNDLE-SYNC-STAMP.md")
     }
 
-    $overlay = Join-Path $pack "constraints.overlay.md"
-    if (Test-Path $overlay) {
-        $constraints = Join-Path $CursorDest "constraints.md"
-        if (-not (Test-Path $constraints)) {
-            throw "Missing $constraints — cannot append constraints.overlay.md"
-        }
-        $marker = "<!-- domain-pack:$DomainId -->"
-        $existing = Get-Content -Raw -Path $constraints
-        if ($existing -like "*$marker*") {
-            Write-Warning "[domain:$DomainId] constraints.overlay already applied (marker present); skip append"
-        }
-        else {
-            $block = "`r`n`r`n$marker`r`n" + (Get-Content -Raw -Path $overlay).TrimEnd() + "`r`n"
-            Add-Content -Path $constraints -Value $block -Encoding utf8
-            Write-Host "[domain:$DomainId] appended constraints.overlay.md"
+    if ($Target -eq "cursor") {
+        $overlay = Join-Path $pack "constraints.overlay.md"
+        if (Test-Path $overlay) {
+            $constraints = Join-Path $CursorDest "constraints.md"
+            if (-not (Test-Path $constraints)) {
+                throw "Missing $constraints — cannot append constraints.overlay.md"
+            }
+            $marker = "<!-- domain-pack:$DomainId -->"
+            $existing = Get-Content -Raw -Path $constraints
+            if ($existing -like "*$marker*") {
+                Write-Warning "[domain:$DomainId] constraints.overlay already applied (marker present); skip append"
+            }
+            else {
+                $block = "`r`n`r`n$marker`r`n" + (Get-Content -Raw -Path $overlay).TrimEnd() + "`r`n"
+                Add-Content -Path $constraints -Value $block -Encoding utf8
+                Write-Host "[domain:$DomainId] appended constraints.overlay.md"
+            }
         }
     }
 
@@ -199,4 +212,4 @@ foreach ($id in $unique) {
     Install-DomainPack -SpecRoot $SpecRoot -CursorDest $CursorDest -DomainId $id
 }
 
-Write-Host "Done: domain pack(s) [$($unique -join ', ')] -> $CursorDest"
+Write-Host "Done: domain pack(s) [$($unique -join ', ')] -> $CursorDest (target: $Target)"

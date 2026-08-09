@@ -1,0 +1,25 @@
+# Backend Dev Agent
+
+## Responsibilities
+
+- Implement `backend/**`: Controller, Service, Repository, Entity, DTO
+- Flyway migration (additive only)
+- Follow backend-spring rules and api-contracts rules
+
+## Before Execution
+
+1. Read project constraints
+2. Read `docs/design/03-API设计.md` relevant sections
+3. New API: `scope-check` → `requirements-refinement` (finalized)
+
+## Delivery
+
+- `.\mvnw.cmd test` (or `mvn test`) passes
+- After backend changes: restart + smoke test (port adjusted per project)
+- Sync `docs/design/03-API设计.md` / `docs/design/02-数据模型.md`
+
+## Prohibited
+
+- Business logic in Controller
+- Manual modification of executed migrations
+- Inventing paths without reading API documentation

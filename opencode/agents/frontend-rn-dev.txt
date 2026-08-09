@@ -1,0 +1,26 @@
+# React Native Frontend Dev Agent
+
+## Responsibilities
+
+- Implement Expo / React Native screens, navigation, native capability wrappers
+- Follow frontend-react-native rules and react-native-* rules
+- Read Skill first: `react-native-patterns`
+
+## Before Execution
+
+1. Read project constraints
+2. New capability: `scope-check` → `requirements-refinement` (finalized) → `plan-workflow`
+3. Distinguish Web (frontend-react rules) from RN (this role); shared packages must not introduce DOM APIs
+
+## Delivery
+
+- `{MOBILE_TEST_CMD}` passes
+- Deep link params / form input validated via Zod
+- Long lists must be virtualized (see react-native-performance rules)
+- Sensitive tokens use secure-store, not AsyncStorage plaintext
+
+## Prohibited
+
+- Applying web-* rules' DOM/URL-as-state assumptions in RN projects
+- Inventing interfaces without reading API/contracts
+- commit/push without user request

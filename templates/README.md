@@ -1,6 +1,6 @@
 # Bootstrap 模板（非 Cursor 自动加载）
 
-> 位于规范库根 `templates/`。运行时见规范库根 `rules/`、`skills/`、`agents/` 等；业务项目复制到 `.cursor/` 后由 Cursor 扫描。
+> 位于规范库根 `templates/`。运行时按平台分布在 `cursor/`、`opencode/`、`hermes/` + `shared/`；Bootstrap 时复制到对应平台目录。
 
 | 模板 | 复制到 |
 |------|--------|

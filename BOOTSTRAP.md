@@ -1,68 +1,100 @@
 ﻿# Bootstrap
 
-> 从规范库**复制通用运行时**到业务项目的 `.cursor/`，并生成 `AGENTS.md`、`constraints.md`。  
-> 可选：合并 **业务域配置包**（`domains/<id>/`）。
+> 从规范库复制指定平台的运行时配置到业务项目。
+> 三平台各自独立：`cursor/`、`opencode/`、`hermes/`；共享层从 `shared/` 复制。
+
+## 基本用法
 
 ```powershell
-powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
-  -SpecRoot "E:\项目\项目规范" `
-  -ProjectRoot "E:\项目\YourApp"
-
-# 启用一个或多个业务域包
+# Cursor
 powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
   -SpecRoot "E:\项目\项目规范" `
   -ProjectRoot "E:\项目\YourApp" `
+  -Target cursor
+
+# Cursor + 业务域包
+powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
+  -SpecRoot "E:\项目\项目规范" `
+  -ProjectRoot "E:\项目\YourApp" `
+  -Target cursor `
   -Domain notes,billing
+
+# OpenCode
+powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
+  -SpecRoot "E:\项目\项目规范" `
+  -ProjectRoot "E:\项目\YourApp" `
+  -Target opencode
+
+# Hermes
+powershell -File "<规范库>/scripts/bootstrap-project.ps1" `
+  -SpecRoot "E:\项目\项目规范" `
+  -ProjectRoot "E:\项目\YourApp" `
+  -Target hermes
 ```
 
-已有 `.cursor/` 时只叠加域包：
+已有配置时只叠加域包：
 
 ```powershell
 powershell -File "<规范库>/scripts/apply-domain-pack.ps1" `
   -SpecRoot "E:\项目\项目规范" `
   -ProjectRoot "E:\项目\YourApp" `
+  -Target cursor `
   -Domain "notes"
 ```
 
-**只搬某个业务域包**（含 `bundle/` 依赖）到业务仓：
-
-```powershell
-# 先在规范库 sync bundle
-powershell -File scripts/sync-domain-bundle.ps1 -SpecRoot "E:\项目\项目规范" -Domain enterprise-cert
-
-# 拷贝整个 domains/enterprise-cert 后：
-powershell -File scripts/install-domain-pack.ps1 `
-  -PackRoot "E:\drop\enterprise-cert" `
-  -ProjectRoot "E:\项目\YourApp" `
-  -CreateCursorIfMissing
-```
-
-详见 [domains/README.md](./domains/README.md)。
+---
 
 ## 规范库 → 业务项目
 
-| 规范库（根目录） | 业务项目 |
-|------------------|----------|
-| `rules/` `skills/` `agents/` `hooks/` `workflows/` `evals/` | `YourApp/.cursor/` 下同名目录 |
-| `domains/<id>/{rules,skills,agents,workflows,evals}` | **合并进** `.cursor/` 同名目录（需 `-Domain`） |
-| `domains/<id>/constraints.overlay.md` | **追加**到 `.cursor/constraints.md` |
+### Cursor（`-Target cursor`）
+
+| 规范库 | 业务项目 |
+|--------|----------|
+| `cursor/rules/` | `YourApp/.cursor/rules/` |
+| `cursor/agents/` | `YourApp/.cursor/agents/` |
+| `cursor/hooks/` | `YourApp/.cursor/hooks/` |
+| `shared/skills/` | `YourApp/.cursor/skills/` |
+| `shared/workflows/` | `YourApp/.cursor/workflows/` |
+| `shared/evals/` | `YourApp/.cursor/evals/` |
+| `domains/<id>/` | 合并进 `.cursor/`（需 `-Domain`） |
 | `constraints.md.template` | `YourApp/.cursor/constraints.md` |
 | `templates/AGENTS.md.template` | `YourApp/AGENTS.md` |
-| — | `YourApp/docs/requirements/`、`docs/standards/` 等骨架 |
 
-也可**手动**将规范库根目录的运行时文件夹移入目标项目的 `.cursor/`；域包须按文件合并，勿整夹复制 `domains/`。
+### OpenCode（`-Target opencode`）
 
-## 不要复制到业务项目
+| 规范库 | 业务项目 |
+|--------|----------|
+| `opencode/opencode.json` | 合并进项目 `opencode.json` |
+| `opencode/INSTRUCTIONS.md` | `YourApp/opencode/INSTRUCTIONS.md` |
+| `opencode/agents/` | `YourApp/opencode/agents/` |
+| `opencode/commands/` | `YourApp/opencode/commands/` |
+| `shared/skills/` | `YourApp/shared/skills/`（或 `skills.paths` 指向） |
+| `shared/workflows/` | `YourApp/shared/workflows/` |
 
-- 规范库根 `templates/`、`scripts/`、`domains/`（整夹）、`README.md`、`STRUCTURE.md`、`ecc-manifest.md.template`
+### Hermes（`-Target hermes`）
+
+| 规范库 | 业务项目 |
+|--------|----------|
+| `hermes/rules/` | `~/.hermes/rules/ecc/` |
+| `hermes/AGENTS.md` | `~/.hermes/AGENTS.md` |
+| `shared/skills/` | `~/.hermes/skills/ecc-imports/` |
+
+---
+
+## 不要复制的目录
+
+- 规范库根 `templates/`、`scripts/`、`domains/`（整夹）、`README.md`、`STRUCTURE.md`
 - `domains/_template/` 与任意 `_` 前缀脚手架
+- `.git/`
+
+---
 
 ## 校验
 
-- [ ] Cursor Settings → Rules 可见 Project Rules
-- [ ] `.cursor/constraints.md`、`AGENTS.md` 占位符已替换
-- [ ] 业务项目运行时均在 `.cursor/` 内
-- [ ] 若启用域包：`.cursor/domain-packs/<id>.md` 存在；域 Rule 的 `globs` 已改为真实路径
+- [ ] Cursor: Settings → Rules 可见 Project Rules；`@agent-name` 可调用
+- [ ] OpenCode: `opencode.json` 中 `instructions`/`agent`/`command` 可正常解析
+- [ ] Hermes: 规则和技能在 `~/.hermes/` 下可见
+- [ ] `skills.paths` / 技能目录指向有效路径
 
-维护 ECC：`scripts/sync-ecc-bundle.ps1`  
+维护脚本：`scripts/sync-ecc-bundle.ps1`  
 域包约定：[domains/README.md](./domains/README.md)

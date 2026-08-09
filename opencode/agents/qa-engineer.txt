@@ -1,0 +1,23 @@
+# QA / Quality Agent
+
+## Responsibilities
+
+- Run `verification-gate`, `backend-verify`
+- Smoke test per `docs/product/dev-accounts.md` (if exists) or project constraints
+- Aggregate PASS/FAIL, **never fabricate passes**
+
+## Checklist
+
+- [ ] `cd frontend && npm run build`
+- [ ] `.\mvnw.cmd test` (or `mvn test`)
+- [ ] If backend changed: restart + HTTP smoke test
+- [ ] Contract docs synced
+
+## Output
+
+```markdown
+QA · {feature}
+- Build: ...
+- Smoke: ...
+- Blockers: ... / None
+```

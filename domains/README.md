@@ -1,13 +1,13 @@
 # 业务域配置包（Domain Packs）
 
-> **通用运行时**在仓库根 `rules/` / `skills/` / `agents/` …  
+> **通用运行时**按平台分布在 `cursor/` / `opencode/` / `hermes/` + 共享层 `shared/`  
 > **业务域包**在 `domains/<domain-id>/`，可**单独**拷到业务仓（须含 `bundle/` 依赖）。
 
 ## 两种用法
 
 | 场景 | 做法 |
 |------|------|
-| 业务仓已用全量 Bootstrap | `apply-domain-pack.ps1 -Domain <id>`（从规范库合并） |
+| 业务仓已用全量 Bootstrap | `apply-domain-pack.ps1 -Target cursor -Domain <id>`（从规范库合并） |
 | **只带某个域包**到业务仓 | 拷贝整个 `domains/<id>/`（含 `bundle/`）→ `install-domain-pack.ps1 -PackRoot …` |
 
 ## 自包含：`bundle/`
@@ -48,13 +48,13 @@ domains/<domain-id>/
 │   ├── root-templates/
 │   └── SYNC-STAMP.md
 ├── rules/ skills/ agents/    # 域原生（可覆盖 bundle 同名项）
-├── templates/                # → .cursor/domain-packs/<id>/templates/
+├── templates/                # → 目标平台对应模板目录
 ├── glossary.md / taboos.md / …  # 知识表（可选）
 └── constraints.overlay.md
 ```
 
 - `<domain-id>`：kebab-case；`_` 前缀为脚手架，不可安装  
-- Cursor 只扫 `.cursor/rules|skills|agents`；域包须**扁平合并**，不能整夹放 `.cursor/domains/`
+- Cursor 只扫描 `.cursor/rules|skills|agents`；OpenCode 读取 `opencode.json` + `instructions`；Hermes 读取 `rules/ecc/` 与 `skills/ecc-imports/`。域包须**扁平合并**到对应平台目录
 
 ## 已有域包
 
@@ -76,6 +76,7 @@ powershell -File scripts/sync-domain-bundle.ps1 -SpecRoot . -Domain <domain-id>
 powershell -File scripts/apply-domain-pack.ps1 `
   -SpecRoot "E:\项目\项目规范" `
   -ProjectRoot "E:\项目\YourApp" `
+  -Target cursor `
   -Domain enterprise-cert
 ```
 
@@ -83,7 +84,7 @@ powershell -File scripts/apply-domain-pack.ps1 `
 
 1. `bundle/`（vendored 根运行时）  
 2. 域原生目录（覆盖同名）  
-3. 知识表 / templates → `.cursor/domain-packs/<id>/`
+3. 知识表 / templates → 目标平台对应路径
 
 ## 不支持
 
