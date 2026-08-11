@@ -48,7 +48,7 @@ if ($domainId -notmatch '^[a-z][a-z0-9-]*$') {
 $stage = Join-Path $env:TEMP ("domain-pack-stage-" + [guid]::NewGuid().ToString("n"))
 $stageDomains = Join-Path $stage "domains"
 New-Item -ItemType Directory -Force -Path (Join-Path $stageDomains $domainId) | Out-Null
-Copy-Item -Recurse -Force "$PackRoot\*" (Join-Path $stageDomains $domainId)
+Copy-Item -Recurse -Force (Join-Path $PackRoot "*") (Join-Path $stageDomains $domainId)
 
 try {
     & (Join-Path $PSScriptRoot "apply-domain-pack.ps1") `
