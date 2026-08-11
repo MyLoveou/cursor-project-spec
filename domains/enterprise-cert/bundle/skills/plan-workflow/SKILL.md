@@ -63,7 +63,7 @@ origin: ECC /plan（通用版）
 
 ### 验收映射（需求 § → 验证方式）
 ### 验证
-- eval：`.cursor/evals/<feature>.md`（可选）
+- eval：`evals/<feature>.md`（可选）
 - 交付：`verification-gate`
 
 ### 并行 Lane（大任务可选）

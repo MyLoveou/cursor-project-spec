@@ -18,7 +18,7 @@ origin: ECC eval-harness（通用版）
 ## 存储
 
 ```
-.cursor/evals/
+evals/
   <feature>.md      # 提交 Git
   <feature>.log     # 可选，一般不提交
 ```
@@ -74,4 +74,4 @@ Define → Implement → Evaluate → Report → `verification-gate`
 
 ## 模板
 
-见 `.cursor/evals/_example-feature.md`
+见 `evals/_example-feature.md`

@@ -48,13 +48,13 @@ flowchart TD
 | **4 架构对齐** | 委派、模型路由 | — | `@architect`、`@code-architect` | `api-contracts.mdc` | API/数据流草案、ADR 建议 | 新 API 须对齐契约 |
 | **5 文档同步** | 委派、顺序编排 | — | `@doc-sync` | `api-contracts.mdc`、`docs-maintenance.mdc` | 更新 design 草案 | 与需求一致 |
 | **6 计划** | **人类确认**、委派、并行标 Lane | `plan-workflow` | `@planner` | `api-contracts.mdc` | 实现计划（用户确认） | **需求已定稿** |
-| **7 Eval 草案** | **Eval 循环**（Define） | `eval-harness` | — | — | `.cursor/evals/<feature>.md` | 成功标准可执行 |
+| **7 Eval 草案** | **Eval 循环**（Define） | `eval-harness` | — | — | `evals/<feature>.md` | 成功标准可执行 |
 
 ---
 
 ## 跨会话
 
-- **Handoff 模式**：`dynamic-workflow-mode` + `.cursor/evals/_example-requirements-handoff.md` 格式 → `docs/requirements/features/<id>-handoff.md`
+- **Handoff 模式**：`dynamic-workflow-mode` + `evals/_example-requirements-handoff.md` 格式 → `docs/requirements/features/<id>-handoff.md`
 
 ---
 

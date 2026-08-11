@@ -98,7 +98,7 @@ docs/standards/版本与动工门禁.md  # 版本划分与 L1–L3 门禁
 
 1. 需求文档状态 → `已定稿`
 2. 同步 `{API_DESIGN_DOC}`、`{DATA_MODEL_DOC}`（`@doc-sync`）
-3. 可选：`.cursor/evals/<feature>.md` 从验收标准生成 eval
+3. 可选：`evals/<feature>.md` 从验收标准生成 eval
 4. 进入 `plan-workflow`（**必须**：产出 `docs/design/features/<id>-plan.md`）
 
 **需求定稿后禁止写业务代码**；须等 `plan-workflow` 完成且实现方案 **已定稿 + 用户确认**。

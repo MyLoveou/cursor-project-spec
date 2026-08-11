@@ -7,7 +7,7 @@ origin: ECC verification-loop（通用版）
 
 # 验证门禁（Verification Gate）
 
-> 权威 DoD：`.cursor/constraints.md` · 本 Skill 正文
+> 权威 DoD：project constraints · 本 Skill 正文
 
 ## 何时使用
 

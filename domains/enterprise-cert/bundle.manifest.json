@@ -16,9 +16,9 @@
     "eval-harness"
   ],
   "rules": [
-    "ai-execution.mdc",
-    "workflow-triggers.mdc",
-    "docs-maintenance.mdc"
+    "common/ai-execution.md",
+    "common/workflow-triggers.md",
+    "common/docs-maintenance.md"
   ],
   "agents": [
     "product-manager.md",

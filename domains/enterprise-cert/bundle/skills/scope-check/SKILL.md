@@ -1,51 +1,52 @@
-ï»¿---
+---
 name: scope-check
 description: >-
-  æ–°åŠŸèƒ½ã€å¤§æ”¹ APIã€æ˜“è¶Šç•Œèƒ½åŠ›å‰æ ¸å¯¹ capability ä¸Žè·¯çº¿å›¾ã€‚
+origin: ECC
+  ÐÂ¹¦ÄÜ¡¢´ó¸Ä API¡¢Ò×Ô½½çÄÜÁ¦Ç°ºË¶Ô capability ÓëÂ·ÏßÍ¼¡£
 ---
 
-# èŒƒå›´æ ¸å¯¹ï¼ˆScope Checkï¼‰
+# ·¶Î§ºË¶Ô£¨Scope Check£©
 
-> å®žçŽ°å‰**å¿…è¯»**ï¼›è¾“å‡º IN SCOPE / OUT OF SCOPE / PLACEHOLDERã€‚
+> ÊµÏÖÇ°**±Ø¶Á**£»Êä³ö IN SCOPE / OUT OF SCOPE / PLACEHOLDER¡£
 
-## ä½•æ—¶è¯»
+## ºÎÊ±¶Á
 
-- æ–°åŠŸèƒ½ã€æ–° API
-- ç”¨æˆ·æè¿°å¯èƒ½è¶…å‡ºå½“å‰ç‰ˆæœ¬
-- `plan-workflow`ã€`implement-feature` ä¹‹å‰
-- `scope-check` ä¸º IN SCOPE åŽ â†’ **ä¸‹ä¸€å¿…ç»** `requirements-refinement`ï¼ˆæ–°èƒ½åŠ›ï¼‰
+- ÐÂ¹¦ÄÜ¡¢ÐÂ API
+- ÓÃ»§ÃèÊö¿ÉÄÜ³¬³öµ±Ç°°æ±¾
+- `plan-workflow`¡¢`implement-feature` Ö®Ç°
+- `scope-check` Îª IN SCOPE ºó ¡ú **ÏÂÒ»±Ø¾­** `requirements-refinement`£¨ÐÂÄÜÁ¦£©
 
-## æ£€æŸ¥æ¸…å•
+## ¼ì²éÇåµ¥
 
-1. è¯» `{CAPABILITY_DOC}` â€” èƒ½åŠ› IN / OUT / CONSTRAINTS
-2. è¯» `{ROADMAP_DOC}` â€” å½“å‰ Phase æ˜¯å¦åŒ…å«
-3. è¯» `{BLOCKERS_DOC}`ï¼ˆè‹¥æœ‰ï¼‰â€” OPEN é¡¹æ˜¯å¦é˜»å¡ž
-4. å¯¹ç…§ `{API_DESIGN_DOC}` â€” æ˜¯å¦å·²æœ‰å¥‘çº¦æˆ–éœ€ ADR
+1. ¶Á `{CAPABILITY_DOC}` ¡ª ÄÜÁ¦ IN / OUT / CONSTRAINTS
+2. ¶Á `{ROADMAP_DOC}` ¡ª µ±Ç° Phase ÊÇ·ñ°üº¬
+3. ¶Á `{BLOCKERS_DOC}`£¨ÈôÓÐ£©¡ª OPEN ÏîÊÇ·ñ×èÈû
+4. ¶ÔÕÕ `{API_DESIGN_DOC}` ¡ª ÊÇ·ñÒÑÓÐÆõÔ¼»òÐè ADR
 
-## è¾“å‡ºæ ¼å¼
+## Êä³ö¸ñÊ½
 
 ```markdown
-## Scope Check Â· <åŠŸèƒ½>
-- ç»“è®ºï¼šIN SCOPE / OUT OF SCOPE / PLACEHOLDER
-- Phase/ç‰ˆæœ¬ï¼šâ€¦
-- è‹¥ OUT OF SCOPEï¼šå»ºè®®å ä½æ–‡æ¡ˆ / ä¸å®žçŽ°
-- è‹¥ IN SCOPEï¼šä¾èµ–æ–‡æ¡£ç« èŠ‚ â€¦
+## Scope Check ¡¤ <¹¦ÄÜ>
+- ½áÂÛ£ºIN SCOPE / OUT OF SCOPE / PLACEHOLDER
+- Phase/°æ±¾£º¡­
+- Èô OUT OF SCOPE£º½¨ÒéÕ¼Î»ÎÄ°¸ / ²»ÊµÏÖ
+- Èô IN SCOPE£ºÒÀÀµÎÄµµÕÂ½Ú ¡­
 ```
 
-OUT OF SCOPE â†’ **ä¸ç¼–ç **ï¼Œå‘ç”¨æˆ·è¯´æ˜Žè¾¹ç•Œã€‚
+OUT OF SCOPE ¡ú **²»±àÂë**£¬ÏòÓÃ»§ËµÃ÷±ß½ç¡£
 
-IN SCOPEï¼ˆæ–°èƒ½åŠ›ï¼‰â†’ è¿›å…¥ `requirements-refinement`ï¼Œ**ä¸è¦**ç›´æŽ¥è¿›å…¥ `implement-feature`ã€‚
+IN SCOPE£¨ÐÂÄÜÁ¦£©¡ú ½øÈë `requirements-refinement`£¬**²»Òª**Ö±½Ó½øÈë `implement-feature`¡£
 
-PLACEHOLDER â†’ UI/API è¿”å›ž 501 æˆ–æ˜Žç¡®å ä½ï¼Œç¦æ­¢é™é»˜å¤±è´¥ã€‚
+PLACEHOLDER ¡ú UI/API ·µ»Ø 501 »òÃ÷È·Õ¼Î»£¬½ûÖ¹¾²Ä¬Ê§°Ü¡£
 
-## é¡¹ç›®å®šåˆ¶
+## ÏîÄ¿¶¨ÖÆ
 
-å¤åˆ¶æœ¬ Skill åˆ°ç›®æ ‡é¡¹ç›® `.cursor/skills/scope-check/`ï¼Œå¡«å†™å ä½ç¬¦ï¼›è‹¥é¡¹ç›®å†…æ”¹ç”¨å…¶ä»– Skill åï¼Œé¡»åŒæ­¥ `workflow-triggers`ã€‚
+¸´ÖÆ±¾ Skill µ½Ä¿±êÏîÄ¿ skills/scope-check/ Ä¿Â¼£¬ÌîÐ´Õ¼Î»·û£»ÈôÏîÄ¿ÄÚ¸ÄÓÃÆäËû Skill Ãû£¬ÐëÍ¬²½ `workflow-triggers`¡£
 
-| å ä½ç¬¦ | ç¤ºä¾‹è·¯å¾„ |
+| Õ¼Î»·û | Ê¾ÀýÂ·¾¶ |
 |--------|----------|
 | `{CAPABILITY_DOC}` | `docs/product/capability.md` |
 | `{ROADMAP_DOC}` | `docs/product/roadmap.md` |
-| `{API_DESIGN_DOC}` | `docs/design/03-APIè®¾è®¡.md` |
-| `{DATA_MODEL_DOC}` | `docs/design/02-æ•°æ®æ¨¡åž‹.md` |
-| `{BLOCKERS_DOC}` | ï¼ˆå¯é€‰ï¼‰`docs/product/blockers.md` |
+| `{API_DESIGN_DOC}` | `docs/design/03-APIÉè¼Æ.md` |
+| `{DATA_MODEL_DOC}` | `docs/design/02-Êý¾ÝÄ£ÐÍ.md` |
+| `{BLOCKERS_DOC}` | £¨¿ÉÑ¡£©`docs/product/blockers.md` |

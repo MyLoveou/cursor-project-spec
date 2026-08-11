@@ -20,7 +20,7 @@ origin: ECC dynamic-workflow-mode（通用版）
 |----|------|
 | **Objective** | 交付什么；**不交付**什么 |
 | **Inputs** | 分支、相关 design 章节 |
-| **Outputs** | diff、`.cursor/evals/<feature>.md` |
+| **Outputs** | diff、`evals/<feature>.md` |
 | **Eval** | 至少一个 pass/fail |
 | **Handoff** | 状态、阻塞、续作步骤 |
 
@@ -28,7 +28,7 @@ origin: ECC dynamic-workflow-mode（通用版）
 
 1. 小改（<3 文件）→ inline，不建 harness
 2. 重复流程 → 提取为 Skill（`implement-feature`）
-3. 跨会话 → `.cursor/evals/<feature>-handoff.md`
+3. 跨会话 → `evals/<feature>-handoff.md`
 4. 安全敏感 → `@security-reviewer` + 人工 merge
 
 ## Harness 模板
@@ -56,7 +56,7 @@ Handoff: status / evidence / next
 
 ## 提升为共享 Skill
 
-同流程出现 ≥2 次、操作者常跳过门禁、有稳定 eval 命令 → 写入 `.cursor/skills/`。
+同流程出现 ≥2 次、操作者常跳过门禁、有稳定 eval 命令 → 写入 skills/ 目录。
 
 ## 反模式
 

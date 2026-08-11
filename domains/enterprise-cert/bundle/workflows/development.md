@@ -12,7 +12,7 @@
 
 - [ ] `docs/requirements/features/<id>.md` **已定稿**
 - [ ] `plan-workflow` 已确认（或用户明确「直接做」并记录风险）
-- [ ] `.cursor/evals/<feature>.md` 已起草（建议）
+- [ ] `evals/<feature>.md` 已起草（建议）
 
 小改 / bug：**可跳过**需求沉淀，但仍须 `scope-check` 确认范围。
 

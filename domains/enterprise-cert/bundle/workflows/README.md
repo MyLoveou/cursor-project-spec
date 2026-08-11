@@ -1,8 +1,8 @@
 # 工作流剧本（Playbooks）
 
 > **把 Skill、Agent、Rule 串成可复述的端到端流程。**  
-> 入口 Skill：`.cursor/skills/workflow-playbooks/SKILL.md`  
-> 触发表：`.cursor/skills/workflow-triggers/SKILL.md`
+> 入口 Skill：`workflow-playbooks` skill  
+> 触发表：`workflow-triggers` skill
 
 ---
 
