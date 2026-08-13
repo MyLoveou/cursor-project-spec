@@ -10,12 +10,10 @@
     "shared/skills/plan-workflow/SKILL.md",
     "shared/skills/implement-feature/SKILL.md",
     "shared/skills/build-fix/SKILL.md",
-    "shared/skills/tdd-workflow/SKILL.md",
     "shared/skills/eval-harness/SKILL.md",
     "shared/skills/frontend-patterns/SKILL.md",
     "shared/skills/backend-patterns/SKILL.md",
-    "shared/skills/api-design/SKILL.md",
-    "shared/skills/security-review/SKILL.md"
+    "shared/skills/api-design/SKILL.md"
   ],
   "skills": {
     "paths": ["shared/skills"]
