@@ -38,7 +38,9 @@
 
 | 命令 | 输出 |
 |------|------|
-| `generate.ps1 -Target cursor` | `.cursor/rules/*.mdc` + `.cursor/agents/*.md` |
+| `generate.ps1 -Target cursor -OutputDir <项目根>` | `<项目根>/.cursor/rules/*.mdc` + `agents/*.md` |
+
+`OutputDir` 是项目根，不是 `.cursor` 目录。本仓库的 `.cursor/`、`.codex/` 已 gitignore。
 
 ---
 

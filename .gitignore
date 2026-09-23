@@ -1,6 +1,12 @@
-# npx skills CLI staging (vendored copy lives in skills/)
+# Generated Cursor runtime. Source lives in rules/, agents/, shared/, platforms/cursor/, mcp/.
+.cursor/
+
+# Local editor config (not the spec source)
+.codex/
+
+# If a global skill dir is copied into this repo by mistake
 .agents/
 
-# Python cache (ui-ux-pro-max / continuous-learning scripts)
+# Python cache
 **/__pycache__/
 *.pyc

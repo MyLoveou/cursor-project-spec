@@ -1,4 +1,6 @@
 # generate.ps1 — Cursor rules + agents from unified sources.
+# OutputDir is the project root. Files are written to <OutputDir>/.cursor/.
+# Do not pass a path that already ends in .cursor (that nests a second .cursor).
 param(
     [Parameter(Mandatory=$true)][string]$SpecRoot,
     [Parameter(Mandatory=$true)][string]$OutputDir,
@@ -12,6 +14,9 @@ $AgentsDir = Join-Path $SpecRoot "agents"
 if (-not (Test-Path $RulesDir)) { throw "Rules directory not found: $RulesDir" }
 if ($Target -ne "cursor") {
     throw "Only Cursor is supported (got '$Target'). OpenCode/Hermes generation is postponed."
+}
+if ((Split-Path -Leaf $OutputDir) -eq ".cursor") {
+    throw "OutputDir must be the project root, not the .cursor folder (got '$OutputDir')."
 }
 
 $CursorOverrides = @{}

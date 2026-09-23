@@ -2,7 +2,7 @@
 
 > 本仓库（cursor-project-spec）的实现与方向。只写已确认项。
 
-**最后核对**：2026-09-23
+**最后核对**：2026-09-23（栈规则收短；规则不全局安装；MCP 说明合一）
 
 ---
 
@@ -11,7 +11,7 @@
 ### 做什么
 
 - 产品一句话：维护 **Cursor** 用的规则、Agent、Skill、工作流、MCP、域包，供业务仓 bootstrap。
-- 已交付：`project-spec` 家族（含 L1/L2/L3、组合式拆实现）、需求/规划/验收 Skill、Vue+React 规则、enterprise-cert 域包、`mcp/`（codegraph/git/ssh 配置）。
+- 已交付：`project-spec` 家族（含 L1/L2/L3、组合式拆实现）、需求/规划/验收 Skill、Vue+React 短规则、enterprise-cert 域包、`mcp/`（codegraph/git/ssh；知识图谱可选且不进默认配置）。
 - **尚未实现**：OpenCode/Hermes 适配；MCP 默认占位未接真实主机；本库无业务前后端代码。
 
 ### 怎么做的
@@ -36,7 +36,9 @@
 - 近端：规范驱动（事实基线、决策记忆、复杂需求先设计、UI/功能/算法可组合）。
 - 明确不做：再灌网上 ECC Skill、默认只留一种前端、把算法/规则写进控件还称组合式。
 - 原则：Cursor only；Skill 用自己的名 `project-spec`；CLI 仍叫 `openspec`。
+- 规则随业务仓 bootstrap 生成到该仓 `.cursor/rules/`，不装进用户全局。
+- MCP 说明只在 `mcp/`：codegraph / git / ssh 为默认；知识图谱仅企业认证可选。
 
 ## 未确认
 
-- 是否把 common 规则也装进用户全局（目前只装 Skill）。
+（无）

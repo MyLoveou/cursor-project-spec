@@ -1,5 +1,18 @@
 ﻿# 变更记录
 
+## 2026-09-23（短规则、审查口吻、MCP 合一）
+
+- `rules/java`、`rules/react`、`rules/vue` 收成项目栈短规则
+- `code-reviewer` 改为对照设计、切片契约与安全阻断
+- common 规则不装用户全局，只随业务仓 bootstrap
+- 知识图谱说明并入 `mcp/knowledge-graph.md`，不进默认 `mcp.json`
+
+## 2026-09-23（生成物与残留对齐）
+
+- `.cursor/`、`.codex/` 不入库；`generate.ps1` 的 `OutputDir` 必须是项目根
+- Java/Vue/React 测试规则去掉强制覆盖率，并去掉已删除 Skill / `@e2e-runner` 引用
+- `planner` 去掉订阅计费示例，计划形状改跟 project-spec
+
 ## 2026-09-23（组合式拆实现）
 
 - L2/L3 增加 **关注点分离 + 能力组合**：UI / 功能 / 算法分模块提供，页面或应用门面为组合根

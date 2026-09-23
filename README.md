@@ -39,7 +39,15 @@ pwsh -File scripts/bootstrap-project.ps1 \
 └── scripts/
     ├── generate.ps1
     ├── bootstrap-project.ps1
+    ├── install-global-skills.ps1
+    ├── sync-domain-bundle.ps1
     └── apply-domain-pack.ps1
+```
+
+本仓库自己的 `.cursor/` 是生成结果，不提交。在仓库根执行：
+
+```powershell
+powershell -File scripts/generate.ps1 -SpecRoot . -OutputDir . -Target cursor
 ```
 
 ## 核心工作流
@@ -60,5 +68,5 @@ generate.ps1 -Target cursor
 - 新增/修改规则 → `rules/{category}/{id}.md`
 - 新增 Skill → `shared/skills/`
 - 新增 MCP → `mcp/`（`mcp.json` + 说明）
-- 全局安装 Skill → `scripts/install-global-skills.ps1`（`~/.cursor/skills` 与 `~/.agents/skills`）
+- 全局安装 Skill → `scripts/install-global-skills.ps1`（只装 Skill；规则随 bootstrap 进业务仓）
 - 业务域包 → `domains/_template` 复制为 `domains/<id>/`

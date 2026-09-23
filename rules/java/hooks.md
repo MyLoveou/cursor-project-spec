@@ -1,19 +1,14 @@
 ---
 id: hooks
 category: java
-description: "Java Hooks"
+description: 改 Java 后的检查
 globs: "**/*.java, **/pom.xml, **/build.gradle, **/build.gradle.kts"
 alwaysApply: false
 ---
 
-# Java Hooks
+# Java 改动检查
 
-> This file extends [common/hooks.md](../common/hooks.md) with Java-specific content.
+这是编码后的检查，不是 Cursor hooks 运行时。
 
-## PostToolUse Hooks
-
-Configure in `~/.claude/settings.json`:
-
-- **google-java-format**: Auto-format `.java` files after edit
-- **checkstyle**: Run style checks after editing Java files
-- **./mvnw compile** or **./gradlew compileJava**: Verify compilation after changes
+- 格式跟随项目已有的 formatter，不另引入一套
+- 改后端后编译或跑相关测试，再按 `backend-spring` 重启冒烟

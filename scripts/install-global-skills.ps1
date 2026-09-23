@@ -1,4 +1,8 @@
 # Install shared/skills into user-global skill dirs.
+# Rules are NOT installed here. They are generated into each business
+# project's .cursor/rules by bootstrap-project.ps1 / generate.ps1.
+# Global always-apply rules would leak this spec's gates into unrelated repos.
+#
 # Destinations:
 #   %USERPROFILE%\.cursor\skills
 #   %USERPROFILE%\.agents\skills

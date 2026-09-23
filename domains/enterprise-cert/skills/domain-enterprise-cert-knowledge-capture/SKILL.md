@@ -29,7 +29,7 @@ description: >-
 
 ### 与 MCP Knowledge Graph（可选）
 
-跨会话短记忆见 `tooling/mcp-knowledge-graph.md`。  
+跨会话线索见规范库 `mcp/knowledge-graph.md`（可选，不在默认 MCP 里）。  
 **人决断后的条目以本表 md 为真源**；可再镜像摘要到 MCP（observation 注明台账路径）。禁止只写 MCP 当已确认。
 
 ## 阶段 A · 开放发现

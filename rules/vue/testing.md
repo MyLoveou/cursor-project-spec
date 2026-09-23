@@ -28,9 +28,9 @@ alwaysApply: false
 
 ## E2E
 
-- Critical flows: login, main CRUD path, payment if applicable
-- Delegate full E2E to `@e2e-runner` when scope is cross-page
+- 关键链路：登录、主路径、失败态
+- 跨页验收走 `verification-gate`。本库没有 `@e2e-runner`
 
 ## Coverage
 
-- Target 80% over time; prioritize stores, composables, and form validation
+以 `constraints.md` 与 `common/testing.md` 为准。优先 store、composable、表单校验。不强制覆盖率百分比。

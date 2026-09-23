@@ -29,7 +29,3 @@ Vue 3 · TypeScript · Vite · Vue Router · Pinia（或项目选定状态库）
 ## 验收
 
 `cd frontend && npm run build`
-
-## 审查
-
-改 `.vue` 后建议 `@vue-reviewer`；构建失败用 `@vue-build-resolver`

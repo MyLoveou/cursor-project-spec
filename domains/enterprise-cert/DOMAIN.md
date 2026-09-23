@@ -38,10 +38,10 @@ powershell -File scripts/install-domain-pack.ps1 `
 | 层 | 文档 | 用途 |
 |----|------|------|
 | 知识台账 | `tooling/ledgers.md` | 业务+工程+摸底 md（人决断，git 真源） |
-| CodeGraph | `tooling/codegraph.md` | 代码调用图 MCP，加强 inventory |
-| MCP Knowledge Graph | `tooling/mcp-knowledge-graph.md` | 跨会话记忆；确认项仍回写台账 |
+| CodeGraph | 规范库 `mcp/codegraph.md` | 调用链。随根 `mcp.json` 部署 |
+| 知识图谱 | 规范库 `mcp/knowledge-graph.md` | 可选线索；确认项回写台账 |
 
-Skill：`domain-enterprise-cert-tooling` · 统一 MCP：仓库根 `mcp/` · 域内 KG 示例：`templates/mcp.json.example`
+Skill：`domain-enterprise-cert-tooling`。MCP 真源只有仓库根 `mcp/`。
 
 ## 何时启用
 

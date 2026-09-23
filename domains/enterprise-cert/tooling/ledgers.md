@@ -16,5 +16,5 @@
 ## 规则
 
 1. 仅「已确认」行可作为实现依据  
-2. 重要会话结论：先决断入库台账，再可选写入 MCP Knowledge Graph  
+2. 重要结论：先写入台账或 `docs/product/decisions.md`。可选再在知识图谱记摘要，见规范库 `mcp/knowledge-graph.md`  
 3. 台账变更可走 CR；勿只存在于聊天或本机 memory 文件  

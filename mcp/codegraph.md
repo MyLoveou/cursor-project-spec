@@ -41,3 +41,7 @@ Cursor 条目（已写入 `mcp.json`）：
 
 - 索引库本机 SQLite，按 `.gitignore` 忽略，不要当业务真源提交
 - 本规范库（规则/md）索引价值有限；**业务仓**代码仓优先开 CodeGraph
+
+## 企业认证摸底
+
+域技能 `domain-enterprise-cert-codebase-map` 在 MCP 已连接时：先查调用链，无命中再 Grep。证据写入摸底 md。索引过期先重建再继续。

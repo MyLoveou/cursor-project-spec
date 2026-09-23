@@ -34,7 +34,7 @@ alwaysApply: false
 - Lazy-load route components: `() => import('./views/Page.vue')`
 - Navigation guards for auth; keep guard logic in composables when complex
 
-## UI libraries
+## 组合
 
-- Element Plus / Ant Design Vue / Vant: prefer on-demand import or auto-import resolver
-- Do not wrap every primitive in custom components without reuse justification
+- 页面组装功能结果。公式与权限判断不写进模板
+- 组件库按项目已选的来，按需引入。不为每个基础控件再包一层

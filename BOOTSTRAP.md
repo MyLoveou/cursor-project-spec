@@ -32,6 +32,8 @@ powershell -File scripts/install-global-skills.ps1 -SpecRoot "E:\项目\项目�
 
 只覆盖同名 Skill，不删你已有的其它全局 Skill。装完请重载 Cursor 窗口。
 
+**规则不装到用户全局。** `rules/` 随 `bootstrap-project.ps1` 生成到该业务仓的 `.cursor/rules/`。common 规则默认始终生效，放进用户目录会作用到所有项目。
+
 已有 `.cursor/` 时只叠加域包：
 
 ```powershell

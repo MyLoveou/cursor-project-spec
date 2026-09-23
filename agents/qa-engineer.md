@@ -15,6 +15,7 @@ description: 测试与质量。构建门禁、接口冒烟、DoD 验收时使用
 
 - [ ] `cd frontend && npm run build`
 - [ ] `.\mvnw.cmd test`（或 `mvn test`）
+- [ ] 组合式：算法检查通过，且组合根主路径可走通
 - [ ] 若改 backend：重启 + HTTP 冒烟
 - [ ] 契约文档已同步
 

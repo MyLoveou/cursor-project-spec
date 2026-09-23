@@ -21,7 +21,8 @@
     "common/openspec.md",
     "common/comments.md",
     "common/knowledge-extract.md",
-    "common/testing.md"
+    "common/testing.md",
+    "common/mcp.md"
   ],
   "agents": [
     "product-manager.md",

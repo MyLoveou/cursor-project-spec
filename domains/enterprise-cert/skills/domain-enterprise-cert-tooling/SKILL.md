@@ -13,16 +13,16 @@ description: >-
 
 | 层 | 何时用 |
 |----|--------|
-| **知识台账** | 业务/工程/摸底结论要进 git、可 CR → `ledgers.md` + 对应 Skill |
-| **CodeGraph** | 摸底轮 1–2 要调用链/影响面 → `codegraph.md`；接入后 inventory 优先图谱 |
-| **MCP Knowledge Graph** | 跨会话想起线索/目标 → `mcp-knowledge-graph.md`；**确认项仍回写台账** |
+| **知识台账** | 业务/工程/摸底结论要进 git、可评审 → `ledgers.md` |
+| **CodeGraph** | 摸调用链 → 规范库 `mcp/codegraph.md` |
+| **知识图谱** | 可选线索 → 规范库 `mcp/knowledge-graph.md`。确认项回写台账或 `decisions.md` |
 
 ## 动作
 
-1. 未装 MCP：只做台账 Skills（capture / inventory / conventions）  
-2. 已装 CodeGraph：摸底时读 `tooling/codegraph.md` 约定  
-3. 已装 mcp-knowledge-graph：开聊可 search；决断后双写（台账为主）  
-4. 配置示例：`templates/mcp.json.example` → 合并进项目 Cursor MCP 配置  
+1. 未接 CodeGraph：摸底用检索，并写明未用图谱
+2. 已接 CodeGraph：按 `mcp/codegraph.md` 的摸底约定
+3. 需要跨会话线索时，按 `mcp/knowledge-graph.md` 合并配置。不把图里的句子当成已确认
+4. 不使用 `templates/mcp.json.example` 里的服务器配置（该文件只作指针）
 
 ## 禁止
 

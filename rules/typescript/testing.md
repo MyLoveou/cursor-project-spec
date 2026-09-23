@@ -10,10 +10,6 @@ alwaysApply: false
 
 > This file extends the common testing rule with TypeScript/JavaScript specific content.
 
-## E2E Testing
+## E2E
 
-Use **Playwright** as the E2E testing framework for critical user flows.
-
-## Agent Support
-
-- **e2e-runner** - Playwright E2E testing specialist
+关键链路用项目已有的浏览器或接口检查，记入 `tests.md`。本库没有 `e2e-runner` Agent。

@@ -2,7 +2,7 @@
 id: mcp
 category: common
 alwaysApply: true
-description: Cursor MCP：CodeGraph、Git、SSH 远程；无密钥入仓；写操作须用户明确要求
+description: Cursor MCP：CodeGraph、Git、SSH；企业认证可选知识图谱。无密钥入仓
 ---
 
 # MCP 使用
@@ -16,6 +16,7 @@ description: Cursor MCP：CodeGraph、Git、SSH 远程；无密钥入仓；写�
 | `codegraph` | 摸调用链、影响面、现有模块 | Grep；并写明未用图谱 |
 | `git` | 看仓库状态/历史 | Shell `git` |
 | `ssh` | 用户点名已登记主机上的远程操作 | 用户本机终端；禁止连未登记地址 |
+| `mcp-knowledge-graph` | 仅企业认证、且已按 `mcp/knowledge-graph.md` 合并时，用来回忆线索 | 读 facts、decisions、台账 |
 
 ## 硬约束
 
@@ -24,4 +25,5 @@ description: Cursor MCP：CodeGraph、Git、SSH 远程；无密钥入仓；写�
 - Git 写操作（commit / push / checkout）遵守 G9 与 Git Safety Protocol
 - 远程破坏性命令、生产环境 → 先问用户
 - CodeGraph 结论要落到 `实现方案.md` 或 `facts.md`，不替代人核实
+- 知识图谱里的内容不是已确认事实。拍板写入 `decisions.md` 或企业认证台账
 - 未绿灯的 MCP 不得假装已执行

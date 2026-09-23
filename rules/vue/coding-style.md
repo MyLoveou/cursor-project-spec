@@ -42,8 +42,9 @@ src/
 └── router/
 ```
 
-## Style
+## 组合
 
-- Use `scoped` or CSS modules for component styles
-- Prefer composables over mixins
-- Keep SFCs under ~250 lines; split large templates
+- 模板只展示。校验、权限、计算放在 composable 调用的功能或算法模块
+- 样式用 `scoped` 或 CSS modules
+- 用 composable，不用 mixin
+- 单文件过大就拆。页面是组合根

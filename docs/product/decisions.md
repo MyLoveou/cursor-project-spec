@@ -4,6 +4,20 @@
 
 ## 有效决策
 
+### D-20260923-04 · 规则不装用户全局；MCP 说明只留 mcp/
+
+- **决定**：common/栈规则只经 bootstrap 进入业务仓 `.cursor/rules/`。`install-global-skills.ps1` 只装 Skill
+- **不选**：把 alwaysApply 规则装到 `~/.cursor`，以致无关仓库也套上本库门禁
+- **决定**：CodeGraph 与知识图谱的说明以根目录 `mcp/` 为准。知识图谱不进默认 `mcp.json`
+- **不选**：域包再维护一份安装步骤和 JSON
+- 状态：有效
+
+### D-20260923-03 · 生成物不入库
+
+- **决定**：`.cursor/` 由 `generate.ps1` 写到**项目根**下；`.cursor/` 与 `.codex/` 进 `.gitignore`
+- **不选**：把生成结果当源；`OutputDir` 再传一次 `.cursor`（会套出 `.cursor/.cursor`）
+- 状态：有效
+
 ### D-20260923-02 · 全局 Skill 双目录
 
 - **决定**：`install-global-skills.ps1` 同时覆盖 `~/.cursor/skills` 与 `~/.agents/skills`
