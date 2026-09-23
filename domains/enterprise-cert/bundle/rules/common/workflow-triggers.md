@@ -2,33 +2,39 @@
 id: workflow-triggers
 category: common
 alwaysApply: true
-description: 工作流自动触发。详表唯一来源为 workflow-triggers Skill；命中信号须先读 Skill。
+description: 工作流自动触发。命中信号须先读对应 Skill。
 ---
 
 # 工作流触发（自动）
 
-> **详表唯一来源**：`.cursor/skills/workflow-triggers/SKILL.md`  
-> 维护时**只改 Skill**；本 Rule 保持极简，避免双份表漂移。
-
-收到用户消息、准备改代码、声称完成前：
-
-1. 读 `workflow-triggers` Skill（或本机已加载则扫描其触发表）
-2. 命中信号 → **先读**对应 `.cursor/skills/<name>/SKILL.md`
-3. 交付前 → 几乎总是 `verification-gate`
+收到用户消息、准备改代码、声称完成前：对照下表，**先读** `.cursor/skills/<name>/SKILL.md`。
 
 ## 快速入口
 
 | 场景 | 入口 |
 |------|------|
-| 不确定 | `workflow-triggers` |
-| **工作流剧本** | `workflow-playbooks` → `.cursor/workflows/*.md` |
-| 智能体模式 | `workflows/agent-patterns.md` |
-| 新需求 / 新 API | `scope-check` → `requirements-refinement`（需求定稿）→ `plan-workflow`（方案定稿） |
-| 提需求、先写文档 | `requirements-refinement` |
-| 实现（新能力） | `implement-feature`（须 L1+L3 定稿且用户确认） |
-| 修 bug / 小改 | `implement-feature`（可跳过需求沉淀） |
-| 交付 / PR | `verification-gate` |
+| 新能力 / 先出方案 | `project-spec`（propose；复杂需求先 L2 设计 STOP） |
+| 复杂需求：模型/交互/模块/拆分/UI与算法组合 | `project-spec` 设计阶段（`设计.md` + 切片契约，不是 `project-spec-design`） |
+| 按 spec 实现 | `project-spec`（apply；复杂须 L2 已确认） |
+| 修 bug / 缺陷 / 复现 | `project-spec-fix` |
+| 改样式 / CSS / 对齐 / 间距 | `project-spec-style` |
+| UI 设计 / 视觉方向 / 先设计这一页观感 | `project-spec-design` |
+| 换会话继续上次 | `project-spec`（先读 facts + decisions，再 handoff） |
+| 记住 / 提炼规则 / 反复强调 | `knowledge-extract` |
+| 记下这次决策 / 项目方向 | `docs/product/decisions.md` + 必要时改 `facts.md` |
+| 提需求、先写中文需求稿 | `requirements-refinement` |
+| 只要实现计划、先别写代码 | `plan-workflow`（无 OpenSpec 仓时） |
+| 加依赖 / 查现有实现 | `search-first` |
+| 代码图 / 调用链 / 影响面 | CodeGraph MCP（见 `mcp/codegraph.md`）；未接入则 Grep |
+| 远程主机 / SSH / 上服务器 | SSH MCP（仅 `hosts.json` 已登记机） |
+| 构建失败 | `build-fix` |
+| 改 backend 后验收 | `backend-verify` |
+| 交付 / 声称完成 / PR | `code-review-gate` → `verification-gate` |
+| 跨会话续作 | `facts.md` + `decisions.md`；任务用 `project-spec` handoff；复杂循环可叠加 `dynamic-workflow-mode` |
+| 剧本总览 | `.cursor/workflows/` |
 
-## 串联优先级
+## 新能力串联
 
-`scope-check` → `requirements-refinement`（需求定稿）→ `plan-workflow`（方案定稿 + 用户确认）→ `implement-feature` → `code-review-gate` → Bugbot → `verification-gate`
+`project-spec`：L1 →（复杂）L2 设计确认 → L3 → apply（含 tests.md）→ `code-review-gate` → `verification-gate`
+
+无 OpenSpec 的仓：`requirements-refinement` 定稿 → `plan-workflow` 用户确认 → 再编码。

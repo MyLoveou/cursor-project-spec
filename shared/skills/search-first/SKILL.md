@@ -43,4 +43,4 @@ origin: ECC search-first（通用版）
 - 理由：…
 ```
 
-然后进入 `implement-feature` 或 `plan-workflow`。
+然后进入 `project-spec` apply、`plan-workflow` 或按栈实现。

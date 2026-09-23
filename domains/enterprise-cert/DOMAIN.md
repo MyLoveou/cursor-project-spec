@@ -22,7 +22,7 @@ powershell -File scripts/install-domain-pack.ps1 `
   -CreateCursorIfMissing
 ```
 
-依赖清单：`bundle.manifest.json`（含 `requirements-refinement`、`plan-workflow`、`implement-feature` 等）。  
+依赖清单：`bundle.manifest.json`（含 `project-spec`、`requirements-refinement`、`plan-workflow` 等）。  
 **勿手改 `bundle/`**。
 
 ## 内容来源原则
@@ -41,37 +41,36 @@ powershell -File scripts/install-domain-pack.ps1 `
 | CodeGraph | `tooling/codegraph.md` | 代码调用图 MCP，加强 inventory |
 | MCP Knowledge Graph | `tooling/mcp-knowledge-graph.md` | 跨会话记忆；确认项仍回写台账 |
 
-Skill：`domain-enterprise-cert-tooling` · MCP 示例：`templates/mcp.json.example`
+Skill：`domain-enterprise-cert-tooling` · 统一 MCP：仓库根 `mcp/` · 域内 KG 示例：`templates/mcp.json.example`
 
 ## 何时启用
 
 - `-Domain enterprise-cert` / `install-domain-pack`
 - SDD：`domain-enterprise-cert-sdd`
-- **能力四件套**：
+- **能力三件套**：
 
 | Skill | 用途 |
 |--------|------|
 | `domain-enterprise-cert-knowledge-capture` | 业务规则 / 术语 / UI（域原生） |
-| `codebase-inventory`（+ `domain-enterprise-cert-codebase-map`） | 功能与 API 现状 |
-| `codebase-conventions` | 代码工程惯例提炼 |
-| `continuous-learning-v2` | 会话 instinct 学习（bundle 内；启用方式见该 Skill） |
+| `domain-enterprise-cert-codebase-map` | 功能与 API 现状摸底 |
+| `domain-enterprise-cert-sdd` | 大需求 SDD |
 
-后三者在 `bundle/`；knowledge-capture 在域 `skills/`。
+知识捕获在域 `skills/`。新能力实现走根 `project-spec`。
 
 ## 知识体系
 
 ```text
 业务：开放发现 → pending-decisions → 人决断 → glossary / taboos / business-rules / ui-interactions
-工程：codebase-conventions → conventions-pending → coding-conventions
-现状：codebase-inventory → *-codebase-map.md（须人工核实）
-会话：continuous-learning-v2 → instincts（可选）
+工程：conventions-pending → coding-conventions
+现状：domain-enterprise-cert-codebase-map → *-codebase-map.md（须人工核实）
+规划：project-spec propose → 用户确认 → apply
 ```
 
 ## 包内清单
 
 | 路径 | 说明 |
 |------|------|
-| `bundle.manifest.json` + `bundle/` | 根依赖（含 inventory / conventions / continuous-learning-v2 等） |
+| `bundle.manifest.json` + `bundle/` | 根依赖（project-spec、需求门禁、审查/验收） |
 | 域 `skills/` | SDD、knowledge-capture、codebase-map、tech-design、triggers |
 | 域 `rules/` / `templates/` | 门禁与域模板 |
 | 知识表 | glossary / taboos / business-rules / ui-interactions / pending |

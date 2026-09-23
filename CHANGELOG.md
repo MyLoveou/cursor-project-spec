@@ -1,5 +1,62 @@
 ﻿# 变更记录
 
+## 2026-09-23（组合式拆实现）
+
+- L2/L3 增加 **关注点分离 + 能力组合**：UI / 功能 / 算法分模块提供，页面或应用门面为组合根
+- 与一版本一能力并存：实现可并行切片，组合进主路径才算交付
+- L2 §5.3 **切片契约**；`verification-gate` 按切片验收；`tests.md` 增加切片列
+- 规范库自有 `docs/product/facts.md` / `decisions.md`
+- `install-global-skills.ps1` 同时写入 `~/.cursor/skills` 与 `~/.agents/skills`
+- `architect` 对齐 project-spec；`sessionStart` hook 先读事实与决策
+- 评测：`shared/evals/_example-composition.md`；测试规则不再强制 80%/tdd-guide
+
+## 2026-09-17（复杂需求必须先过设计阶段）
+
+- L2 `设计.md`：原则、模型、交互、模块划分、功能拆分、抽象；未确认不得写 L3、不得 apply（G1a）
+- `project-spec-design` 仅视觉；能力设计走 `project-spec` 设计阶段
+
+## 2026-09-12（全局安装开发 Skill）
+
+- `scripts/install-global-skills.ps1`：把 `shared/skills` 装到 `%USERPROFILE%\.cursor\skills`
+
+## 2026-09-12（MCP：CodeGraph / git / ssh）
+
+- 新增仓库根 `mcp/`：Cursor `mcp.json` + CodeGraph、Git、远程 SSH 说明与主机登记模板
+- 规则 `rules/common/mcp.md`；bootstrap 部署到 `.cursor/mcp.json`
+
+## 2026-09-12（事实基线 + 压缩决策记忆）
+
+- `docs/product/facts.md`：项目实现与项目方向（G0 必读）
+- `docs/product/decisions.md`：每次拍板的压缩条目，跨会话先读；与 change `handoff.md` 分工
+
+## 2026-09-12（project-spec 融合规范目录与架构）
+
+- `project-spec` 与 `requirements-refinement` 共用 `docs/requirements/features/<id>/需求.md` + `实现方案.md`
+- propose 必须对照项目规范与现有架构；L3 不再写到 `docs/design/features/<id>-plan.md`
+
+## 2026-09-12（Skill 更名为 project-spec）
+
+- 自定义工作流 Skill 从 `openspec*` 更名为 `project-spec` / `-fix` / `-style` / `-design`，避免与官方 OpenSpec 插件重名
+- 业务仓 CLI 仍为 `openspec`；产物目录仍为 `openspec/`
+
+## 2026-09-12（OpenSpec 场景特化）
+
+- Skill：`project-spec-fix`（缺陷）、`project-spec-style`（改样式）、`project-spec-design`（界面方向）
+- 全量 propose 仅用于新能力/改契约
+
+## 2026-09-12（OpenSpec 个人化）
+
+- 浓缩基线模板；规则：`project-spec` 门禁、`comments`、`knowledge-extract`
+- Skill：中文 OpenSpec（tests.md / handoff.md / 加厚模板）+ `knowledge-extract`
+- 跨会话以 change 内 `handoff.md` 为准
+
+## 2026-09-12（简化为 Cursor + 自用 Skill）
+
+- 延后 OpenCode / Hermes：删除 `platforms/opencode`、三平台 generate/bootstrap
+- 删除网上/ECC 灌入的 Skill、Agent，以及 `rules/react-native`、`rules/web`
+- 前端规则保留 Vue + React；新增 `shared/skills/project-spec`
+- 新能力默认 OpenSpec propose → apply → archive
+
 ## 2026-07-27（enterprise-cert 工具三层）
 
 - 纳入：知识台账文档化、`tooling/codegraph.md`、`tooling/mcp-knowledge-graph.md`、`templates/mcp.json.example`

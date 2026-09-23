@@ -1,4 +1,4 @@
-﻿---
+---
 name: backend-dev
 description: {PROJECT} 后端工程师。改 {BACKEND_DIR}/、migration、Spring Boot API 时使用。
 ---
@@ -15,7 +15,7 @@ description: {PROJECT} 后端工程师。改 {BACKEND_DIR}/、migration、Spring
 
 1. 读 `.cursor/constraints.md`
 2. 读 `{API_DESIGN_DOC}` 相关章节
-3. 新 API：`scope-check` → `requirements-refinement`（已定稿）
+3. 新 API：`project-spec` apply 已授权，或 `requirements-refinement` 已定稿
 
 ## 交付
 

@@ -1,77 +1,42 @@
 ﻿---
 name: eval-harness
-description: Eval-Driven Development。新功能或大改前定义 pass/fail，与 verification-gate 配合。
-origin: ECC eval-harness（通用版）
+description: >-
+  先写可判定的通过/失败标准再实现。触发：验收标准、eval、回归、tests.md、先定义成功再写代码。
+origin: 项目规范
 ---
 
-# Eval Harness
+# 评测清单
 
-> Eval = AI 辅助开发的「单元测试」：先定义成功标准，再实现，再回归。
+> 先定义「怎样算做成」，再写代码。OpenSpec 变更以 change 内 `tests.md` 为功能级清单；本 Skill 管跨功能回归与无 OpenSpec 时的 eval 文件。
 
-## 何时激活
+## 何时用
 
 - 新功能、大改 API、新 migration
-- `requirements-refinement` **已定稿**后，从需求 §4 验收标准生成 eval
-- 需要可重复 pass/fail 证据
-- 与 `dynamic-workflow-mode` 配合的多会话任务
+- OpenSpec propose 结束时：把 spec 场景抄进 `tests.md`
+- 需要可重复证据、跨会话回归
 
-## 存储
+## 存放
 
-```
-evals/
-  <feature>.md      # 提交 Git
-  <feature>.log     # 可选，一般不提交
-```
+| 场景 | 路径 |
+|------|------|
+| OpenSpec 变更 | `openspec/changes/<name>/tests.md` |
+| 无 OpenSpec / 跨能力回归 | `evals/<feature>.md`（可 git） |
 
-## Eval 类型
+## 能力级
 
-### Capability Eval
+对照 spec 场景，每条有命令或明确手工步骤。禁止只有 happy path。
 
-```markdown
-[CAPABILITY EVAL: feature-name]
-Task: …
-Success Criteria:
-  - [ ] scope-check 通过
-  - [ ] API 文档已更新（若改 API）
-  - [ ] {BACKEND_BUILD_CMD} PASS
-  - [ ] {FRONTEND_BUILD_CMD} PASS
-  - [ ] 若改 backend：重启+冒烟 PASS
-```
+## 判定方式（优先靠命令）
 
-### Regression Eval
+1. **代码** — 单测、构建
+2. **契约** — 文档与实现一致（可 grep）
+3. **冒烟** — HTTP / 页面主路径
+4. **人工** — 安全与产品高风险（步骤写清）
 
-```markdown
-[REGRESSION EVAL: auth-chain]
-Tests:
-  - login: PASS/FAIL
-  - forbidden-non-member: PASS/FAIL
-Result: X/Y
-```
-
-## Grader 类型
-
-1. **Code** — compile + build（优先）
-2. **Rule** — grep 契约与文档一致
-3. **Smoke** — HTTP 2xx
-4. **Human** — Security / 产品高风险
-
-## 工作流
-
-Define → Implement → Evaluate → Report → `verification-gate`
-
-## 与 verification-gate
-
-| eval-harness | verification-gate |
-|--------------|-------------------|
-| 功能级标准（写在前） | 交付级通用 DoD（写在后） |
+流程：定义 → 实现 → 实跑 → 记录 → `verification-gate`
 
 ## 反模式
 
-- 只有 happy path
-- eval 太慢从不跑
-- 用 eval 绕过 scope-check
-- 禁止臆造 PASS
-
-## 模板
-
-见 `evals/_example-feature.md`
+- 太慢从不跑
+- 用 eval 绕过范围确认
+- 臆造 PASS

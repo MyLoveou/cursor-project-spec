@@ -6,11 +6,11 @@
 
 **Task**: （一句话）
 
-**Scope**: 对照 `scope-check` — IN SCOPE / OUT OF SCOPE
+**Scope**: 对照 OpenSpec change 或已定稿需求 — IN SCOPE / OUT OF SCOPE
 
 ### Success Criteria
 
-- [ ] `scope-check` 通过
+- [ ] 范围与规划一致
 - [ ] `{API_DESIGN_DOC}` 已更新（若改 API）
 - [ ] `{DATA_MODEL_DOC}` 已更新（若改实体）
 - [ ] `{BACKEND_BUILD_CMD}` → PASS

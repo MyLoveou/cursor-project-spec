@@ -2,7 +2,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| 需求文档 | `docs/requirements/features/<id>.md` |
+| 需求文档 | `docs/requirements/features/<id>/需求.md` |
 | 摸底文档 | `docs/design/features/<id>-codebase-map.md`（须已核实） |
 | 状态 | ☐ 草案　☐ 评审中　☐ **已锁定** |
 | 锁定确认 | （人/日期） |

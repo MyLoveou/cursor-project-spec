@@ -1,114 +1,64 @@
 # 开发工作流
 
-> **目标**：在门禁满足的前提下纵向切片实现，栈审查通过后进入交付工作流。
+> **目标**：在门禁满足的前提下实现，审查后进入交付。
 
 ## 入口口令
 
-- 「按开发工作流」「开始实现」「修 bug」「改接口」
-- 「构建失败」→ 阶段 4 `build-fix`
-- 「并行开发」→ `parallel-execution`
+- 「按开发工作流」「开始实现」「改接口」
+- 「修 bug」→ `project-spec-fix`
+- 「改样式」→ `project-spec-style`
+- 「构建失败」→ `build-fix`
+
 
 ## 前置门禁（新能力）
 
-- [ ] `docs/requirements/features/<id>.md` **已定稿**
-- [ ] `plan-workflow` 已确认（或用户明确「直接做」并记录风险）
-- [ ] `evals/<feature>.md` 已起草（建议）
+- [ ] OpenSpec change 已 propose 且用户确认 apply；或需求 + `plan-workflow` 已定稿
+- [ ] 用户明确「直接做」并接受文档滞后时，可跳过规划
 
-小改 / bug：**可跳过**需求沉淀，但仍须 `scope-check` 确认范围。
+小改 / bug：走 `project-spec-fix`，可跳过全量需求沉淀。
+
 
 ## 流程图
 
 ```mermaid
 flowchart TD
   A[开发任务] --> B{新能力?}
-  B -->|是| C{需求已定稿?}
+  B -->|是| C{规划已确认?}
   C -->|否| R[→ 需求工作流]
   C -->|是| D[search-first 若加依赖]
   B -->|否| D
-  D --> E[TDD RED]
-  E --> E2[implement-feature GREEN]
-  E2 --> F{多 lane?}
-  F -->|是| G[parallel-execution]
-  F -->|否| H[按栈实现]
+  D --> E[project-spec apply 或按栈实现]
+  E --> F{改 backend?}
+  F -->|是| G[backend-dev + java rules]
+  F -->|否| H{改 frontend?}
   G --> H
-  H --> I{改 backend?}
-  I -->|是| J[backend-dev + java rules]
-  I -->|否| K{改 frontend?}
+  H -->|React| I[frontend-dev + react rules]
+  H -->|Vue| J[frontend-vue-dev + vue rules]
+  H -->|否| K[doc-sync 若 API/实体]
+  I --> K
   J --> K
-  K -->|React| L[frontend-dev + react rules]
-  K -->|Vue| M[frontend-vue-dev + vue rules]
-  K -->|否| N[doc-sync 若 API/实体]
-  L --> N
-  M --> N
-  N --> O{构建失败?}
-  O -->|是| P[build-fix + *-build-resolver]
-  O -->|否| Q[栈 reviewers]
-  Q --> Q2[/review-bugbot]
-  Q2 --> S[→ 交付工作流]
+  K --> L{构建失败?}
+  L -->|是| M[build-fix]
+  L -->|否| N[code-reviewer]
+  N --> S[→ 交付工作流]
 ```
 
----
+## 阶段
 
-## 阶段串联表
-
-> **模式列**：见 [agent-patterns.md](./agent-patterns.md#开发工作流--模式)
-
-| 阶段 | 模式 | Skill | Agent | Rules（按路径加载） | 产出 |
-|------|------|-------|-------|----------------------|------|
-| **0 门禁** | 顺序编排、路由 | `scope-check` | — | `project-core.mdc` | 范围确认 |
-| **1 依赖** | 委派、并行（只读） | `search-first` | `@code-explorer` | `common-security.mdc` | 依赖决策记录 |
-| **2 实现** | **顺序编排**、委派 | `implement-feature` | `@backend-dev` / `@frontend-dev` / `@frontend-vue-dev` | 见「栈 Rules」 | 代码 + migration |
-| **2b TDD** | RED→GREEN | `docs/standards/TDD与测试.md` | `@tdd-guide` | `common-testing.mdc` | 失败用例 + 最小实现 |
-| **3 并行** | **并行化** | `parallel-execution` | Task `explore` 等 | `common-agents.mdc` | 多 lane 结果合并 |
-| **4 构建修复** | **错误恢复**、委派 | `build-fix` | `*-build-resolver` | 栈 `*-patterns.mdc` | 构建 PASS |
-| **5 API/实体** | 委派、顺序编排 | — | `@doc-sync` | `api-contracts.mdc`、`docs-maintenance.mdc` | design 文档同步 |
-| **6 数据** | 委派 | — | `@database-reviewer` | `java-*.mdc` | migration 审查 |
-| **7 栈审查** | 委派、**并行化** | `code-review-gate` | 见「栈 Agents」 | `common-code-review.mdc` · `docs/standards/代码审查.md` | 审查意见 |
-| **7b Bugbot** | 委派 | `docs/standards/Bugbot审查.md` | `bugbot` | — | diff 回归表 |
-| **8 后端深验** | 顺序编排 | `backend-verify` | `@qa-engineer` | `backend-spring.mdc` | 重启 + 冒烟 |
+| 阶段 | Skill / Agent | Rules | 产出 |
+|------|----------------|-------|------|
+| 0 依赖 | `search-first` | `common-security.mdc` | 依赖决策 |
+| 1 实现 | `project-spec` apply；`@backend-dev` / `@frontend-dev` / `@frontend-vue-dev` | 见栈 Rules | 代码 |
+| 2 构建 | `build-fix` | 栈 patterns | 构建 PASS |
+| 3 契约 | `@doc-sync` | `api-contracts.mdc` | design 同步 |
+| 4 审查 | `code-review-gate` · `@code-reviewer` | `common-code-review.mdc` | 审查意见 |
+| 5 后端深验 | `backend-verify` · `@qa-engineer` | `backend-spring.mdc` | 重启 + 冒烟 |
 
 ### 栈 Rules
 
 | 改动路径 | Rules |
 |----------|-------|
 | `backend/**` | `backend-spring.mdc`、`java-*.mdc`、`api-contracts.mdc` |
-| `frontend/**`（React Web） | `frontend-react.mdc`、`react-*.mdc`、`web-*.mdc`、`typescript-*.mdc` |
-| `frontend/**`（Vue） | `frontend-vue.mdc`、`vue-*.mdc`、`typescript-*.mdc` |
-| RN / Expo（`app/**`、`screens/**`、`*.native.tsx`） | `frontend-react-native.mdc`、`react-native-*.mdc`、`typescript-*.mdc`（**勿**套用 `web-*.mdc` DOM 假设） |
+| React | `frontend-react.mdc`、`react-*.mdc`、`typescript-*.mdc` |
+| Vue | `frontend-vue.mdc`、`vue-*.mdc`、`typescript-*.mdc` |
 | `docs/design/**` | `docs-maintenance.mdc`、`api-contracts.mdc` |
-
-### 栈 Agents（交付前建议）
-
-| 改动 | Agent |
-|------|-------|
-| Java | `@java-reviewer` |
-| React Web TSX | `@react-reviewer` + `@typescript-reviewer`；热路径 + `react-performance` |
-| React Native | `@frontend-rn-dev` + `react-native-patterns` |
-| Vue SFC | `@vue-reviewer` + `@typescript-reviewer` |
-| 安全/JWT | `@security-reviewer` |
-| 大改 / 上线前 | `@code-reviewer` · `production-audit` |
-
----
-
-## 硬义务
-
-- 改 `backend/**` 后：**重启** + HTTP 冒烟（见 `ai-execution.mdc`）
-- 新 API：路径与 `docs/design/03-API设计.md` 一致
-- 用户未要求：**不** commit / push
-
----
-
-## 与下游衔接
-
-实现、TDD、code-review、Bugbot 完成后 → [交付工作流](./delivery.md)
-
-规范总览：[docs/standards/工作流索引.md](../../docs/standards/工作流索引.md)
-
----
-
-## 反模式
-
-- 新 Controller/migration 无已定稿需求
-- Controller 写业务逻辑（见 `backend-spring.mdc`）
-- 跳过栈 reviewer 声称完成
-- 写 lane 并行编辑同一文件

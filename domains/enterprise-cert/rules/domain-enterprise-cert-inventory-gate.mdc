@@ -6,11 +6,11 @@ alwaysApply: false
 
 # 企业认证 · 摸底门禁
 
-> 详流程：`codebase-inventory` + `domain-enterprise-cert-codebase-map`。
+> 详流程：`domain-enterprise-cert-codebase-map`。
 
 ## 禁止
 
-- 未跑 `codebase-inventory` 四轮就宣称「代码已梳理完」
+- 未做多轮检索+路径证据就宣称「代码已梳理完」
 - 用空单元格或「同上」表示跨地区/站点行为相同
 - 摸底文档未「人工核实」就进入 `domain-enterprise-cert-tech-design` / 大范围改代码
 

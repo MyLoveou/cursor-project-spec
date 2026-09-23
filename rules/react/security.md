@@ -176,5 +176,4 @@ Production builds should ship without source maps, or with sourcemaps uploaded t
 
 ## Agent Support
 
-- Use `security-reviewer` agent for comprehensive security audits across the codebase
-- Use `react-reviewer` agent for React-specific patterns and the above rules in active code review
+- Use `code-reviewer` for security-sensitive React changes

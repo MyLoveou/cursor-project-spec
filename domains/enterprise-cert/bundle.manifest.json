@@ -1,40 +1,43 @@
 {
   "domainId": "enterprise-cert",
-  "description": "Vendored root runtime deps for solo domain-pack install (filled by sync-domain-bundle.ps1 into bundle/).",
+  "description": "Vendored root runtime deps for solo domain-pack install.",
   "skills": [
-    "scope-check",
+    "project-spec",
+    "project-spec-fix",
+    "project-spec-style",
+    "project-spec-design",
+    "knowledge-extract",
     "requirements-refinement",
     "plan-workflow",
-    "codebase-inventory",
-    "codebase-conventions",
-    "continuous-learning-v2",
-    "implement-feature",
     "verification-gate",
     "code-review-gate",
-    "workflow-triggers",
     "dynamic-workflow-mode",
     "eval-harness"
   ],
   "rules": [
     "common/ai-execution.md",
     "common/workflow-triggers.md",
-    "common/docs-maintenance.md"
+    "common/docs-maintenance.md",
+    "common/openspec.md",
+    "common/comments.md",
+    "common/knowledge-extract.md",
+    "common/testing.md"
   ],
   "agents": [
     "product-manager.md",
     "doc-sync.md",
-    "security-reviewer.md",
-    "code-explorer.md",
     "architect.md"
   ],
   "workflows": [
     "README.md",
     "requirements.md",
     "development.md",
-    "delivery.md"
+    "delivery.md",
+    "design.md"
   ],
   "rootTemplates": [
     "docs-requirements-feature.md.template",
+    "docs-feature-design.md.template",
     "docs-implementation-plan.md.template",
     "docs-standards/coding-conventions.md.template",
     "docs-standards/conventions-pending.md.template"

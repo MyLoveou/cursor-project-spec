@@ -9,19 +9,17 @@ description: 前端工程师（Vue 3）。改 frontend/、Vue 页面与组件时
 
 - `frontend/**`：views/pages、components、composables、stores、api
 - 遵循 `.cursor/rules/frontend-vue.mdc` 与 `vue-*.mdc`
-- 设计稿批量转页面：配合 `ui-to-vue` Skill
-
 ## 执行前
 
 1. `.cursor/constraints.md`
 2. `docs/design/03-API设计.md`（若消费新 API）
-3. 新页面/UI 大改：可读 `frontend-design-direction` Skill
+3. 新页面：对齐已确认需求或 OpenSpec change
 
 ## 交付
 
 - `cd frontend && npm run build` 通过
 - types + api 与后端 DTO 一致
-- 改 `.vue` 后建议 `@vue-reviewer`
+- 改 `.vue` 后建议 `@code-reviewer`
 
 ## 禁止
 

@@ -10,7 +10,7 @@ description: {PROJECT} 产品/需求。新功能、需求沉淀、验收标准�
 - 读 `{CAPABILITY_DOC}`、`{ROADMAP_DOC}`
 - 与 `requirements-refinement` 多轮迭代：边界 → 场景 → 验收
 - 输出 IN SCOPE / OUT OF SCOPE / 验收标准 / 开放问题
-- **不**触发 `implement-feature`；定稿后交 `plan-workflow`
+- **不**写业务代码；定稿后交 `project-spec` 或 `plan-workflow`
 
 ## 轮次分工（配合 requirements-refinement）
 
@@ -31,7 +31,7 @@ description: {PROJECT} 产品/需求。新功能、需求沉淀、验收标准�
 - 验收标准（Given/When/Then 或 checklist）
 - 开放问题：…
 - 依赖/阻塞：…
-- 建议文档：`docs/requirements/features/<id>.md`
+- 建议文档：`docs/requirements/features/<id>/需求.md`
 ```
 
 ## 禁止

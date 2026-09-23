@@ -27,5 +27,9 @@ When creating PRs:
 4. Include test plan with TODOs
 5. Push with `-u` flag if new branch
 
+## Optional short branches (composition)
+
+For one capability one version: `ui-*` / `app-*` / `algo-*`. The composition slice must be green before calling the capability done. Do not keep long-lived product branches per slice.
+
 > For the full development process (planning, TDD, code review) before git operations,
 > see the development workflow rule.

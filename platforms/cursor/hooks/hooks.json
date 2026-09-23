@@ -1,6 +1,13 @@
 {
   "version": 1,
   "hooks": {
+    "sessionStart": [
+      {
+        "type": "prompt",
+        "prompt": "新会话：先读 docs/product/facts.md 与 docs/product/decisions.md 最近条目。有 OpenSpec 则 openspec list，再读进行中 change 的 handoff.md。复杂需求未完成 L2 设计.md（组合式含切片契约）不得写 L3/apply。Hook input: $ARGUMENTS",
+        "timeout": 15
+      }
+    ],
     "stop": [
       {
         "type": "prompt",

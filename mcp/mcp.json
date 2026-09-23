@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "codegraph": {
+      "type": "stdio",
+      "command": "codegraph",
+      "args": ["serve", "--mcp", "--path", "${workspaceFolder}"]
+    },
+    "git": {
+      "command": "uvx",
+      "args": ["mcp-server-git", "--repository", "${workspaceFolder}"]
+    },
+    "ssh": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-ssh"],
+      "env": {
+        "SSH_MCP_DEFAULT_USERNAME": "REPLACE_SSH_USER",
+        "SSH_MCP_DEFAULT_KEY": "REPLACE_SSH_KEY_PATH",
+        "SSH_MCP_ALLOWED_HOSTS": "REPLACE_ALLOWED_HOSTS",
+        "SSH_MCP_STRICT_HOST_CHECK": "true"
+      }
+    }
+  }
+}

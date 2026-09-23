@@ -7,6 +7,8 @@ alwaysApply: true
 
 # Coding Style
 
+> 注释规范见 `rules/common/comments.md`（中文、讲意图不复述代码）。
+
 ## Immutability (CRITICAL)
 
 ALWAYS create new objects, NEVER mutate existing ones:

@@ -1,64 +1,35 @@
 ﻿---
 name: dynamic-workflow-mode
-description: 任务级 harness、eval 门禁、跨会话 handoff。多步骤、续作时使用。
-origin: ECC dynamic-workflow-mode（通用版）
+description: >-
+  跨会话续作与任务级循环。触发：handoff、上次做到哪、换会话继续、跨前后端多步。
+origin: 项目规范
 ---
 
-# 动态工作流模式
+# 跨会话与任务循环
 
-> 静态 Skill 不够时，为**单任务**设计临时循环与 handoff。
+有 OpenSpec change 时，**任务进度以该 change 的 `handoff.md` 为准**。  
+**项目实现与方向**以 `docs/product/facts.md` 为准；**历次拍板**以 `docs/product/decisions.md` 为准。三套不要混成一份。
 
-## 何时激活
+## 何时用
 
-- 功能跨多个会话（后端 → 前端 → 文档）
-- 需要 eval 循环（实现 → 构建 → 冒烟 → 修）
-- 用户要求「留 handoff」「按 harness 跑」
+- 功能跨多个会话
+- 用户说「留 handoff」「下次接着做」
+- 需要实现 → 构建 → 冒烟 → 再修 的短循环
 
-## 核心契约
+## 有 OpenSpec
 
-| 项 | 说明 |
-|----|------|
-| **Objective** | 交付什么；**不交付**什么 |
-| **Inputs** | 分支、相关 design 章节 |
-| **Outputs** | diff、`evals/<feature>.md` |
-| **Eval** | 至少一个 pass/fail |
-| **Handoff** | 状态、阻塞、续作步骤 |
+1. 读 `openspec/changes/<name>/handoff.md`
+2. 按「下一步」执行，结束时更新状态、已完成、阻塞
+3. 测试结果写回 `tests.md` 记录表
 
-## 决策树
+## 无 OpenSpec
 
-1. 小改（<3 文件）→ inline，不建 harness
-2. 重复流程 → 提取为 Skill（`implement-feature`）
-3. 跨会话 → `evals/<feature>-handoff.md`
-4. 安全敏感 → `@security-reviewer` + 人工 merge
+才使用 `evals/<feature>-handoff.md`，字段仍为：目标/不交付、输入、输出、eval、下一步。
 
-## Harness 模板
+## 结束会话前
 
-```markdown
-# Dynamic Workflow · <feature>
-
-Objective: Ship … / Do not ship …
-
-Loop:
-1. scope-check
-2. @code-architect（若新模块）
-3. @backend-dev / @frontend-dev
-4. *-reviewer
-5. verification-gate
-6. @doc-sync
-
-Eval:
-- {FRONTEND_BUILD_CMD} → PASS/FAIL
-- {BACKEND_BUILD_CMD} → PASS/FAIL
-- 若改 backend: 重启+冒烟 → PASS/FAIL
-
-Handoff: status / evidence / next
-```
-
-## 提升为共享 Skill
-
-同流程出现 ≥2 次、操作者常跳过门禁、有稳定 eval 命令 → 写入 skills/ 目录。
-
-## 反模式
-
-- 跳过 verification-gate 声称完成
-- 多 Agent 无 ownership 改同一文件
+- [ ] 读过并按需更新 `facts.md`（实现或方向变了）
+- [ ] 本轮拍板已压缩进 `decisions.md`（无则跳过）
+- [ ] handoff 已更新
+- [ ] 有【规范待决断】则交给 `knowledge-extract` 列给用户
+- [ ] 未勾完的任务保持未勾，不要假装完成

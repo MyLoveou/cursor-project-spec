@@ -7,45 +7,40 @@ alwaysApply: true
 
 # AI 执行规范
 
-> 智能体模式：`.cursor/workflows/agent-patterns.md` · 工作流：`.cursor/workflows/README.md`
+> 工作流：`.cursor/workflows/README.md`
 
 ## 必读索引
 
 | 类型 | 路径 |
 |------|------|
 | 总览 | `AGENTS.md` |
+| 浓缩基线 | `openspec/baseline.md` 或 `docs/product/baseline.md` |
+| 事实基线 | `docs/product/facts.md`（实现 + 方向） |
+| 决策记忆 | `docs/product/decisions.md` |
 | 工作流 | `.cursor/workflows/README.md` |
+| MCP | `.cursor/mcp.json` · 说明 `.cursor/mcp/README.md` |
 | 硬约束 | `.cursor/constraints.md` |
-| 工作流详表 | `.cursor/skills/workflow-triggers/SKILL.md` |
-| 工作流剧本 | `.cursor/workflows/` · Skill：`workflow-playbooks` |
-| 智能体模式 | `.cursor/workflows/agent-patterns.md` |
-| 通用基线 | `.cursor/rules/common-*.mdc` |
+| 触发 | `.cursor/rules/workflow-triggers.mdc` |
+| OpenSpec 门禁 | `.cursor/rules/common-openspec.mdc` |
 
 ## 子代理（Task / `@`）
 
 | 场景 | 使用 |
 |------|------|
-| 探索代码 | `explore` / `@code-explorer` |
-| Java 构建失败 | `@java-build-resolver` |
-| 前端构建失败 | `@react-build-resolver` 或 `@vue-build-resolver` |
-| 改 Java 后 | `@java-reviewer`（建议） |
-| 改 TSX（Web）后 | `@react-reviewer`（建议）+ `react-performance`（热路径） |
-| 改 RN / Expo 后 | `@frontend-rn-dev` + `react-native-patterns` |
-| 改 `.vue` 后 | `@vue-reviewer`（建议） |
-| 安全/JWT | `@security-reviewer` |
-| 数据库迁移 | `@database-reviewer` |
 | 需求沉淀 | `@product-manager` |
-| 市场调研 / 定位 | `market-research` Skill 或 `@marketing-agent` |
-| 深度调研（多源） | `deep-research` Skill |
-| 能力边界 / PRD | `product-capability` Skill |
-| UI 设计方向 | `frontend-design-direction` / `frontend-patterns` |
-| 无障碍 / 设计系统 | `@a11y-architect` · `frontend-a11y` |
-| 架构/ADR | `@architect` / `@code-architect` · `architecture-decision-records` |
-| 复杂编排 | `orch-pipeline` · `plan-orchestrate` |
-| 文档同步 | `@doc-sync` |
-| E2E / 浏览器自动化 | `agent-browser` Skill · `@e2e-runner` |
+| 架构 | `@architect` / `@planner` |
+| 改 Java | `@backend-dev` |
+| 改 React | `@frontend-dev` |
+| 改 Vue | `@frontend-vue-dev` |
+| 写完代码 | `@code-reviewer` |
+| 文档 / 契约 | `@doc-sync` |
+| 验收 | `@qa-engineer` |
+| 新能力规划与实现 | `project-spec` |
+| 修缺陷 | `project-spec-fix` |
+| 改样式 | `project-spec-style` |
+| 界面方向 | `project-spec-design` |
 
-完整 Skill 列表见 `workflow-triggers` Skill；命中信号**必须先读**对应 Skill。
+命中上表或 `workflow-triggers` **必须先读**对应 Skill。
 
 ## 硬义务：后端改动后重启
 
@@ -53,7 +48,7 @@ alwaysApply: true
 
 ## DoD 摘要
 
-- `verification-gate` Skill（详表见 Skill 正文）
+- `verification-gate` Skill
 - `cd frontend && npm run build`、`.\mvnw.cmd test`（或 `mvn test`）
-- 新能力：`docs/requirements/features/<id>.md` 已定稿
+- 新能力：OpenSpec 规划已确认后再编码；`tests.md` 已跑
 - 用户未要求时不 commit/push

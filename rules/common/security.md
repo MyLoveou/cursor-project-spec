@@ -30,7 +30,7 @@ Before ANY commit:
 
 If security issue found:
 1. STOP immediately
-2. Use **security-reviewer** agent
+2. Use **code-reviewer** agent and treat security as blocking
 3. Fix CRITICAL issues before continuing
 4. Rotate any exposed secrets
 5. Review entire codebase for similar issues

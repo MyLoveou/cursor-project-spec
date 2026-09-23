@@ -38,7 +38,7 @@
 - 未要求不 commit/push；不提交密钥、`{LOCAL_DB_PATH}`、`.env`
 - 完成前：`{FRONTEND_BUILD_CMD}`、`{BACKEND_BUILD_CMD}`
 - 改 API 前先读 `{API_DESIGN_DOC}`
-- **新能力**：`docs/requirements/features/<id>.md` 状态为 **已定稿** 后方可编码（见 Skill `requirements-refinement`）
+- **新能力**：`需求.md` 已定稿；**复杂需求**还须 `设计.md` 已定稿；再 `实现方案.md` 已定稿后方可编码（`project-spec`）
 
 ---
 

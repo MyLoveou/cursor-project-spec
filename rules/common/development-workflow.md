@@ -1,7 +1,7 @@
 ---
 id: development-workflow
 category: common
-description: "Development workflow: plan, TDD, review, commit pipeline"
+description: "Development workflow: plan, tests, review, commit pipeline"
 alwaysApply: true
 ---
 
@@ -9,21 +9,17 @@ alwaysApply: true
 
 > This rule extends the git workflow rule with the full feature development process that happens before git operations.
 
-The Feature Implementation Workflow describes the development pipeline: planning, TDD, code review, and then committing to git.
+The Feature Implementation Workflow describes the development pipeline: planning, tests, code review, and then committing to git.
 
 ## Feature Implementation Workflow
 
 1. **Plan First**
-   - Use **planner** agent to create implementation plan
-   - Identify dependencies and risks
-   - Break down into phases
+   - New capability: `project-spec` propose, then wait for user confirm
+   - Or use **planner** / `plan-workflow` when the repo has no OpenSpec root
 
-2. **TDD Approach**
-   - Use **tdd-guide** agent
-   - Write tests first (RED)
-   - Implement to pass tests (GREEN)
-   - Refactor (IMPROVE)
-   - Verify 80%+ coverage
+2. **Tests**
+   - Prefer tests that lock the behavior you change
+   - Bug fixes: reproduce with a failing test when practical
 
 3. **Code Review**
    - Use **code-reviewer** agent immediately after writing code

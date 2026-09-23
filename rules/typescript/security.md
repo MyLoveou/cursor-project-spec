@@ -26,4 +26,4 @@ if (!apiKey) {
 
 ## Agent Support
 
-- Use **security-reviewer** skill for comprehensive security audits
+- Use **code-reviewer** for security-sensitive TypeScript changes

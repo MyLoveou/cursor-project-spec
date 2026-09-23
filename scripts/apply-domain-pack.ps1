@@ -7,9 +7,7 @@ param(
     [string]$ProjectRoot,
     [Parameter(Mandatory = $true)]
     [Alias("Domains")]
-    [string[]]$Domain,
-    [Parameter(Mandatory = $false)]
-    [string]$Target = "cursor"
+    [string[]]$Domain
 )
 
 $ErrorActionPreference = "Stop"
@@ -17,15 +15,7 @@ $ErrorActionPreference = "Stop"
 $SpecRoot = (Resolve-Path $SpecRoot).Path
 $ProjectRoot = (Resolve-Path $ProjectRoot).Path
 $CursorDest = Join-Path $ProjectRoot ".cursor"
-
-switch ($Target) {
-    "opencode" {
-        $CursorDest = $ProjectRoot
-    }
-    "hermes" {
-        $CursorDest = Join-Path $env:USERPROFILE ".hermes"
-    }
-}
+$Target = "cursor"
 
 if (-not (Test-Path $CursorDest)) {
     throw "Missing dest dir at $CursorDest — run bootstrap-project.ps1 first, or pass -Domain to bootstrap."

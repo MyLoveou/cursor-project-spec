@@ -2,15 +2,19 @@
   "domainId": "_template",
   "description": "复制为真实域后改 domainId，填写依赖，再跑 sync-domain-bundle.ps1",
   "skills": [
-    "scope-check",
+    "project-spec",
+    "project-spec-fix",
+    "project-spec-style",
+    "project-spec-design",
+    "knowledge-extract",
     "requirements-refinement",
     "plan-workflow",
-    "implement-feature",
     "verification-gate"
   ],
   "rules": [
-    "ai-execution.mdc",
-    "workflow-triggers.mdc"
+    "common/ai-execution.md",
+    "common/workflow-triggers.md",
+    "common/openspec.md"
   ],
   "agents": [
     "product-manager.md",
@@ -24,6 +28,7 @@
   ],
   "rootTemplates": [
     "docs-requirements-feature.md.template",
+    "docs-feature-design.md.template",
     "docs-implementation-plan.md.template"
   ]
 }

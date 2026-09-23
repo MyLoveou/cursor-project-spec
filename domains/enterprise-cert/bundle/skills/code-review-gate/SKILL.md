@@ -13,24 +13,20 @@ origin: ECC /code-review（通用版）
 - 用户要求「审查」「review」「合并前看看」
 - Agent 完成一项功能改动后（**建议**交付前）
 - 改动涉及：Security、JWT、权限、分享链
-- `split-prs` 各 slice 提交前
-
 ## 流程
 
 ### 1. 按改动类型委派
 
 | 改动 | 审查 |
 |------|------|
-| `{BACKEND_DIR}/**` Java | `@java-reviewer` |
-| `{FRONTEND_DIR}/**` tsx | `@react-reviewer` |
-| `{FRONTEND_DIR}/**` vue | `@vue-reviewer` |
-| 安全/权限 | `@security-reviewer` |
-| migration / JPA | `@database-reviewer` |
-| 跨栈 | 组合 + 可选 `code-reviewer` |
+| 任意业务代码 | `@code-reviewer` |
+| `{BACKEND_DIR}/**` Java | `@backend-dev` 自检 + `@code-reviewer` |
+| `{FRONTEND_DIR}/**` tsx | `@frontend-dev` 自检 + `@code-reviewer` |
+| `{FRONTEND_DIR}/**` vue | `@frontend-vue-dev` 自检 + `@code-reviewer` |
 
 ### 2. 必查项（项目填写）
 
-- [ ] 符合 `{CAPABILITY_DOC}` / `scope-check`
+- [ ] 符合 `{CAPABILITY_DOC}` / 已确认规划
 - [ ] 对照 `docs/standards/代码审查.md` 严重度与裁决
 - [ ] 改领域热路径时对照项目 `docs/standards/{DOMAIN_SPEC}.md`（若有）
 - [ ] 权限与鉴权正确

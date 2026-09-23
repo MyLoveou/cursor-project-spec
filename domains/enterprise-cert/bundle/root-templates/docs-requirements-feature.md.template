@@ -3,7 +3,7 @@
 > **状态**：草案 | 评审中 | 已定稿  
 > **最后更新**：{DATE}  
 > **关联**：`docs/product/capability.md` · `docs/design/03-API设计.md`  
-> **Feature ID**：`{feature-id}`（文件名：`docs/requirements/features/{feature-id}.md`）
+> **Feature ID**：`{feature-id}`（路径：`docs/requirements/features/{feature-id}/需求.md`）
 
 ---
 
@@ -95,4 +95,4 @@
 - [ ] 状态已改为 **已定稿**
 - [ ] 已同步 design 文档（`@doc-sync`）
 
-**定稿后**方可：`plan-workflow` → `implement-feature`。
+**定稿后**方可：`project-spec` apply，或 `plan-workflow` 后再编码。

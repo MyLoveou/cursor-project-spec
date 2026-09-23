@@ -20,7 +20,7 @@ description: >-
 
 ## 产出
 
-写入：`docs/design/features/<id>-plan.md`（或项目 L3 约定路径），结构必须覆盖模板全部强制节。
+写入：`docs/requirements/features/<id>/实现方案.md`（与根 `plan-workflow` / `project-spec` 相同）；HOW 章节须覆盖本域模板全部强制节。
 
 状态：`草案` → `评审中` → **`已锁定`**（用户确认后）。
 
@@ -44,7 +44,7 @@ description: >-
 2. 按模板写方案（文字为主；流程图为辅，**不能替代**时机/承载说明）
 3. 自检：若评审者只读文字能否判断「进页是否重拉 KYB」「挂旧函数还是新 hook」
 4. 请用户评审；确认后状态 → **已锁定**
-5. 进入 `domain-enterprise-cert-sdd` 阶段 4 / `implement-feature`
+5. 进入 `domain-enterprise-cert-sdd` 阶段 4 / `project-spec` apply
 
 ## 反模式
 

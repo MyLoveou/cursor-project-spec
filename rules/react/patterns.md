@@ -184,10 +184,8 @@ Older codebases on React 18 still need `forwardRef`.
 
 ### React Native
 
-- Platform-specific imports (`Platform.OS`, `.ios.tsx` / `.android.tsx`), `StyleSheet`, navigation libraries (React Navigation, Expo Router)
-- Treated as a separate track — `rules/react-native/` is not yet present
-- React core hooks/patterns from this file still apply
+- Out of scope for this spec repo (postponed). Do not apply `web` DOM assumptions to native files.
 
 ## Skill Reference
 
-For React-specific deep dives see `skills/react-patterns/SKILL.md`. For cross-framework frontend concerns see `skills/frontend-patterns/SKILL.md`. For accessibility see `skills/accessibility/SKILL.md`.
+Follow `react-*.md` in this category and `typescript/` rules.

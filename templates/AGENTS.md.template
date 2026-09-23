@@ -15,9 +15,12 @@
 | 文档 | 用途 |
 |------|------|
 | `.cursor/constraints.md` | 硬约束 |
-| `.cursor/skills/workflow-triggers/SKILL.md` | 工作流触发表 |
+| `.cursor/rules/workflow-triggers.mdc` | 工作流触发 |
+| `.cursor/skills/project-spec/SKILL.md` | 新能力：事实基线、决策记忆、规范、架构、门禁 |
 | `.cursor/workflows/` | 需求/设计/开发/交付剧本 |
-| `docs/requirements/features/` | 单功能需求（定稿后实现） |
+| `docs/product/facts.md` | 项目实现 + 项目方向 |
+| `docs/product/decisions.md` | 压缩决策记忆（跨会话） |
+| `docs/requirements/features/<id>/` | L1 `需求.md` + L3 `实现方案.md` |
 
 ## 3. 完成定义
 

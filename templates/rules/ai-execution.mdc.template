@@ -1,12 +1,12 @@
-﻿---
+---
 description: AI Agent 执行规范、子代理、Skill 触发与后端重启义务
 alwaysApply: true
 ---
 
 # AI 执行规范
 
-> 复制为 `.cursor/rules/ai-execution.mdc` 并按项目调整  
-> 智能体模式：`.cursor/workflows/agent-patterns.md` · 工作流：`.cursor/workflows/README.md`
+> 复制为 `.cursor/rules/ai-execution.mdc` 并按项目调整
+> 工作流：`.cursor/workflows/README.md`
 
 ## 必读索引
 
@@ -15,36 +15,22 @@ alwaysApply: true
 | 总览 | `AGENTS.md` |
 | 工作流 | `.cursor/workflows/README.md` |
 | 硬约束 | `.cursor/constraints.md` |
-| 工作流详表 | `.cursor/skills/workflow-triggers/SKILL.md` |
-| 工作流剧本 | `.cursor/workflows/` · Skill：`workflow-playbooks` |
-| 智能体模式 | `.cursor/workflows/agent-patterns.md` |
+| 触发 | `.cursor/rules/workflow-triggers.mdc` |
 | 通用基线 | `.cursor/rules/common-*.mdc` |
 
 ## 子代理（Task / `@`）
 
 | 场景 | 使用 |
 |------|------|
-| 探索代码 | `explore` / `@code-explorer` |
-| Java 构建失败 | `@java-build-resolver` |
-| 前端构建失败 | `@react-build-resolver` 或 `@vue-build-resolver` |
-| 改 Java 后 | `@java-reviewer`（建议） |
-| 改 TSX（Web）后 | `@react-reviewer`（建议）+ `react-performance`（热路径） |
-| 改 RN / Expo 后 | `@frontend-rn-dev` + `react-native-patterns` |
-| 改 `.vue` 后 | `@vue-reviewer`（建议） |
-| 安全/JWT | `@security-reviewer` |
-| 数据库迁移 | `@database-reviewer` |
 | 需求沉淀 | `@product-manager` |
-| 市场调研 / 定位 | `market-research` Skill 或 `@marketing-agent` |
-| 深度调研（多源） | `deep-research` Skill |
-| 能力边界 / PRD | `product-capability` Skill |
-| UI 设计方向 | `frontend-design-direction` / `frontend-patterns` |
-| 无障碍 / 设计系统 | `@a11y-architect` · `frontend-a11y` |
-| 架构/ADR | `@architect` / `@code-architect` · `architecture-decision-records` |
-| 复杂编排 | `orch-pipeline` · `plan-orchestrate` |
-| 文档同步 | `@doc-sync` |
-| E2E / 浏览器自动化 | `agent-browser` Skill · `@e2e-runner` |
-
-完整 Skill 列表见 `workflow-triggers` Skill；命中信号**必须先读**对应 Skill。
+| 架构 | `@architect` / `@planner` |
+| 改 Java | `@backend-dev` |
+| 改 React | `@frontend-dev` |
+| 改 Vue | `@frontend-vue-dev` |
+| 写完代码 | `@code-reviewer` |
+| 文档 / 契约 | `@doc-sync` |
+| 验收 | `@qa-engineer` |
+| 新能力 | `project-spec` Skill |
 
 ## 硬义务：后端改动后重启
 
@@ -52,7 +38,7 @@ alwaysApply: true
 
 ## DoD 摘要
 
-- `verification-gate` Skill（详表见 Skill 正文）
+- `verification-gate` Skill
 - `{FRONTEND_BUILD_CMD}`、`{BACKEND_BUILD_CMD}`
-- 新能力：`docs/requirements/features/<id>.md` 已定稿
+- 新能力：OpenSpec change 已确认，或需求文档已定稿
 - 用户未要求时不 commit/push

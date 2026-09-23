@@ -12,9 +12,9 @@ alwaysApply: false
 
 ## 结构
 
-- `requirements/features/` 单功能需求包（多轮沉淀，已定稿后可实现）
+- `requirements/features/<id>/`：`需求.md`（L1）+ `设计.md`（L2）+ `实现方案.md`（L3）
 - `design/` 架构、API、数据模型、`adr/`
-- `product/` 能力边界、路线图
+- `product/` 事实基线 `facts.md`、决策记忆 `decisions.md`、浓缩约束、能力边界、路线图
 
 ## 何时必须更新
 
@@ -22,7 +22,11 @@ alwaysApply: false
 |------|------|
 | 新/改 REST | `docs/design/03-API设计.md` |
 | 新/改表/实体 | `docs/design/02-数据模型.md` + migration |
-| 新功能需求 | `requirements/features/<id>.md` |
+| 新功能需求 | `requirements/features/<id>/需求.md` |
+| 能力设计 | `requirements/features/<id>/设计.md`（组合式含切片契约） |
+| 实现架构 | `requirements/features/<id>/实现方案.md` |
+| 实现现状 / 项目方向 | `docs/product/facts.md` |
+| 当场拍板 | `docs/product/decisions.md`（压缩一条） |
 | 架构抉择 | `design/adr/NNN-*.md` |
 | 交付范围 | `docs/product/capability.md`、`docs/product/roadmap.md` |
 

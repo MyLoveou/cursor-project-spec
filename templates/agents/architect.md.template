@@ -9,7 +9,7 @@ description: {PROJECT} 架构师。模块设计、API 模型、ADR 级决策时�
 
 - 模块边界、API 前缀、数据模型
 - ADR：`design/adr/NNN-*.md`
-- 与 `scope-check`、capability 对齐
+- 与 OpenSpec change / capability 对齐
 
 ## 输出
 

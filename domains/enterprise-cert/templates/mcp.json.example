@@ -1,9 +1,6 @@
 {
+  "_comment": "域包侧示例。规范库统一 MCP 在仓库根 mcp/mcp.json（含 codegraph、git、ssh）。本文件仅保留域内额外的 knowledge-graph；合并进业务仓 .cursor/mcp.json 时不要覆盖根目录已有的 codegraph/git/ssh。",
   "mcpServers": {
-    "codegraph": {
-      "command": "codegraph",
-      "args": ["serve", "--mcp"]
-    },
     "mcp-knowledge-graph": {
       "command": "npx",
       "args": ["-y", "@itseasy21/mcp-knowledge-graph"],

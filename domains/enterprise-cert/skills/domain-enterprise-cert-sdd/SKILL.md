@@ -35,8 +35,8 @@ description: >-
 2. 读 Rules：`confirm`（开放发现）、`core`、`site-diff`、`sdd-gates`
 3. 确认域包路径（规范库或 `.cursor/domain-packs/enterprise-cert/`）
 4. 跑一轮 `domain-enterprise-cert-knowledge-capture` **开放发现**（不限旧 T#/Q#）；有 open 项 →【知识待决断】
-5. 大需求建议并行或随后：`codebase-inventory`（阶段 2 必做）、需要时 `codebase-conventions`；会话沉淀可选 `continuous-learning-v2`
-6. 输出：已加载清单 + 待决断条数 + 四件套是否已在包内
+5. 大需求建议并行或随后做 `domain-enterprise-cert-codebase-map`（阶段 2 必做）
+6. 输出：已加载清单 + 待决断条数
 
 ### 阶段 1 · 需求穷尽（事前穷尽）
 
@@ -49,11 +49,11 @@ description: >-
 3. **STOP**：`pending-decisions` 中影响本需求的 `open` 项未决断则不写方案、不动代码
 4. 决断项入库后：需求可定稿；对齐根 `requirements-refinement`
 
-**产出**：`docs/requirements/features/<id>.md`（或项目约定路径）+ 疑问表已关闭
+**产出**：`docs/requirements/features/<id>/需求.md`（或项目约定路径）+ 疑问表已关闭
 
 ### 阶段 2 · 现状摸底
 
-1. **必须**执行 `domain-enterprise-cert-codebase-map`（内含通用 `codebase-inventory` 四轮）
+1. **必须**执行 `domain-enterprise-cert-codebase-map`
 2. 初稿须含【摸底自检】；对比轴空列禁止当「相同」
 3. AI 填写后输出「待人工核实」清单
 4. **门禁**：用户明确「摸底已核实」前 → **禁止**写技术方案
@@ -63,7 +63,7 @@ description: >-
 1. **必须**执行 `domain-enterprise-cert-tech-design`（HOW 级方案，非仅交互愿望）
 2. 默认等待用户/评审：「方案已锁定，可动工」
 3. 文档状态：`草案` → `评审中` → **`已锁定`**
-4. 未锁定且未明示「直接做」→ **禁止** `implement-feature`
+4. 未锁定且未明示「直接做」→ **禁止**编码 / `project-spec` apply
 
 ### 阶段 4 · 切片实现与分段验收
 
@@ -71,7 +71,7 @@ description: >-
 2. 每片：实现 → 对照 `.cursor/domain-packs/enterprise-cert/templates/slice-acceptance.md`（或规范库同名模板）勾选 → 用户或自检通过 → 下一片
 3. 反幻觉：未勾选「证据」项不得声称该片完成
 4. 反曲解：diff 不得出现「切片外行为变更」（尤其其他分支兜底）
-5. 实现时叠加根 `implement-feature`；安全相关加 `@security-reviewer`
+5. 实现时叠加根 `project-spec` apply；安全相关加 `@code-reviewer`
 
 ### 阶段 5 · 变更受控
 
@@ -94,9 +94,9 @@ description: >-
 
 | 本域阶段 | 根 Skill |
 |----------|----------|
-| 1 需求穷尽 | `scope-check` → `requirements-refinement` |
-| 3 方案 | 特化 `domain-enterprise-cert-tech-design`（可对齐 `plan-workflow` 产出路径） |
-| 4 实现 | `implement-feature` |
+| 1 需求穷尽 | `project-spec` propose 或 `requirements-refinement` |
+| 3 方案 | 特化 `domain-enterprise-cert-tech-design`（可对齐 `plan-workflow`） |
+| 4 实现 | `project-spec` apply |
 | 6 交付 | `verification-gate` |
 
 ## 反模式

@@ -41,11 +41,11 @@ Before marking code complete:
 - [ ] No hardcoded secrets or credentials
 - [ ] No console.log or debug statements
 - [ ] Tests exist for new functionality
-- [ ] Test coverage meets 80% minimum
+- [ ] tests.md / 切片测试已覆盖变更行为（覆盖率以 constraints.md 为准，无则优先算法与功能）
 
 ## Security Review Triggers
 
-**STOP and use security-reviewer agent when:**
+**STOP and treat as blocking review when:**
 
 - Authentication or authorization code
 - User input handling
@@ -66,16 +66,7 @@ Before marking code complete:
 
 ## Agent Usage
 
-Use these agents for code review:
-
-| Agent | Purpose |
-|-------|---------|
-| **code-reviewer** | General code quality, patterns, best practices |
-| **security-reviewer** | Security vulnerabilities, OWASP Top 10 |
-| **typescript-reviewer** | TypeScript/JavaScript specific issues |
-| **python-reviewer** | Python specific issues |
-| **go-reviewer** | Go specific issues |
-| **rust-reviewer** | Rust specific issues |
+Use **code-reviewer** after writing or modifying code. Flag auth, input handling, queries, filesystem, crypto, and payments as blocking.
 
 ## Review Workflow
 
@@ -84,7 +75,7 @@ Use these agents for code review:
 2. Check security checklist first
 3. Review code quality checklist
 4. Run relevant tests
-5. Verify coverage >= 80%
+5. Verify tests.md rows for this change actually ran
 6. Use appropriate agent for detailed review
 ```
 

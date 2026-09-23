@@ -8,7 +8,7 @@
 |-------------|--------|------|
 | `glossary.md` / `taboos.md` / `business-rules.md` / `ui-interactions.md` / `pending-decisions.md` | `domain-enterprise-cert-knowledge-capture` | 业务规则、术语、UI |
 | `coding-conventions.md` / `conventions-pending.md` | `codebase-conventions` | 工程惯例 |
-| `docs/design/features/<id>-codebase-map.md` | `codebase-inventory` + `domain-enterprise-cert-codebase-map` | 摸底结论（须人工核实） |
+| `docs/design/features/<id>-codebase-map.md` | `domain-enterprise-cert-codebase-map` | 摸底结论（须人工核实） |
 | `templates/*` 变更单 / 切片验收 | SDD 阶段 4–5 | 变更与验收证据 |
 
 路径（接入后）：`.cursor/domain-packs/enterprise-cert/`（摸底文档可放 `docs/design/features/`）。

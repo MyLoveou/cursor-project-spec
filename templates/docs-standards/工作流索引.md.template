@@ -6,33 +6,30 @@
 ## 流水线总览
 
 ```
-需求定稿 → L3 方案定稿 → TDD 实现 → code-review-gate → Bugbot → verification-gate → 交付
+project-spec：L1 →（复杂）L2 设计确认 → L3 → apply → code-review-gate → verification-gate
 ```
 
 | 阶段 | Skill / 命令 | 规范文档 |
 |------|--------------|----------|
-| 范围与需求 | `scope-check` · `requirements-refinement` | [版本与动工门禁.md](./版本与动工门禁.md) |
-| L3 方案 | `plan-workflow` | `docs/design/features/<id>-plan.md` |
-| 实现 | `implement-feature` | `docs/requirements/features/<id>.md` |
-| **TDD** | `/tdd-workflow` · `@tdd-guide` | [TDD与测试.md](./TDD与测试.md) |
+| 范围与需求 L1 | `project-spec` · `requirements-refinement` | `需求.md` · [版本与动工门禁.md](./版本与动工门禁.md) |
+| 能力设计 L2 | `project-spec` 设计阶段 | `docs/requirements/features/<id>/设计.md` |
+| L3 方案 | `project-spec` / `plan-workflow` | `docs/requirements/features/<id>/实现方案.md` |
+| 实现 | `project-spec` apply | OpenSpec `tasks.md` 或需求文档 |
 | **代码审查** | `code-review-gate` · `code-reviewer` | [代码审查.md](./代码审查.md) |
 | **Bugbot** | `/review-bugbot` | [Bugbot审查.md](./Bugbot审查.md) |
-| 领域专项（可选） | — | `docs/standards/{DOMAIN_SPEC}.md` |
 | 交付门禁 | `verification-gate` | `.cursor/skills/verification-gate/SKILL.md` |
 
 ## 何时用哪条工作流
 
 | 用户/场景信号 | 入口 |
 |---------------|------|
-| 新功能、新 API | TDD → implement-feature → code-review → Bugbot → verification-gate |
-| 修 bug、小改 | TDD（可简化 RED）→ code-review → Bugbot（`uncommitted changes`） |
+| 新功能、新 API | project-spec apply → code-review → verification-gate |
+| 修 bug、小改 | 实现 → code-review → verification-gate |
 | 「审查」「review」 | [代码审查.md](./代码审查.md) |
-| `/review-bugbot` | [Bugbot审查.md](./Bugbot审查.md) |
-| `/tdd-workflow`、写测试 | [TDD与测试.md](./TDD与测试.md) |
 
 ## 串联优先级（与 workflow-triggers 一致）
 
-`scope-check` → 需求定稿 → `plan-workflow`（L3 定稿）→ **TDD** → `implement-feature` → **code-review-gate** → **Bugbot** → **verification-gate**
+`project-spec` propose → 用户确认 → apply → **code-review-gate** → **verification-gate**
 
 ## 裁决组合
 

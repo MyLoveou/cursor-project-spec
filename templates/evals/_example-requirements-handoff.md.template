@@ -1,6 +1,6 @@
 # Requirements Handoff · {feature-id}
 
-> 跨会话续作 `requirements-refinement`。主文档：`docs/requirements/features/{feature-id}.md`
+> 跨会话续作 `requirements-refinement`。主文档：`docs/requirements/features/{feature-id}/需求.md`
 
 ## 状态
 
