@@ -63,7 +63,17 @@ origin: 项目规范
 - OpenSpec change：`tests.md` 记录为 PASS，`handoff.md` 已更新
 - 复杂需求：`设计.md` / `实现方案.md` 仍与代码同范围
 
-## 阶段 6：仓库卫生
+## 阶段 6：规范扫描（Script Scan）
+
+```powershell
+powershell -File "<规范库>/scripts/scan/scan-assemble.ps1" -Root "{PROJECT_ROOT}"
+```
+
+- [ ] CRITICAL / HIGH 违规 → 逐条修复或加豁免注释
+- [ ] 把 `scan-report.md` 交给 AI 裁决：真违规修掉；误报加 `scan-ignore: reason`
+- 扫描报告与修复结果附在交付说明中
+
+## 阶段 7：仓库卫生
 
 - [ ] 未提交密钥、`.env`、本地库
 - [ ] 用户未要求时不 commit/push
@@ -81,6 +91,7 @@ origin: 项目规范
 - backend compile/test：通过 / 跳过
 - 后端重启+冒烟：通过 / 跳过 / 未执行
 - 文档同步：是 / 否 / N/A
+- 规范扫描：通过 / 有 HIGH 违规 / 未执行
 - 结论：可交付 / 阻塞：…
 ```
 

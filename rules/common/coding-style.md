@@ -29,6 +29,26 @@ MANY SMALL FILES > FEW LARGE FILES:
 - Extract utilities from large modules
 - Organize by feature/domain, not by type
 
+> `scan: yes` → `scripts/scan/rules/file-size.ps1`（800 行上限确定性扫描）
+
+## 组合根（页面/入口文件）
+
+> `scan: yes` → `scripts/scan/rules/no-implementation-in-pages.ps1`
+
+页面文件、入口文件、控制器文件**默认只做函数调用与组装**，不写函数实现：
+
+1. **禁止**：页面/入口文件内出现业务函数声明（含业务名词 + 副作用调用）
+2. **豁免**：纯视图逻辑（局部 state、格式化、无副作用派生计算、JSX 内联箭头）
+3. **判断标准**：该逻辑是否会被复用？是否含副作用？是否跨模块依赖？
+4. **实现位置**：业务规则/算法/数据访问 → service/domain/hook 模块；页面只负责装配与数据流入
+
+## 调试残留
+
+> `scan: yes` → `scripts/scan/rules/no-console.ps1`
+
+- 禁止提交 `console.log` / `console.debug` / `debugger` / `TODO` 标记
+- 交付前扫描必须为零；确需保留的调试输出须加豁免注释 `// scan-ignore: reason`
+
 ## Error Handling
 
 ALWAYS handle errors comprehensively:
